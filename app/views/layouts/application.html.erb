@@ -5,10 +5,20 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+    <div  class="page-header"  style="text-align:center;padding:0;margin:0">
+        <a  href="index.html">
+            <h1>
+          <img  src="images/Book_header.gif"  width="100px"  height="100px"  />
+          <font  face="samarkan">
+              thaaliyola
+      </font></h1>
+        </a>
+    </div>
 </head>
-<body>
+<body style="margin-left:10%;margin-right:10%;">
 
 <%= yield %>
+<div class="footer-fixed-bottom" style="text-align:center" >Designed by <u><a href="http://balasankarc.in">Balasankar C</a></u></div>
 
 </body>
 </html>

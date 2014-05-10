@@ -1,292 +1,0 @@
-Script started on ശനി 10 മെയ് 2014 03:33:53 വൈകു IST
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master  [49m[33m⮀[39m [K[?1h=cclear[?1l>
-]2;clear]1;clear[H[2J[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master  [49m[33m⮀[39m [K[?1h=c rrails create      generate config
-[J[1;31mconfig[0m/    [Jconfig.ru[J[A[0m[27m[24m[0m[27m[24m[39m[49m[36Crails generate config[K[0m[27m[24m[39m[49m   tr
-[J[A[56Coller list index[?1l>
-[J]2;rails generate controller list index]1;rails[1m[32m      create[0m  app/controllers/list_controller.rb
-[1m[32m       route[0m  get "list/index"
-[1m[37m      invoke[0m  erb
-[1m[32m      create[0m    app/views/list
-[1m[32m      create[0m    app/views/list/index.html.erb
-[1m[37m      invoke[0m  test_unit
-[1m[32m      create[0m    test/controllers/list_controller_test.rb
-[1m[37m      invoke[0m  helper
-[1m[32m      create[0m    app/helpers/list_helper.rb
-[1m[37m      invoke[0m    test_unit
-[1m[32m      create[0m      test/helpers/list_helper_test.rb
-[1m[37m      invoke[0m  assets
-[1m[37m      invoke[0m    coffee
-[1m[32m      create[0m      app/assets/javascripts/list.js.coffee
-[1m[37m      invoke[0m    scss
-[1m[32m      create[0m      app/assets/stylesheets/list.css.scss
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=vvi configr /
-[0mapplication.rb  database.yml    [1;31menvironments[0m/   [1;31mlocales[0m/      
-[Jboot.rb         [Jenvironment.rb  [J[1;31minitializers[0m/   [Jroutes.rb     [J[A[A[0m[27m[24m[0m[27m[24m[39m[49m[37Cvi config/[K[0m[27m[24m[39m[49mroutes.rb[1m [0m[0m [?1l>
-[J]2;vi config/routes.rb]1;vi[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;38r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[38;1H"routes.rb" 57L, 1629C^[[2;2R[>c[1;1H[38;5;130m  1 [m[32mThaaliyolaRor[m::[32mApplication[m.routes.draw [38;5;130mdo
-  2 [m  [36mget[m [35m"[m[31mlist/index[m[35m"[m
-[38;5;130m  3 [m  [34m# The priority is based upon order of creation: first created -> hii[m[4;1H[38;5;130m    [m[34mghest priority.[m
-[38;5;130m  4 [m  [34m# See how all your routes lay out with "rake routes".[m
-[38;5;130m  5 
-  6 [m  [34m# You can have the root of your site routed with "root"[m
-[38;5;130m  7 [m  [34m# root 'welcome#index'[m
-[38;5;130m  8 
-  9 [m  [34m# Example of regular route:[m
-[38;5;130m 10 [m  [34m#   get 'products/:id' => 'catalog#view'[m
-[38;5;130m 11 
- 12 [m  [34m# Example of named route that can be invoked with purchase_url(id:  [m[14;1H[38;5;130m    [m[34mproduct.id)[m
-[38;5;130m 13 [m  [34m#   get 'products/:id/purchase' => 'catalog#purchase', as: :purchass[m[16;1H[38;5;130m    [m[34me[m
-[38;5;130m 14 
- 15 [m  [34m# Example resource route (maps HTTP verbs to controller actions autt[m[19;1H[38;5;130m    [m[34momatically):[m
-[38;5;130m 16 [m  [34m#   resources :products[m
-[38;5;130m 17 
- 18 [m  [34m# Example resource route with options:[m
-[38;5;130m 19 [m  [34m#   resources :products do[m
-[38;5;130m 20 [m  [34m#     member do[m
-[38;5;130m 21 [m  [34m#       get 'short'[m
-[38;5;130m 22 [m  [34m#       post 'toggle'[m
-[38;5;130m 23 [m  [34m#     end[m
-[38;5;130m 24 [m  [34m#[m
-[38;5;130m 25 [m  [34m#     collection do[m
-[38;5;130m 26 [m  [34m#       get 'sold'[m
-[38;5;130m 27 [m  [34m#     end[m
-[38;5;130m 28 [m  [34m#   end[m
-[38;5;130m 29 
- 30 [m  [34m# Example resource route with sub-resources:[m
-[38;5;130m 31 [m  [34m#   resources :products do[m
-[38;5;130m 32 [m  [34m#     resources :comments, :sales[m
-[38;5;17m[48;5;190m [m[1m[38;5;17m[48;5;190mNORMAL[m[38;5;17m[48;5;190m [m[38;5;190m[48;5;238m>[m[38;5;238m[48;5;234m>[m[38;5;85m[48;5;234m routes.rb                           [m[38;5;234m[48;5;234m<[m[38;5;85m[48;5;234m ruby [m[38;5;238m[48;5;234m<[m[38;5;190m[48;5;238m<[m[38;5;17m[48;5;190m   1% :[m[1m[38;5;17m[48;5;190m   1[m[38;5;17m[48;5;190m:  1  ]2;routes.rb (~/git/thaaliyola_ror/config) - VIM]1;routes.rb[1;5H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[37;60H3[m[6C[1m[38;5;17m[48;5;190m2[m[38;5;17m[48;5;190m:[2;5H[37;60H5[m[6C[1m[38;5;17m[48;5;190m3[m[38;5;17m[48;5;190m:[3;5H[37;60H3[m[6C[1m[38;5;17m[48;5;190m2[m[38;5;17m[48;5;190m:[2;5H[37;60H1[m[6C[1m[38;5;17m[48;5;190m1[m[38;5;17m[48;5;190m:[1;5H[37;70H4[1;45H[?25l[m[38;1H[1m-- INSERT --[m[38;13H[K[37;1H[38;5;17m[48;5;45m [m[1m[38;5;17m[48;5;45mINSERT[m[38;5;17m[48;5;190m [m[38;5;17m[48;5;45m [m[38;5;45m[48;5;27m>[m[38;5;27m[48;5;17m>[m[97m[48;5;17m routes.rb                           [m[38;5;17m[48;5;17m<[m[97m[48;5;17m ruby [m[38;5;27m[48;5;17m<[m[38;5;45m[48;5;27m<[m[38;5;17m[48;5;45m   1% :[m[1m[38;5;17m[48;5;45m   1[m[38;5;17m[48;5;190m:[m[38;5;17m[48;5;45m: 42  [1;46H[?12l[?25h[37;60H3[m[6C[1m[38;5;17m[48;5;45m2[m[38;5;17m[48;5;45m: 19[2;23H[?25l[m[3;7H[K[4;3H[38;5;130m4[m[1C  [34m# The priority is based upon order of creation: first created -> hii[m[5;1H[38;5;130m   [m[1C[34mghest priority.[m[5;20H[K[6;7H[34m# See how all your routes lay out with "rake routes".[m[7;7H[K[8;9H[34mYou can have the root of your site routed with "root"[9;7H# root 'welcome#index'[m[10;7H[K[11;9H[34mExample of regular route:[m[11;34H[K[12;7H[34m#   get 'products/:id' => 'catalog#view'[m[13;7H[K[14;2H[38;5;130m13[m[1C  [34m# Example of named route that can be invoked with purchase_url(id:  [m[15;1H[38;5;130m   [m[1C[34mproduct.id)[m[15;16H[K[16;2H[38;5;130m14[m[1C  [34m#   get 'products/:id/purchase' => 'catalog#purchase', as: :purchass[m[17;1H[38;5;130m   [m[1C[34me[m[18;7H[K[19;2H[38;5;130m16[m[1C  [34m# Example resource route (maps HTTP verbs to controller actions autt[m[20;1H[38;5;130m   [m[1C[34momatically):[m[20;17H[K[21;7H[34m#   resources :products[m[22;7H[K[23;9H[34mExample resource route with options:[24;11Hresources :products do[25;13Hmember do[m[25;22H[K[26;15H[34mget 'short'[m[26;26H[K[27;13H[34m  post 'toggle'[28;8H     end[m[29;8H[K[30;13H[34mcollection do[31;13H  get 'sold'[32;11H  end[33;7H#   end[m[34;7H[K[35;9H[34mExample resource route with sub-resources:[36;11Hresources :products do[m[36;33H[K[37;10H[38;5;27m[48;5;53m>[m[38;5;255m[48;5;53m routes.rb[+]                        [m[38;5;17m[48;5;53m<[m[11C[38;5;17m[48;5;45m5[m[6C[1m[38;5;17m[48;5;45m3[m[38;5;17m[48;5;45m:  3]2;routes.rb + (~/git/thaaliyola_ror/config) - VIM]1;routes.rb[3;7H[?12l[?25h[?25l[m[4;7H[K[5;3H[38;5;130m5[m[1C  [34m# The priority is based upon order of creation: first created -> hii[m[6;1H[38;5;130m   [m[1C[34mghest priority.[m[6;20H[K[7;7H[34m# See how all your routes lay out with "rake routes".[m[8;7H[K[9;9H[34mYou can have the root of your site routed with "root"[10;7H# root 'welcome#index'[m[11;7H[K[12;9H[34mExample of regular route:[m[12;34H[K[13;7H[34m#   get 'products/:id' => 'catalog#view'[m[14;7H[K[15;2H[38;5;130m14[m[1C  [34m# Example of named route that can be invoked with purchase_url(id:  [m[16;1H[38;5;130m   [m[1C[34mproduct.id)[m[16;16H[K[17;2H[38;5;130m15[m[1C  [34m#   get 'products/:id/purchase' => 'catalog#purchase', as: :purchass[m[18;1H[38;5;130m   [m[1C[34me[m[19;7H[K[20;2H[38;5;130m17[m[1C  [34m# Example resource route (maps HTTP verbs to controller actions autt[m[21;1H[38;5;130m   [m[1C[34momatically):[m[21;17H[K[22;7H[34m#   resources :products[m[23;7H[K[24;9H[34mExample resource route with options:[25;11Hresources :products do[26;13Hmember do[m[26;22H[K[27;15H[34mget 'short'[m[27;26H[K[28;13H[34m  post 'toggle'[29;8H     end[m[30;8H[K[31;13H[34mcollection do[32;13H  get 'sold'[33;11H  end[34;7H#   end[m[35;7H[K[36;9H[34mExample resource route with sub-resources:[m[37;60H[38;5;17m[48;5;45m6[m[6C[1m[38;5;17m[48;5;45m4[m[38;5;17m[48;5;45m:[4;7H[?12l[?25h[?25l[mr[37;71H[38;5;17m[48;5;45m4[4;8H[?12l[?25h[?25l[mo[37;71H[38;5;17m[48;5;45m5[4;9H[?12l[?25h[?25l[mo[37;71H[38;5;17m[48;5;45m6[4;10H[?12l[?25h[?25l[m[36mroot[m[37;71H[38;5;17m[48;5;45m7[4;11H[?12l[?25h[?25l[37;71H8[4;12H[?12l[?25h[?25l[m:[37;71H[38;5;17m[48;5;45m9[4;13H[?12l[?25h[?25l[m[31m:t[m[37;70H[38;5;17m[48;5;45m10[4;14H[?12l[?25h[?25l[m[31mo[m[37;71H[38;5;17m[48;5;45m1[4;15H[?12l[?25h[?25l[37;71H2[4;16H[?12l[?25h[?25l[m=[37;71H[38;5;17m[48;5;45m3[4;17H[?12l[?25h[?25l[m>[37;71H[38;5;17m[48;5;45m4[4;18H[?12l[?25h[?25l[37;71H5[4;19H[?12l[?25h[?25l[m[35m""[m[37;71H[38;5;17m[48;5;45m6[4;20H[?12l[?25h[?25l[m[31ms[m[35m"[m[37;71H[38;5;17m[48;5;45m7[4;21H[?12l[?25h[?25l[m[31mt[m[35m"[m[37;71H[38;5;17m[48;5;45m8[4;22H[?12l[?25h[?25l[m[31mo[m[35m"[m[37;71H[38;5;17m[48;5;45m9[4;23H[?12l[?25h[?25l[m[31mr[m[35m"[m[37;70H[38;5;17m[48;5;45m20[4;24H[?12l[?25h[?25l[m[31me[m[35m"[m[37;71H[38;5;17m[48;5;45m1[4;25H[?12l[?25h[?25l[m[35m"[m[4;25H[K[37;71H[38;5;17m[48;5;45m0[4;24H[?12l[?25h[?25l[m[35m"[m[4;24H[K[37;70H[38;5;17m[48;5;45m19[4;23H[?12l[?25h[?25l[m[35m"[m[4;23H[K[37;71H[38;5;17m[48;5;45m8[4;22H[?12l[?25h[?25l[m[35m"[m[4;22H[K[37;71H[38;5;17m[48;5;45m7[4;21H[?12l[?25h[?25l[m[35m"[m[4;21H[K[37;71H[38;5;17m[48;5;45m6[4;20H[?12l[?25h[?25l[m[31ml[m[35m"[m[37;71H[38;5;17m[48;5;45m7[4;21H[?12l[?25h[?25l[m[31mi[m[35m"[m[37;71H[38;5;17m[48;5;45m8[4;22H[?12l[?25h[?25l[m[31ms[m[35m"[m[37;71H[38;5;17m[48;5;45m9[4;23H[?12l[?25h[?25l[m[31mt[m[35m"[m[37;70H[38;5;17m[48;5;45m20[4;24H[?12l[?25h[?25l[m[31m#[m[35m"[m[37;71H[38;5;17m[48;5;45m1[4;25H[?12l[?25h[?25l[m[31mi[m[35m"[m[37;71H[38;5;17m[48;5;45m2[4;26H[?12l[?25h[?25l[m[31mn[m[35m"[m[37;71H[38;5;17m[48;5;45m3[4;27H[?12l[?25h[?25l[m[31md[m[35m"[m[37;71H[38;5;17m[48;5;45m4[4;28H[?12l[?25h[?25l[m[31me[m[35m"[m[37;71H[38;5;17m[48;5;45m5[4;29H[?12l[?25h[?25l[m[31mx[m[35m"[m[37;71H[38;5;17m[48;5;45m6[4;30H[?12l[?25h[?25l[37;71H7[4;31H[?12l[?25h[?25l[37;71H8[4;32H[?12l[?25h[?25l[37;71H7[4;31H[?12l[?25h[?25l[m,[37;71H[38;5;17m[48;5;45m8[4;32H[?12l[?25h[?25l[37;71H9[4;33H[?12l[?25h[?25l[m:[37;70H[38;5;17m[48;5;45m30[4;34H[?12l[?25h[?25l[m[31m:a[m[37;71H[38;5;17m[48;5;45m1[4;35H[?12l[?25h[?25l[m[31ms[m[37;71H[38;5;17m[48;5;45m2[4;36H[?12l[?25h[?25l[37;71H3[4;37H[?12l[?25h[?25l[m=[37;71H[38;5;17m[48;5;45m4[4;38H[?12l[?25h[?25l[m>[37;71H[38;5;17m[48;5;45m5[4;39H[?12l[?25h[?25l[37;71H6[4;40H[?12l[?25h[?25l[m[35m""[m[37;71H[38;5;17m[48;5;45m7[4;41H[?12l[?25h[?25l[m[31ml[m[35m"[m[37;71H[38;5;17m[48;5;45m8[4;42H[?12l[?25h[?25l[m[31mi[m[35m"[m[37;71H[38;5;17m[48;5;45m9[4;43H[?12l[?25h[?25l[m[31ms[m[35m"[m[37;70H[38;5;17m[48;5;45m40[4;44H[?12l[?25h[?25l[m[31mt[m[35m"[m[37;71H[38;5;17m[48;5;45m1[4;45H[?12l[?25h[?25l[m[38;1H[K[37;1H[38;5;17m[48;5;190m [m[1m[38;5;17m[48;5;190mNORMAL[m[38;5;17m[48;5;45m [m[38;5;17m[48;5;190m [m[38;5;190m[48;5;238m>[m[38;5;238m[48;5;53m>[m[37C[38;5;234m[48;5;53m<[m[38;5;85m[48;5;234m ruby [m[38;5;238m[48;5;234m<[m[38;5;190m[48;5;238m<[m[38;5;17m[48;5;190m   6% :[m[1m[38;5;17m[48;5;190m   4[m[38;5;17m[48;5;45m:[m[38;5;17m[48;5;190m: 40  [4;44H[?12l[?25h[?25l[38;1H[m:update"routes.rb" 59L, 1672C written[37;10H[38;5;238m[48;5;234m>[m[38;5;85m[48;5;234m routes.rb                           [m[38;5;234m[48;5;234m<]2;routes.rb (~/git/thaaliyola_ror/config) - VIM]1;routes.rb[4;44H[?12l[?25h[?25l[m[37;71H[38;5;17m[48;5;190m1[4;45H[?12l[?25h[?25l[m[4;7H    [36mroot[m [31m:to[m => [35m"[m[31mlist#index[m[35m"[m, [31m:as[m => [35m"[m[31mlist[m[35m"[m[37;10H[38;5;238m[48;5;53m>[m[38;5;255m[48;5;53m routes.rb[+]                        [m[38;5;234m[48;5;53m<[m[21C[38;5;17m[48;5;190m 7]2;routes.rb + (~/git/thaaliyola_ror/config) - VIM]1;routes.rb[4;11H[?12l[?25h[?25l[?12l[?25h[?25l[m[38;1HType  :quit<Enter>  to exit Vim[4;11H[?12l[?25h[?25l[38;1H[K[38;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"routes.rb" 59L, 1676C written]2;vi config/routes.rb]1;vi
-[?1l>[?12l[?25h[?1049l[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=ggit add .[?1l>
-]2;git add .]1;git[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ✚ [49m[33m⮀[39m [K[?1h=ggit commit -m "List page and set it  [Kaas o root"[?1l>
-]2;git commit -m "List page and set it as root"]1;git[master b090cac] List page and set it as root
- 9 files changed, 87 insertions(+)
- create mode 100644 10_05_2014
- create mode 100644 app/assets/javascripts/list.js.coffee
- create mode 100644 app/assets/stylesheets/list.css.scss
- create mode 100644 app/controllers/list_controller.rb
- create mode 100644 app/helpers/list_helper.rb
- create mode 100644 app/views/list/index.html.erb
- create mode 100644 test/controllers/list_controller_test.rb
- create mode 100644 test/helpers/list_helper_test.rb
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [42m[34m⮀[30m ⭠ master  [49m[32m⮀[39m [K[?1h=ggit push origin master[?1l>
-]2;git push origin master]1;gitEnter passphrase for key '/home/balasankarc/.ssh/id_rsa': 
-Counting objects: 23, done.
-Delta compression using up to 4 threads.
-Compressing objects:   4% (1/21)   Compressing objects:   9% (2/21)   Compressing objects:  14% (3/21)   Compressing objects:  19% (4/21)   Compressing objects:  23% (5/21)   Compressing objects:  28% (6/21)   Compressing objects:  33% (7/21)   Compressing objects:  38% (8/21)   Compressing objects:  42% (9/21)   Compressing objects:  47% (10/21)   Compressing objects:  52% (11/21)   Compressing objects:  57% (12/21)   Compressing objects:  61% (13/21)   Compressing objects:  66% (14/21)   Compressing objects:  71% (15/21)   Compressing objects:  76% (16/21)   Compressing objects:  80% (17/21)   Compressing objects:  85% (18/21)   Compressing objects:  90% (19/21)   Compressing objects:  95% (20/21)   Compressing objects: 100% (21/21)   Compressing objects: 100% (21/21), done.
-Writing objects:   4% (1/23)   Writing objects:   8% (2/23)   Writing objects:  13% (3/23)   Writing objects:  17% (4/23)   Writing objects:  21% (5/23)   Writing objects:  26% (6/23)   Writing objects:  30% (7/23)   Writing objects:  34% (8/23)   Writing objects:  39% (9/23)   Writing objects:  43% (10/23)   Writing objects:  47% (11/23)   Writing objects:  52% (12/23)   Writing objects:  56% (13/23)   Writing objects:  60% (14/23)   Writing objects:  65% (15/23)   Writing objects:  69% (16/23)   Writing objects:  73% (17/23)   Writing objects:  78% (18/23)   Writing objects:  82% (19/23)   Writing objects:  86% (20/23)   Writing objects:  91% (21/23)   Writing objects:  95% (22/23)   Writing objects: 100% (23/23)   Writing objects: 100% (23/23), 4.72 KiB | 0 bytes/s, done.
-Total 23 (delta 4), reused 1 (delta 0)
-To git@gitlab.com:balasankarc/thaaliyola_ror.git
-   0ed0b11..b090cac  master -> master
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=ggit sd tatus[?1l>
-]2;git status]1;gitOn branch master
-Your branch is up-to-date with 'origin/master'.
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	[31mmodified:   10_05_2014[m
-
-no changes added to commit (use "git add" and/or "git commit -a")
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=rrails generate scaffold book name st [Kr[K[A[72C[K[1B[K[A[72C :st [Krring author:string category:string[9D[A[66Csname:string author:string category:string[A[32Cename:string author:string category:string[A[32Crname:string author:string category:string[A[32Ciname:string author:string category:string[A[32Caname:string author:string category:string[A[32Clname:string author:string category:string[A[32C:name:string author:string category:stringsname:string author:string category:string[41Dstname:string author:string category:string[41Drname:string author:string category:string[41Diname:string author:string category:string[41D[1Cname:string author:string category:string[41Dgname:string author:string category:string[41D name:string author:string category:string[41D[41C row:string           shelf:string row:string[?1l>
-]2;rails generate scaffold book serial:string name:string author:string   ]1;rails[1m[37m      invoke[0m  active_record
-[1m[32m      create[0m    db/migrate/20140510100924_create_books.rb
-[1m[32m      create[0m    app/models/book.rb
-[1m[37m      invoke[0m    test_unit
-[1m[32m      create[0m      test/models/book_test.rb
-[1m[32m      create[0m      test/fixtures/books.yml
-[1m[37m      invoke[0m  resource_route
-[1m[32m       route[0m    resources :books
-[1m[37m      invoke[0m  scaffold_controller
-[1m[32m      create[0m    app/controllers/books_controller.rb
-[1m[37m      invoke[0m    erb
-[1m[32m      create[0m      app/views/books
-[1m[32m      create[0m      app/views/books/index.html.erb
-[1m[32m      create[0m      app/views/books/edit.html.erb
-[1m[32m      create[0m      app/views/books/show.html.erb
-[1m[32m      create[0m      app/views/books/new.html.erb
-[1m[32m      create[0m      app/views/books/_form.html.erb
-[1m[37m      invoke[0m    test_unit
-[1m[32m      create[0m      test/controllers/books_controller_test.rb
-[1m[37m      invoke[0m    helper
-[1m[32m      create[0m      app/helpers/books_helper.rb
-[1m[37m      invoke[0m      test_unit
-[1m[32m      create[0m        test/helpers/books_helper_test.rb
-[1m[37m      invoke[0m    jbuilder
-[1m[32m      create[0m      app/views/books/index.json.jbuilder
-[1m[32m      create[0m      app/views/books/show.json.jbuilder
-[1m[37m      invoke[0m  assets
-[1m[37m      invoke[0m    coffee
-[1m[32m      create[0m      app/assets/javascripts/books.js.coffee
-[1m[37m      invoke[0m    scss
-[1m[32m      create[0m      app/assets/stylesheets/books.css.scss
-[1m[37m      invoke[0m  scss
-[1m[32m      create[0m    app/assets/stylesheets/scaffolds.css.scss
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=rrar  vvi db[1m/[0m[0m/migrate[1m/[0m[0m/20140510100924_create_books.rb[1m [0m[K[K[?1l>
-]2;vi db/migrate/20140510100924_create_books.rb]1;vi[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;38r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[38;1H"20140510100924_create_books.rb" 14L, 260C^[[2;2R[>c[1;1H[38;5;130m  1 [m[35mclass[m [32mCreateBooks[m < [32mActiveRecord[m::[32mMigration[m
-[38;5;130m  2 [m  [35mdef[m [36mchange[m
-[38;5;130m  3 [m    [36mcreate_table[m [31m:books[m [38;5;130mdo[m |[36mt[m|
-[38;5;130m  4 [m      t.string [31m:serial[m
-[38;5;130m  5 [m      t.string [31m:name[m
-[38;5;130m  6 [m      t.string [31m:author[m
-[38;5;130m  7 [m      t.string [31m:category[m
-[38;5;130m  8 [m      t.string [31m:shelf[m
-[38;5;130m  9 [m      t.string [31m:row[m
-[38;5;130m 10 
- 11 [m      t.timestamps
-[38;5;130m 12 [m    [38;5;130mend
- 13 [m  [35mend[m
-[38;5;130m 14 [m[35mend[m
-[94m~                                                                        [16;1H~                                                                        [17;1H~                                                                        [18;1H~                                                                        [19;1H~                                                                        [20;1H~                                                                        [21;1H~                                                                        [22;1H~                                                                        [23;1H~                                                                        [24;1H~                                                                        [25;1H~                                                                        [26;1H~                                                                        [27;1H~                                                                        [28;1H~                                                                        [29;1H~                                                                        [30;1H~                                                                        [31;1H~                                                                        [32;1H~                                                                        [33;1H~                                                                        [34;1H~                                                                        [35;1H~                                                                        [36;1H~                                                                        [m[37;1H[38;5;17m[48;5;190m [m[1m[38;5;17m[48;5;190mNORMAL[m[38;5;17m[48;5;190m [m[38;5;190m[48;5;238m>[m[38;5;238m[48;5;234m>[m[38;5;85m[48;5;234m 20140510100924_create_books.rb      [m[38;5;234m[48;5;234m<[m[38;5;85m[48;5;234m ruby [m[38;5;238m[48;5;234m<[m[38;5;190m[48;5;238m<[m[38;5;17m[48;5;190m   7% :[m[1m[38;5;17m[48;5;190m   1[m[38;5;17m[48;5;190m:  1  ]2;20140510100924_create_books....haaliyola_ror/db/migrate) - VIM]1;20140510100924_create_books.rb[1;5H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[37;59H14[m[6C[1m[38;5;17m[48;5;190m2[m[38;5;17m[48;5;190m:[2;5H[37;59H21[m[6C[1m[38;5;17m[48;5;190m3[m[38;5;17m[48;5;190m:[3;5H[37;60H8[m[6C[1m[38;5;17m[48;5;190m4[m[38;5;17m[48;5;190m:[4;5H[37;59H35[m[6C[1m[38;5;17m[48;5;190m5[m[38;5;17m[48;5;190m:[5;5H[37;59H42[m[6C[1m[38;5;17m[48;5;190m6[m[38;5;17m[48;5;190m:[6;5H[37;59H50[m[6C[1m[38;5;17m[48;5;190m7[m[38;5;17m[48;5;190m:[7;5H[37;60H7[m[6C[1m[38;5;17m[48;5;190m8[m[38;5;17m[48;5;190m:[8;5H[37;60H0[m[6C[1m[38;5;17m[48;5;190m7[m[38;5;17m[48;5;190m:[7;5H[37;59H42[m[6C[1m[38;5;17m[48;5;190m6[m[38;5;17m[48;5;190m:[6;5H[37;59H35[m[6C[1m[38;5;17m[48;5;190m5[m[38;5;17m[48;5;190m:[5;5H[37;59H28[m[6C[1m[38;5;17m[48;5;190m4[m[38;5;17m[48;5;190m:[4;5H[37;60H1[m[6C[1m[38;5;17m[48;5;190m3[m[38;5;17m[48;5;190m:[3;5H[37;59H14[m[6C[1m[38;5;17m[48;5;190m2[m[38;5;17m[48;5;190m:[2;5H[37;59H 7[m[6C[1m[38;5;17m[48;5;190m1[m[38;5;17m[48;5;190m:[1;5H[37;59H14[m[6C[1m[38;5;17m[48;5;190m2[m[38;5;17m[48;5;190m:[2;5H[37;59H21[m[6C[1m[38;5;17m[48;5;190m3[m[38;5;17m[48;5;190m:[3;5H[37;60H8[m[6C[1m[38;5;17m[48;5;190m4[m[38;5;17m[48;5;190m:[4;5H[37;59H35[m[6C[1m[38;5;17m[48;5;190m5[m[38;5;17m[48;5;190m:[5;5H[37;59H42[m[6C[1m[38;5;17m[48;5;190m6[m[38;5;17m[48;5;190m:[6;5H[37;59H50[m[6C[1m[38;5;17m[48;5;190m7[m[38;5;17m[48;5;190m:[7;5H[37;60H7[m[6C[1m[38;5;17m[48;5;190m8[m[38;5;17m[48;5;190m:[8;5H[37;59H64[m[6C[1m[38;5;17m[48;5;190m9[m[38;5;17m[48;5;190m:[9;5H[37;59H71[m[5C[1m[38;5;17m[48;5;190m10[m[38;5;17m[48;5;190m:  0[10;5H[37;60H8[m[6C[1m[38;5;17m[48;5;190m1[m[38;5;17m[48;5;190m:  1[11;5H[37;59H85[m[6C[1m[38;5;17m[48;5;190m2[m[38;5;17m[48;5;190m:[12;5H[37;59H92[m[6C[1m[38;5;17m[48;5;190m3[m[38;5;17m[48;5;190m:[13;5H[37;58H100[m[6C[1m[38;5;17m[48;5;190m4[m[38;5;17m[48;5;190m:[14;5H[37;58H 92[m[6C[1m[38;5;17m[48;5;190m3[m[38;5;17m[48;5;190m:[13;5H[37;59H85[m[6C[1m[38;5;17m[48;5;190m2[m[38;5;17m[48;5;190m:[12;5H[37;59H78[m[6C[1m[38;5;17m[48;5;190m1[m[38;5;17m[48;5;190m:[11;5H[37;60H1[m[6C[1m[38;5;17m[48;5;190m0[m[38;5;17m[48;5;190m:  0[10;5H[37;59H64[m[5C[1m[38;5;17m[48;5;190m 9[m[38;5;17m[48;5;190m:  1[9;5H[37;59H57[m[6C[1m[38;5;17m[48;5;190m8[m[38;5;17m[48;5;190m:[8;5H[37;60H0[m[6C[1m[38;5;17m[48;5;190m7[m[38;5;17m[48;5;190m:[7;5H[37;59H42[m[6C[1m[38;5;17m[48;5;190m6[m[38;5;17m[48;5;190m:[6;5H[37;59H35[m[6C[1m[38;5;17m[48;5;190m5[m[38;5;17m[48;5;190m:[5;5H[37;59H28[m[6C[1m[38;5;17m[48;5;190m4[m[38;5;17m[48;5;190m:[4;5H[37;71H2[4;6H[37;71H3[4;7H[37;71H4[4;8H[37;71H5[4;9H[37;71H6[4;10H[37;71H7[4;11H[37;71H8[4;12H[37;71H9[4;13H[37;70H10[4;14H[37;71H1[4;15H[37;71H2[4;16H[37;71H3[4;17H[37;71H4[4;18H[37;71H5[4;19H[37;71H6[4;20H[37;71H7[4;21H[37;71H8[4;22H[37;71H9[4;23H[37;70H20[4;24H[37;71H1[4;25H[37;71H2[4;26H[37;59H35[m[6C[1m[38;5;17m[48;5;190m5[m[38;5;17m[48;5;190m: 20[5;24H[37;59H42[m[6C[1m[38;5;17m[48;5;190m6[m[38;5;17m[48;5;190m: 22[6;26H[37;59H50[m[6C[1m[38;5;17m[48;5;190m7[m[38;5;17m[48;5;190m:[7;26H[37;60H7[m[6C[1m[38;5;17m[48;5;190m8[m[38;5;17m[48;5;190m: 21[8;25H[37;59H64[m[6C[1m[38;5;17m[48;5;190m9[m[38;5;17m[48;5;190m: 19[9;23H[?25l[m[38;1H[K[38;1H:[?12l[?25hq[?25l[?12l[?25h[?25l]2;vi db/migrate/20140510100924_create_books.rb]1;vi[38;1H[K[38;1H[?1l>[?12l[?25h[?1049l[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=rrake db:migrate[?1l>
-]2;rake db:migrate]1;db:migrate==  CreateBooks: migrating ====================================================
--- create_table(:books)
-   -> 0.0027s
-==  CreateBooks: migrated (0.0029s) ===========================================
-
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=ccd 
-[1;31mapp[0m/     [1;31mconfig[0m/  [1;31mlib[0m/     [1;31mpublic[0m/  [1;31mtmp[0m/                          
-[J[1;31mbin[0m/     [J[1;31mdb[0m/      [J[1;31mlog[0m/     [J[1;31mtest[0m/    [J[1;31mvendor[0m/  [J                     [A[A[0m[27m[24m[0m[27m[24m[39m[49m[37Ccd[K[0m[27m[24m[39m[49m[1Capp[1m/[0m[0m/views[1m/[0m[0m/
-[J[J[1;31mbooks[0m/    [J[1;31mlayouts[0m/  [J[1;31mlist[0m/   [J[A[0m[27m[24m[0m[27m[24m[39m[49m[37Ccd app/views/[K[0m[27m[24m[39m[49mbooks[1m/[0m
-[J[A[56C[0m [?1l>
-[J]2;cd app/views/books]1;cd[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror/app/views/books]1;..p/views/books[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror/app/views/books [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=s[?1l>
-]2;s]1;szsh: command not found: s
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror/app/views/books]1;..p/views/books[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘ [44m[30m⮀[30m ~/git/thaaliyola_ror/app/views/books [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=lls[?1l>
-]2;ls --color=tty]1;lsedit.html.erb   index.html.erb       new.html.erb   show.json.jbuilder
-_form.html.erb  index.json.jbuilder  show.html.erb
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror/app/views/books]1;..p/views/books[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror/app/views/books [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=vvi f _form.html.erb[1m [0m[0m [?1l>
-]2;vi _form.html.erb]1;vi[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;38r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[38;1H"_form.html.erb" 41L, 956C[>c[1;1H[38;5;130m  1 [m[35m[106m<[m[35m%=[m [36mform_for[m([36m@book[m) [38;5;130mdo[m |[36mf[m| [35m%[m[35m[106m>[m
-[38;5;130m  2 [m  [35m<%[m [38;5;130mif[m [36m@book[m.errors.any? [35m%>[m
-[38;5;130m  3 [m    [36m<[m[38;5;130mdiv[m[36m [m[32mid[m[36m=[m[31m"error_explanation"[m[36m>[m
-[38;5;130m  4 [m      [36m<[m[38;5;130mh2[m[36m>[m[35m<%=[m [36mpluralize[m([36m@book[m.errors.count, [35m"[m[31merror[m[35m"[m) [35m%> prohibited thh[m[5;1H[38;5;130m    [m[35mis book from being saved:[m[36m</[m[38;5;130mh2[m[36m>[m
-[38;5;130m  5 
-  6 [m      [36m<[m[38;5;130mul[m[36m>[m
-[38;5;130m  7 [m      [35m<%[m [36m@book[m.errors.full_messages.each [38;5;130mdo[m |[36mmsg[m| [35m%>[m
-[38;5;130m  8 [m[8C[36m<[m[38;5;130mli[m[36m>[m[35m<%=[m msg [35m%>[m[36m</[m[38;5;130mli[m[36m>[m
-[38;5;130m  9 [m      [35m<%[m [38;5;130mend[m [35m%>[m
-[38;5;130m 10 [m      [36m</[m[38;5;130mul[m[36m>[m
-[38;5;130m 11 [m    [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 12 [m  [35m<%[m [38;5;130mend[m [35m%>[m
-[38;5;130m 13 
- 14 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 15 [m    [35m<%=[m f.[36mlabel[m [31m:serial[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 16 [m    [35m<%=[m f.[36mtext_field[m [31m:serial[m [35m%>[m
-[38;5;130m 17 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 18 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 19 [m    [35m<%=[m f.[36mlabel[m [31m:name[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 20 [m    [35m<%=[m f.[36mtext_field[m [31m:name[m [35m%>[m
-[38;5;130m 21 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 22 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 23 [m    [35m<%=[m f.[36mlabel[m [31m:author[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 24 [m    [35m<%=[m f.[36mtext_field[m [31m:author[m [35m%>[m
-[38;5;130m 25 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 26 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 27 [m    [35m<%=[m f.[36mlabel[m [31m:category[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 28 [m    [35m<%=[m f.[36mtext_field[m [31m:category[m [35m%>[m
-[38;5;130m 29 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 30 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 31 [m    [35m<%=[m f.[36mlabel[m [31m:shelf[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 32 [m    [35m<%=[m f.[36mtext_field[m [31m:shelf[m [35m%>[m
-[38;5;130m 33 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 34 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 35 [m    [35m<%=[m f.[36mlabel[m [31m:row[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;17m[48;5;190m [m[1m[38;5;17m[48;5;190mNORMAL[m[38;5;17m[48;5;190m [m[38;5;190m[48;5;238m>[m[38;5;238m[48;5;234m>[m[38;5;85m[48;5;234m _form.html.erb                     [m[38;5;234m[48;5;234m<[m[38;5;85m[48;5;234m eruby [m[38;5;238m[48;5;234m<[m[38;5;190m[48;5;238m<[m[38;5;17m[48;5;190m   2% :[m[1m[38;5;17m[48;5;190m   1[m[38;5;17m[48;5;190m:  1  ]2;_form.html.erb (~/git/thaaliyola_ror/app/views/books) - VIM]1;_form.html.erb[1;5H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[m[35m<[27C>[m[37;60H[38;5;17m[48;5;190m4[m[6C[1m[38;5;17m[48;5;190m2[m[38;5;17m[48;5;190m:[2;5H[?12l[?25h[?25l[27m[m[H[2J[1;1H[38;5;130m 34 [m  [36m[106m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m[106m>[m
-[38;5;130m 35 [m    [35m<%=[m f.[36mlabel[m [31m:row[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 36 [m    [35m<%=[m f.[36mtext_field[m [31m:row[m [35m%>[m
-[38;5;130m 37 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 38 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"actions"[m[36m>[m
-[38;5;130m 39 [m    [35m<%=[m f.submit [35m%>[m
-[38;5;130m 40 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 41 [m[35m<%[m [38;5;130mend[m [35m%>[m
-[94m~                                                                        [10;1H~                                                                        [11;1H~                                                                        [12;1H~                                                                        [13;1H~                                                                        [14;1H~                                                                        [15;1H~                                                                        [16;1H~                                                                        [17;1H~                                                                        [18;1H~                                                                        [19;1H~                                                                        [20;1H~                                                                        [21;1H~                                                                        [22;1H~                                                                        [23;1H~                                                                        [24;1H~                                                                        [25;1H~                                                                        [26;1H~                                                                        [27;1H~                                                                        [28;1H~                                                                        [29;1H~                                                                        [30;1H~                                                                        [31;1H~                                                                        [32;1H~                                                                        [33;1H~                                                                        [34;1H~                                                                        [35;1H~                                                                        [36;1H~                                                                        [m[37;1H[38;5;17m[48;5;190m [m[1m[38;5;17m[48;5;190mNORMAL[m[38;5;17m[48;5;190m [m[38;5;190m[48;5;238m>[m[38;5;238m[48;5;234m>[m[38;5;85m[48;5;234m _form.html.erb                     [m[38;5;234m[48;5;234m<[m[38;5;85m[48;5;234m eruby [m[38;5;238m[48;5;234m<[m[38;5;190m[48;5;238m<[m[38;5;17m[48;5;190m  82% :[m[1m[38;5;17m[48;5;190m  34[m[38;5;17m[48;5;190m:  3  [1;7H[?12l[?25h[?25l[27m[m[H[2J[1;1H[38;5;130m  1 [m[35m<%=[m [36mform_for[m([36m@book[m) [38;5;130mdo[m |[36mf[m| [35m%>[m
-[38;5;130m  2 [m  [35m<%[m [38;5;130mif[m [36m@book[m.errors.any? [35m%>[m
-[38;5;130m  3 [m    [36m<[m[38;5;130mdiv[m[36m [m[32mid[m[36m=[m[31m"error_explanation"[m[36m>[m
-[38;5;130m  4 [m      [36m<[m[38;5;130mh2[m[36m>[m[35m<%=[m [36mpluralize[m([36m@book[m.errors.count, [35m"[m[31merror[m[35m"[m) [35m%> prohibited thh[m[5;1H[38;5;130m    [m[35mis book from being saved:[m[36m</[m[38;5;130mh2[m[36m>[m
-[38;5;130m  5 
-  6 [m      [36m<[m[38;5;130mul[m[36m>[m
-[38;5;130m  7 [m      [35m<%[m [36m@book[m.errors.full_messages.each [38;5;130mdo[m |[36mmsg[m| [35m%>[m
-[38;5;130m  8 [m[8C[36m<[m[38;5;130mli[m[36m>[m[35m<%=[m msg [35m%>[m[36m</[m[38;5;130mli[m[36m>[m
-[38;5;130m  9 [m      [35m<%[m [38;5;130mend[m [35m%>[m
-[38;5;130m 10 [m      [36m</[m[38;5;130mul[m[36m>[m
-[38;5;130m 11 [m    [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 12 [m  [35m<%[m [38;5;130mend[m [35m%>[m
-[38;5;130m 13 
- 14 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 15 [m    [35m<%=[m f.[36mlabel[m [31m:serial[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 16 [m    [35m<%=[m f.[36mtext_field[m [31m:serial[m [35m%>[m
-[38;5;130m 17 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 18 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 19 [m    [35m<%=[m f.[36mlabel[m [31m:name[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 20 [m    [35m<%=[m f.[36mtext_field[m [31m:name[m [35m%>[m
-[38;5;130m 21 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 22 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 23 [m    [35m<%=[m f.[36mlabel[m [31m:author[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 24 [m    [35m<%=[m f.[36mtext_field[m [31m:author[m [35m%>[m
-[38;5;130m 25 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 26 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 27 [m    [35m<%=[m f.[36mlabel[m [31m:category[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 28 [m    [35m<%=[m f.[36mtext_field[m [31m:category[m [35m%>[m
-[38;5;130m 29 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 30 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 31 [m    [35m<%=[m f.[36mlabel[m [31m:shelf[m [35m%>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;130m 32 [m    [35m<%=[m f.[36mtext_field[m [31m:shelf[m [35m%>[m
-[38;5;130m 33 [m  [36m</[m[38;5;130mdiv[m[36m>[m
-[38;5;130m 34 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"field"[m[36m>[m
-[38;5;130m 35 [m    [35m[106m<[m[35m%=[m f.[36mlabel[m [31m:row[m [35m%[m[35m[106m>[m[36m<[m[38;5;130mbr[m[36m>[m
-[38;5;17m[48;5;190m [m[1m[38;5;17m[48;5;190mNORMAL[m[38;5;17m[48;5;190m [m[38;5;190m[48;5;238m>[m[38;5;238m[48;5;234m>[m[38;5;85m[48;5;234m _form.html.erb                     [m[38;5;234m[48;5;234m<[m[38;5;85m[48;5;234m eruby [m[38;5;238m[48;5;234m<[m[38;5;190m[48;5;238m<[m[38;5;17m[48;5;190m  85% :[m[1m[38;5;17m[48;5;190m  35[m[38;5;17m[48;5;190m:  5  [36;9H[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[1;36r[m[36;1H
-[1;38r[35;9H[35m<[17C>[m
-[38;5;130m 36 [m    [35m[106m<[m[35m%=[m f.[36mtext_field[m [31m:row[m [35m%[m[35m[106m>[m[37;60H[38;5;17m[48;5;190m7[m[6C[1m[38;5;17m[48;5;190m6[m[38;5;17m[48;5;190m:[36;9H[?12l[?25h[?25l[1;36r[m[36;1H
-[1;38r[35;9H[35m<[22C>[m
-[38;5;130m 37 [m  [36m</[m[38;5;130mdiv[m[36m>[m[37;59H[38;5;17m[48;5;190m90[m[6C[1m[38;5;17m[48;5;190m7[m[38;5;17m[48;5;190m:[36;9H[?12l[?25h[?25l[1;36r[m[36;1H
-[1;38r[36;1H[38;5;130m 38 [m  [36m<[m[38;5;130mdiv[m[36m [m[32mclass[m[36m=[m[31m"actions"[m[36m>[m[37;60H[38;5;17m[48;5;190m2[m[6C[1m[38;5;17m[48;5;190m8[m[38;5;17m[48;5;190m:[36;9H[?12l[?25h[?25l[1;36r[m[1;1H[2M[1;38r[35;1H[38;5;130m 39 [m    [35m[106m<[m[35m%=[m f.submit [35m%[m[35m[106m>[m
-[38;5;130m 40 [m  [36m</[m[38;5;130mdiv[m[36m>[m[37;60H[38;5;17m[48;5;190m5[m[6C[1m[38;5;17m[48;5;190m9[m[38;5;17m[48;5;190m:[35;9H[?12l[?25h[?25l[m[35m<[13C>[m[37;60H[38;5;17m[48;5;190m7[m[5C[1m[38;5;17m[48;5;190m40[m[38;5;17m[48;5;190m:[36;9H[?12l[?25h[?25l[1;36r[m[36;1H
-[1;38r[36;1H[38;5;130m 41 [m[35m<%[m [38;5;130mend[m [35m%>[m[37;58H[38;5;17m[48;5;190m100[m[6C[1m[38;5;17m[48;5;190m1[m[38;5;17m[48;5;190m:[36;9H[?12l[?25h[?25l[1;36r[m[1;1H[6L[1;38r[1;1H[38;5;130m  1 [m[35m<%=[m [36mform_for[m([36m@book[m) [38;5;130mdo[m |[36mf[m| [35m%>[m
-[38;5;130m  2 [m  [35m<%[m [38;5;130mif[m [36m@book[m.errors.any? [35m%>[m
-[38;5;130m  3 [m    [36m<[m[38;5;130mdiv[m[36m [m[32mid[m[36m=[m[31m"error_explanation"[m[36m>[m
-[38;5;130m  4 [m      [36m<[m[38;5;130mh2[m[36m>[m[35m<%=[m [36mpluralize[m([36m@book[m.errors.count, [35m"[m[31merror[m[35m"[m) [35m%> prohibited thh[m[5;1H[38;5;130m    [m[35mis book from being saved:[m[36m</[m[38;5;130mh2[m[36m>[m
-[38;5;130m  5 [m[8;11H[35m[106m<[44C>[m[37;58H[38;5;17m[48;5;190m 17[m[5C[1m[38;5;17m[48;5;190m 7[m[38;5;17m[48;5;190m:  7[8;11H[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[38;1H[m:[?12l[?25hq[?25l[?12l[?25h[?25l]2;vi _form.html.erb]1;vi[38;1H[K[38;1H[?1l>[?12l[?25h[?1049l[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror/app/views/books]1;..p/views/books[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror/app/views/books [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=lls[?1l>
-]2;ls --color=tty]1;lsedit.html.erb   index.html.erb       new.html.erb   show.json.jbuilder
-_form.html.erb  index.json.jbuilder  show.html.erb
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror/app/views/books]1;..p/views/books[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror/app/views/books [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=vvi index.      new.html.erb[1m [0m[0m [?1l>
-]2;vi new.html.erb]1;vi[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;38r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[38;1H"new.html.erb" 5L, 75C^[[2;2R[>c[1;1H[38;5;130m  1 [m[36m[106m<[m[38;5;130mh1[m[36m[106m>[m[35mNew book[m[36m</[m[38;5;130mh1[m[36m>[m
-[38;5;130m  2 
-  3 [m[35m<%=[m [36mrender[m [35m'[m[31mform[m[35m'[m [35m%>[m
-[38;5;130m  4 
-  5 [m[35m<%=[m [36mlink_to[m [35m'[m[31mBack[m[35m'[m, books_path [35m%>[m
-[94m~                                                                        [7;1H~                                                                        [8;1H~                                                                        [9;1H~                                                                        [10;1H~                                                                        [11;1H~                                                                        [12;1H~                                                                        [13;1H~                                                                        [14;1H~                                                                        [15;1H~                                                                        [16;1H~                                                                        [17;1H~                                                                        [18;1H~                                                                        [19;1H~                                                                        [20;1H~                                                                        [21;1H~                                                                        [22;1H~                                                                        [23;1H~                                                                        [24;1H~                                                                        [25;1H~                                                                        [26;1H~                                                                        [27;1H~                                                                        [28;1H~                                                                        [29;1H~                                                                        [30;1H~                                                                        [31;1H~                                                                        [32;1H~                                                                        [33;1H~                                                                        [34;1H~                                                                        [35;1H~                                                                        [36;1H~                                                                        [m[37;1H[38;5;17m[48;5;190m [m[1m[38;5;17m[48;5;190mNORMAL[m[38;5;17m[48;5;190m [m[38;5;190m[48;5;238m>[m[38;5;238m[48;5;234m>[m[38;5;85m[48;5;234m new.html.erb                       [m[38;5;234m[48;5;234m<[m[38;5;85m[48;5;234m eruby [m[38;5;238m[48;5;234m<[m[38;5;190m[48;5;238m<[m[38;5;17m[48;5;190m  20% :[m[1m[38;5;17m[48;5;190m   1[m[38;5;17m[48;5;190m:  1  ]2;new.html.erb (~/git/thaaliyola_ror/app/views/books) - VIM]1;new.html.erb[1;5H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[m[36m<[2C>[m[37;59H[38;5;17m[48;5;190m4[m[7C[1m[38;5;17m[48;5;190m2[m[38;5;17m[48;5;190m:  0[2;5H[?12l[?25h[?25l[m[3;5H[35m[106m<[18C>[m[37;59H[38;5;17m[48;5;190m6[m[7C[1m[38;5;17m[48;5;190m3[m[38;5;17m[48;5;190m:  1[3;5H[?12l[?25h[?25l[m[35m<[18C>[m[37;59H[38;5;17m[48;5;190m8[m[7C[1m[38;5;17m[48;5;190m4[m[38;5;17m[48;5;190m:  0[4;5H[?12l[?25h[?25l[m[5;5H[35m[106m<[31C>[m[37;58H[38;5;17m[48;5;190m10[m[7C[1m[38;5;17m[48;5;190m5[m[38;5;17m[48;5;190m:  1[5;5H[?12l[?25h[?25l[m[35m<[31C>[m[37;58H[38;5;17m[48;5;190m 8[m[7C[1m[38;5;17m[48;5;190m4[m[38;5;17m[48;5;190m:  0[4;5H[?12l[?25h[?25l[m[3;5H[35m[106m<[18C>[m[37;59H[38;5;17m[48;5;190m6[m[7C[1m[38;5;17m[48;5;190m3[m[38;5;17m[48;5;190m:  1[3;5H[?12l[?25h[?25l[m[35m<[18C>[m[37;59H[38;5;17m[48;5;190m4[m[7C[1m[38;5;17m[48;5;190m2[m[38;5;17m[48;5;190m:  0[2;5H[?12l[?25h[?25l[m[1;5H[36m[106m<[2C>[m[37;59H[38;5;17m[48;5;190m2[m[7C[1m[38;5;17m[48;5;190m1[m[38;5;17m[48;5;190m:  1[1;5H[?12l[?25h[?25l[m[38;1H[K[38;1H:[?12l[?25hq[?25l[?12l[?25h[?25l]2;vi new.html.erb]1;vi[38;1H[K[38;1H[?1l>[?12l[?25h[?1049l[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror/app/views/books]1;..p/views/books[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror/app/views/books [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=cclear[?1l>
-]2;clear]1;clear[H[2J[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror/app/views/books]1;..p/views/books[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror/app/views/books [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=ccd ../../[?1l>
-]2;cd ../../]1;cd[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror/app]1;..iyola_ror/app[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror/app [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=.../[?1l>
-]2;../]1;../[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=cclear[?1l>
-]2;clear]1;clear[H[2J[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=ggit add .[?1l>
-]2;git add .]1;git[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ✚ [49m[33m⮀[39m [K[?1h=ggit commit -m "Created scaffold for  [Kbbooks"[?1l>
-]2;git commit -m "Created scaffold for books"]1;git[master 9cb4513] Created scaffold for books
- 21 files changed, 599 insertions(+), 1 deletion(-)
- create mode 100644 app/assets/javascripts/books.js.coffee
- create mode 100644 app/assets/stylesheets/books.css.scss
- create mode 100644 app/assets/stylesheets/scaffolds.css.scss
- create mode 100644 app/controllers/books_controller.rb
- create mode 100644 app/helpers/books_helper.rb
- create mode 100644 app/models/book.rb
- create mode 100644 app/views/books/_form.html.erb
- create mode 100644 app/views/books/edit.html.erb
- create mode 100644 app/views/books/index.html.erb
- create mode 100644 app/views/books/index.json.jbuilder
- create mode 100644 app/views/books/new.html.erb
- create mode 100644 app/views/books/show.html.erb
- create mode 100644 app/views/books/show.json.jbuilder
- create mode 100644 db/migrate/20140510100924_create_books.rb
- create mode 100644 db/schema.rb
- create mode 100644 test/controllers/books_controller_test.rb
- create mode 100644 test/fixtures/books.yml
- create mode 100644 test/helpers/books_helper_test.rb
- create mode 100644 test/models/book_test.rb
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=ggit push origin master[?1l>
-]2;git push origin master]1;gitEnter passphrase for key '/home/balasankarc/.ssh/id_rsa': 
-Counting objects: 39, done.
-Delta compression using up to 4 threads.
-Compressing objects:   2% (1/37)   Compressing objects:   5% (2/37)   Compressing objects:   8% (3/37)   Compressing objects:  10% (4/37)   Compressing objects:  13% (5/37)   Compressing objects:  16% (6/37)   Compressing objects:  18% (7/37)   Compressing objects:  21% (8/37)   Compressing objects:  24% (9/37)   Compressing objects:  27% (10/37)   Compressing objects:  29% (11/37)   Compressing objects:  32% (12/37)   Compressing objects:  35% (13/37)   Compressing objects:  37% (14/37)   Compressing objects:  40% (15/37)   Compressing objects:  43% (16/37)   Compressing objects:  45% (17/37)   Compressing objects:  48% (18/37)   Compressing objects:  51% (19/37)   Compressing objects:  54% (20/37)   Compressing objects:  56% (21/37)   Compressing objects:  59% (22/37)   Compressing objects:  62% (23/37)   Compressing objects:  64% (24/37)   Compressing objects:  67% (25/37)   Compressing objects:  70% (26/37)   Compressing objects:  72% (27/37)   Compressing objects:  75% (28/37)   Compressing objects:  78% (29/37)   Compressing objects:  81% (30/37)   Compressing objects:  83% (31/37)   Compressing objects:  86% (32/37)   Compressing objects:  89% (33/37)   Compressing objects:  91% (34/37)   Compressing objects:  94% (35/37)   Compressing objects:  97% (36/37)   Compressing objects: 100% (37/37)   Compressing objects: 100% (37/37), done.
-Writing objects:   2% (1/39)   Writing objects:   5% (2/39)   Writing objects:   7% (3/39)   Writing objects:  10% (4/39)   Writing objects:  12% (5/39)   Writing objects:  15% (6/39)   Writing objects:  17% (7/39)   Writing objects:  20% (8/39)   Writing objects:  23% (9/39)   Writing objects:  25% (10/39)   Writing objects:  28% (11/39)   Writing objects:  30% (12/39)   Writing objects:  33% (13/39)   Writing objects:  35% (14/39)   Writing objects:  38% (15/39)   Writing objects:  41% (16/39)   Writing objects:  43% (17/39)   Writing objects:  46% (18/39)   Writing objects:  48% (19/39)   Writing objects:  51% (20/39)   Writing objects:  53% (21/39)   Writing objects:  56% (22/39)   Writing objects:  58% (23/39)   Writing objects:  61% (24/39)   Writing objects:  64% (25/39)   Writing objects:  66% (26/39)   Writing objects:  69% (27/39)   Writing objects:  71% (28/39)   Writing objects:  74% (29/39)   Writing objects:  76% (30/39)   Writing objects:  79% (31/39)   Writing objects:  82% (32/39)   Writing objects:  84% (33/39)   Writing objects:  87% (34/39)   Writing objects:  89% (35/39)   Writing objects:  92% (36/39)   Writing objects:  94% (37/39)   Writing objects:  97% (38/39)   Writing objects: 100% (39/39)   Writing objects: 100% (39/39), 12.50 KiB | 0 bytes/s, done.
-Total 39 (delta 3), reused 0 (delta 0)
-To git@gitlab.com:balasankarc/thaaliyola_ror.git
-   b090cac..9cb4513  master -> master
-[1m[7m%[27m[1m[0m                                                                         ]2;balasankarc@sasalam: ~/git/thaaliyola_ror]1;..haaliyola_ror[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m [K[?1h=[0m[27m[24m[J[39m[0m[49m[44m[30m ~/git/thaaliyola_ror [43m[34m⮀[30m ⭠ master ● [49m[33m⮀[39m 
-
-Script done on ശനി 10 മെയ് 2014 03:46:20 വൈകു IST

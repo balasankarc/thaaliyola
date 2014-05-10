@@ -1,9 +1,12 @@
 ThaaliyolaRor::Application.routes.draw do
-  resources :books
+ resources :books
 
   get "list/index"
+  get "books/index"
 
-      root :to => "list#index", :as => "list"
+root :to => "books#index"
+
+#      root :to => "list#index", :as => "list"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

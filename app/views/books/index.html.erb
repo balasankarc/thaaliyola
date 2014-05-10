@@ -1,37 +1,42 @@
+<style>
+table { table-layout: fixed; }
+table th, table td { overflow: hidden; }
+</style>
 <h1>Listing books</h1>
 
-<table>
-  <thead>
+<table class="table table-striped" style="margin-left:10%;margin-right:10%;position:relative;width:80%">
+    <% @counter=1 %>
+    <!-- <thead>
     <tr>
       <th>Serial</th>
       <th>Name</th>
       <th>Author</th>
-      <th>Category</th>
+      <!--<th>Category</th>
       <th>Shelf</th>
       <th>Row</th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
-  </thead>
+  </thead> -->
 
-  <tbody>
+    <tbody>
     <% @books.each do |book| %>
-      <tr>
-        <td><%= book.serial %></td>
-        <td><%= book.name %></td>
-        <td><%= book.author %></td>
+        <tr>
+            <td style="width:25%"><h3><%= @counter %><% @counter += 1%></h2></td>
+        <td style="width:70%"><h2><%= link_to book.name,book %></h2><%= book.author %></td> <!--
         <td><%= book.category %></td>
         <td><%= book.shelf %></td>
         <td><%= book.row %></td>
-        <td><%= link_to 'Show', book %></td>
+        <!--        <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+    </tr>
+<% end %>
+    </tbody>
 </table>
 
 <br>
-
+<!--
 <%= link_to 'New Book', new_book_path %>
+-->

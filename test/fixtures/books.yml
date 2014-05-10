@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serial: MyString
+  name: MyString
+  author: MyString
+  category: MyString
+  shelf: MyString
+  row: MyString
+
+two:
+  serial: MyString
+  name: MyString
+  author: MyString
+  category: MyString
+  shelf: MyString
+  row: MyString

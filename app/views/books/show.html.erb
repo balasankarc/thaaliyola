@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @book.serial %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @book.name %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @book.category %>
+</p>
+
+<p>
+  <strong>Shelf:</strong>
+  <%= @book.shelf %>
+</p>
+
+<p>
+  <strong>Row:</strong>
+  <%= @book.row %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>

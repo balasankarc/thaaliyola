@@ -1,4 +1,6 @@
 ThaaliyolaRor::Application.routes.draw do
+  resources :books
+
   get "list/index"
 
       root :to => "list#index", :as => "list"

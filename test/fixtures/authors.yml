@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  serial: MyString
   name: MyString
-  category: MyString
 
 two:
-  serial: MyString
   name: MyString
-  category: MyString

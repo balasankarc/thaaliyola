@@ -24,12 +24,22 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
+
+=begin
       @parameters=book_params
-      @parameters['serial']='bybalu'
-    @book = Book.new(@parameters)
-    respond_to do |format|
+      @parameters['serial']='tobegenerated' #TODO
+      @author = @parameters['author']
+      @books_by_author = Book.find(:all, :conditions => ["author= ?",@author])
+      @book = Book.new(serial: "asdf",name: @parameters['name'],category: @parameters['category'],row: @parameters['row'],shelf: @parameters['shelf'])
+      if @books_by_author.empty?
+          @author_create = @book.author.build(:name => @author)
+          @author.save
+      end
+=end
+@book = Book.new(book_params)
+   respond_to do |format|
       if @book.save
-        format.html { redirect_to books_path, notice: @parameters['serial'].to_s }
+        format.html { redirect_to books_path}
         format.json { render action: 'show', status: :created, location: @book }
       else
         format.html { render action: 'new' }

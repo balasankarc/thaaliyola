@@ -5,6 +5,7 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.find(:all, :conditions =>['name LIKE ?', "%#{params[:begins]}%"])
+    @notice=""
   end
 
   # GET /books/1
@@ -14,7 +15,8 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    @book = Book.new
+    @book = Book.unscoped.new
+    @book.authors.build
   end
 
   # GET /books/1/edit
@@ -37,9 +39,26 @@ class BooksController < ApplicationController
       end
 =end
 @book = Book.new(book_params)
+@author = params[:book][:author][:name]
    respond_to do |format|
       if @book.save
-        format.html { redirect_to books_path}
+ @author_exist=Author.find(:all, :conditions => ["name = ?",@author.to_s])
+
+if @author_exist.empty?
+    @notice="reached"
+   @author_created=@book.authors.create(:name=>@author.to_s)
+   @author_created.save
+else
+    @book.authors = @author_exist
+end
+
+@str=""
+Author.all.each do |f|
+   @str = @str+f.name
+end
+
+      
+       format.html { redirect_to @book,notice:@str}
         format.json { render action: 'show', status: :created, location: @book }
       else
         format.html { render action: 'new' }
@@ -80,6 +99,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:serial, :name, :author, :category, :shelf, :row)
+      params.require(:book).permit(:serial, :name, :category, :shelf, :row)
     end
 end

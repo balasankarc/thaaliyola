@@ -3,7 +3,10 @@
 <p>
   <strong>Name:</strong>
   <%= @author.name %>
-</p>
+  </p>
+  <% @author.books.each do |b| %>
+      <%= b.name %>
+      <% end %>
 
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', authors_path %>

@@ -11,8 +11,10 @@
 </p>
 
 <p>
-  <strong>Author:</strong>
-  <%= @book.author.name %>
+<strong>Author:</strong>
+<% @book.authors.each do |a| %>
+    <%= a.name %>
+    <% end %>
 </p>
 
 <p>

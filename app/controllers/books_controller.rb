@@ -4,8 +4,13 @@ class BooksController < ApplicationController
     # GET /books
     # GET /books.json
     def index
-        @books = Book.find(:all, :conditions =>['name LIKE ?', "%#{params[:begins]}%"])
         @notice=""
+        if params[:begins] == ""
+            @books=Book.all
+            @notice="No"
+        else
+            @books = Book.find(:all, :conditions =>['name LIKE ?', "#{params[:begins]}%"])
+        end
     end
 
     # GET /books/1
@@ -66,9 +71,15 @@ class BooksController < ApplicationController
     # DELETE /books/1
     # DELETE /books/1.json
     def destroy
+        @str=""
+        @book.authors.each do |a|
+            if a.books.count == 1
+                a.destroy
+            end
+        end
         @book.destroy
         respond_to do |format|
-            format.html { redirect_to books_url }
+            format.html { redirect_to books_path,notice: @str }
             format.json { head :no_content }
         end
     end

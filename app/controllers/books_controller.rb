@@ -22,6 +22,7 @@ class BooksController < ApplicationController
     def new
         @book = Book.new
         @book.authors.build
+        @book.categories.build
     end
 
     # GET /books/1/edit
@@ -34,6 +35,8 @@ class BooksController < ApplicationController
 
         @book = Book.new(book_params)
         @author = params[:book][:author][:name]
+        @category = params[:book][:category][:name]
+        @category.inspect
         respond_to do |format|
             if @book.save
                 @author_exist=Author.find(:all, :conditions => ["name = ?",@author.to_s])
@@ -43,6 +46,13 @@ class BooksController < ApplicationController
                     @author_created.save
                 else
                     @book.authors = @author_exist
+                end
+                @category_exist = Category.find(:all, :conditions => ["name = ?",@category.to_s])
+                if @category_exist.empty?
+                    @category_created=@book.categories.create(:name=>@category.to_s)
+                    @category_created.save
+                else
+                    @book.categories=@category_exist
                 end
 
                 format.html { redirect_to @book,notice:"Book Succesfully Created"}
@@ -92,6 +102,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-        params.require(:book).permit(:serial, :name, :category, :shelf, :row)
+        params.require(:book).permit(:serial, :name,:author,:category, :shelf, :row)
     end
 end

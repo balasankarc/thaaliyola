@@ -28,7 +28,6 @@ $(document).ready(function(){
     <% end %>
     </div>
     <div class="col-md-4 col-md-offset-4" style="padding-bottom:1%" >
-        <!--        <%= f.text_field :category ,class:"form-control", placeholder: "Category" %> -->
 
 
 
@@ -39,8 +38,10 @@ $(document).ready(function(){
         <% @catlist << c.name  %>
     <% end %>
 
+        <%= f.fields_for :category do |category_form| %>
 
-        <%= f.select :category,@catlist,{:prompt => "Category"},{:class => "form-control combobox"} %>
+            <%= category_form.select :name,@catlist,{:prompt => "Category"},{:class => "form-control combobox"} %>
+    <% end %>
     </div>
     <div class="col-md-4 col-md-offset-4" style="padding-bottom:1%" >
         <%= f.text_field :shelf ,class:"form-control", placeholder: "Shelf" %>

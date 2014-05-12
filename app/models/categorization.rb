@@ -1,4 +1,4 @@
 class Categorization < ActiveRecord::Base
-    has_many :book
-    has_many :category
+    belongs_to :book
+    belongs_to :category
 end

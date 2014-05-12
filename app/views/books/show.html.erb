@@ -18,8 +18,10 @@
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @book.category %>
+<strong>Category:</strong>
+<% @book.categories.each do |c| %>
+    <%= link_to c.name,c %>
+    <% end %>
 </p>
 
 <p>

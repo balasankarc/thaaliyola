@@ -5,4 +5,5 @@ class Book < ActiveRecord::Base
 
     has_many :categorizations
     has_many :categories, through: :categorizations
+    accepts_nested_attributes_for :categories
 end

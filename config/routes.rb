@@ -1,4 +1,6 @@
 ThaaliyolaRor::Application.routes.draw do
+  resources :shelfpositions
+
   resources :categorizations
 
   resources :authorships

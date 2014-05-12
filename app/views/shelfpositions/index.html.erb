@@ -1,0 +1,29 @@
+<h1>Listing shelfpositions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Book</th>
+      <th>Shelf</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shelfpositions.each do |shelfposition| %>
+      <tr>
+        <td><%= shelfposition.book_id %></td>
+        <td><%= shelfposition.shelf_id %></td>
+        <td><%= link_to 'Show', shelfposition %></td>
+        <td><%= link_to 'Edit', edit_shelfposition_path(shelfposition) %></td>
+        <td><%= link_to 'Destroy', shelfposition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shelfposition', new_shelfposition_path %>

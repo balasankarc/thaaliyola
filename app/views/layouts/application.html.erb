@@ -11,17 +11,51 @@
 
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li class="sidebar-brand"><a href="#">Start Bootstrap</a>
+            <li class="sidebar-brand"><b><%= link_to ' താളിയോല ', books_path %></b>
             </li>
-            <li><a href="#">Dashboard</a>
+            <li><a href="#">Books</a>
             </li>
-            <li><a href="#">Shortcuts</a>
+            <li><a href="#">Authors</a>
             </li>
-            <li><a href="#">Overview</a>
+            <li><a href="#">Categories</a>
             </li>
-            <li><a href="#">Events</a>
+            <li><a href="#">Contact</a>
             </li>
-           
+            <li><a href="#">About Us</a></li>
+            <li>
+
+<form class="" role="search" style="margin-left:3%">
+
+<div class="form-group" style="float:left;width:97%">
+
+<input type="text" class="form-control" placeholder="Search Query"></input>
+
+</div>
+
+<div class="btn-group">
+
+<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+
+Search in <span class="caret"></span>
+
+</button>
+
+<ul class="dropdown-menu" role="menu">
+
+<li><a href="#" >Books</a></li>
+
+<li><a href="#">Authors</a></li>
+
+<li><a href="#">Category</a></li>
+
+</ul>
+
+</div>
+
+</form>
+
+
+</li>
             <% if params[:admin]=="b" %>
 
 <% @str='
@@ -62,19 +96,11 @@ Admin
 <%= @str %>
 
 <% end %>
-           
-            <li><a href="#">Services</a>
-            </li>
-            <li><a href="#">Contact</a>
-            </li>
-        </ul>
+       </ul>
     </div>
     <div id="page-content-wrapper">
-        <div class="content-header">
-            <h1>
+        <div class="content-header" style="padding:0 0 0 0;margin: 0 0 0 0"></div>
                 <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
-            </h1>
-        </div>
         <%= yield %>
     </div>
     <script>

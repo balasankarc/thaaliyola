@@ -3,6 +3,7 @@ $(document).ready(function(){
         $('.combobox').combobox();
         });
 </script>
+<div style="position:relative;text-align:center">
 <%= form_for(@book) do |f| %>
     <% if @book.errors.any? %>
     <div id="error_explanation">
@@ -55,4 +56,4 @@ $(document).ready(function(){
     </div>
 
 </div>
-<% end %>
+<% end %></div>

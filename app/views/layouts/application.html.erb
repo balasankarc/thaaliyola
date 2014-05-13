@@ -7,140 +7,81 @@
 <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="wrapper">
 
-
-<!--
-<div id="sidebar-wrapper">
-
-            <ul class="sidebar-nav">
-
-                <li class="sidebar-brand" style="font-color:#fff"><b><%= link_to ' താളിയോല  ', books_path %></b>
-
-                </li>
-
-                <li><a href="#" class="active">Books</a>
-
-                </li>
-
-                <li><a href="#">Authors</a>
-
-                </li>
-
-                <li><a href="#">Categories</a>
-
-                </li>
-
-                <li><a href="#">Shelves</a>
-
-                </li>
-
-                <li><a href="#">About</a>
-
-                </li>
-
-                <li><a href="#">Admin</a>
-
-                </li>
-
-                <li><a href="#">Contact</a>
-
-                </li>
-                <li>
-           <form class="" role="search" style="margin-left:3%">
-                <div class="form-group" style="float:left;width:97%">
-                    <input type="text" class="form-control" placeholder="Search Query"></input>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        Search in <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Authors</a></li>
-                        <li><a href="#">Category</a></li>
-                    </ul>
-                </div>
-            </form>
-
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="#">Start Bootstrap</a>
             </li>
-            </ul>
-
-        </div>
-
-
--->
-<div class="sidebar-nav" style="background:#000000;width:14.9%;min-height:100%;position:fixed">
-    <p class="sidenav-header" style="margin-top:10%;font-size:30px;"><b><%= link_to ' താളിയോല  ', books_path %></b>
-    </p>
-    <li><a href="#" class="active" style="margin-top:17.5%">Books</a>
-
-    </li>
-
-    <li><a href="#">Authors</a>
-
-    </li>
-
-    <li><a href="#">Categories</a>
-
-    </li>
-
-    <li><a href="#">Shelves</a>
-
-    </li>
-
-    <li><a href="#">About</a>
-
-    </li>
-    <% if params[:admin]=="b" %>
-        <% @str='
-    <ul class="nav nav-list accordion" id="sidenav-accordian">
-        <li>
-        <div class="accordion-heading"> <a data-toggle="collapse" data-target="#content-areas"> <span class="nav-header-primary">
-                    Admin
-            </span></a>
-
-        </div>
-        <ul class="nav nav-list collapse" id="content-areas">
-            <li><a href="#" title="Title" class="active">Add Book</a>
+            <li><a href="#">Dashboard</a>
             </li>
-            <li><a href="#" title="Title">Add Category</a>
+            <li><a href="#">Shortcuts</a>
             </li>
-            <li><a href="#" title="Title">Delete Book</a>
+            <li><a href="#">Overview</a>
             </li>
-        </ul>
-        </li>
-    </ul>'.html_safe %>
-<%= @str %>
-<% end %>
-        <li><a href="#">Contact</a>
+            <li><a href="#">Events</a>
+            </li>
+           
+            <% if params[:admin]=="b" %>
 
-        </li>
-        <li>
-        <form class="" role="search" style="margin-left:3%">
-            <div class="form-group" style="float:left;width:97%">
-                <input type="text" class="form-control" placeholder="Search Query"></input>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Search in <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Authors</a></li>
-                    <li><a href="#">Category</a></li>
-                </ul>
-            </div>
-        </form>
+<% @str='
 
-        </li>
+<ul class="nav nav-list accordion" id="sidenav-accordian">
 
-    </ul>
+<li>
+
+<div class="accordion-heading"> <a data-toggle="collapse" data-target="#content-areas"> <span class="nav-header-primary">
+
+Admin
+
+</span></a>
+
+
 </div>
 
+<ul class=" nav-list collapse" id="content-areas">
 
+<li><a href="#" title="Title">Add Book</a>
 
+</li>
 
-<%= yield %>
+<li><a href="#" title="Title">Add Category</a>
 
-</body>
-</html>
+</li>
+
+<li><a href="#" title="Title">Delete Book</a>
+
+</li>
+
+</ul>
+
+</li>
+
+</ul>'.html_safe %>
+
+<%= @str %>
+
+<% end %>
+           
+            <li><a href="#">Services</a>
+            </li>
+            <li><a href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper">
+        <div class="content-header">
+            <h1>
+                <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+            </h1>
+        </div>
+        <%= yield %>
+    </div>
+    <script>
+$("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+        });
+    </script>
+    </body>
+    </html>

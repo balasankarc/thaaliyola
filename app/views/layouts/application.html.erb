@@ -41,7 +41,6 @@ Search in <span class="caret"></span>
 </button>
 
 <ul class="dropdown-menu" role="menu">
-
 <li><a href="#" >Books</a></li>
 
 <li><a href="#">Authors</a></li>
@@ -74,10 +73,10 @@ Admin
 </div>
 
 <ul class=" nav-list collapse" id="content-areas">
-
-<li><a href="#" title="Title">Add Book</a>
-
-</li>
+    <li>'.html_safe %>
+    <%= @str %>
+<%= link_to "Add Book",new_book_path %>
+<% @str='
 
 <li><a href="#" title="Title">Add Category</a>
 

@@ -34,11 +34,10 @@ $(document).ready(function(){
 
 
         <% @cat = Category.all %>
-        <% @cat.each do |c| %>
             <% @catlist=Array.new %>
-        <% @catlist << c.name  %>
+<% @cat.each do |c| %>
+                <% @catlist << c.name  %>
     <% end %>
-
         <%= f.fields_for :category do |category_form| %>
 
             <%= category_form.select :name,@catlist,{:prompt => "Category"},{:class => "form-control combobox"} %>

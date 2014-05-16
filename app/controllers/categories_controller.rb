@@ -4,7 +4,13 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+         if params.has_key?(:begins)
+            @categories = Category.find(:all, :conditions =>['name LIKE ?', "#{params[:begins]}%"])
+        elsif params.has_key?(:contains)
+            @categories = Category.find(:all,:conditions => ['name LIKE ?', "%#{params[:contains]}%"])
+        else
+            @categories=Category.all
+        end
   end
 
   # GET /categories/1

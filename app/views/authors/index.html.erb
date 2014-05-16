@@ -1,27 +1,25 @@
-<h1>Listing authors</h1>
-
-<table>
-  <thead>
+ <% if params.has_key?(:begins) %>
+    <% @text="Authors under "+params[:authorbegins].to_s %>
+<% else %>
+    <% @text = "All Authors" %>
+<% end %>
+ 
+<h1 style="text-align:center;margin-right:10%"> 
+   <%= @text %>
+</h1>
+<table class="table table-hover" style="width:95%">
     <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
+        <th class="col-md-2">Serial Number</th>
+        <th class="col-md-5">Author</th>
     </tr>
-  </thead>
 
-  <tbody>
+
     <% @authors.each do |author| %>
-      <tr>
-        <td><%= author.name %></td>
-        <td><%= link_to 'Show', author %></td>
-        <td><%= link_to 'Edit', edit_author_path(author) %></td>
-        <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <% @counter=1 %>
+        <tr>
+            <td><h3><%= @counter %><% @counter += 1%></h3></td>
+            <td><h2><%= link_to author.name,author %></h2></td>
+        </tr>
     <% end %>
-  </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Author', new_author_path %>

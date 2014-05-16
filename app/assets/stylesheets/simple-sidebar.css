@@ -1,11 +1,24 @@
 #wrapper {
   padding-left: 250px;
+  padding-right: 250px;
   transition: all 0.4s ease 0s;
 }
-
 #sidebar-wrapper {
   margin-left: -250px;
   left: 250px;
+  width: 15%;
+  background: #000;
+  position: fixed;
+  height: 100%;
+  overflow-x:none;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper-right {
+  margin-right: -250px;
+  right: 250px;
   width: 15%;
   background: #000;
   position: fixed;
@@ -31,23 +44,48 @@
 
 .sidebar-nav li {
   line-height: 40px;
-  text-indent: 20px;
+  text-indent: 5%;
 }
 
 .sidebar-nav li a {
-  color: #999999;
+    color:#fff;
+    font-size:1.5em;
   display: block;
   text-decoration: none;
+}
+.sidebar-nav ul li a {
+    font-size:1.5em;
+  display: block;
+  background:black;
+  text-decoration: none;
+}
+
+.sidebar-nav ul li a.searchmenu
+{
+background: none repeat scroll 0% 0% white; 
+color: black;
+}
+.sidebar-nav ul li a.searchmenu:hover
+{
+background: none repeat scroll 0% 0% grey; 
+color: white;
 }
 
 .sidebar-nav li a:hover,
 .sidebar-nav li a:active{
-  color: #fff;
+  color: yellow;
   background: rgba(255,255,255,0.2);
   text-decoration: none;
 }
+
+
+.sidebar-nav ul li a:hover,
+.sidebar-nav ul li a:active{
+  background: black;
+  text-decoration: none;
+}
 .active {
-color: #fff;
+color: yellow;
 background: rgba(255,255,200,0.2);
 border:solid 1px grey;
 }
@@ -72,14 +110,14 @@ border:solid 1px grey;
 
 
 .content-header {
-  height: 65px;
+  height: 1px;
   line-height: 65px;
 }
 
 .content-header h1 {
   margin: 0;
   margin-left: 20px;
-  line-height: 65px;
+  line-height: 0px;
   display: inline-block;
 }
 
@@ -95,15 +133,26 @@ border:solid 1px grey;
 
 #wrapper {
   padding-left: 0;
+  padding-right: 0;
 }
 
 #sidebar-wrapper {
   left: 0;
 }
+#sidebar-wrapper-right {
+  right: 0;
+}
+
 
 #wrapper.active {
   position: relative;
   left: 250px;
+  right: 250px;
+}
+#wrapper.active #sidebar-wrapper-right {
+  right: 250px;
+  width: 250px;
+  transition: all 0.4s ease 0s;
 }
 
 #wrapper.active #sidebar-wrapper {

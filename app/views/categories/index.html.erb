@@ -1,27 +1,26 @@
-<h1>Listing categories</h1>
-
-<table>
-  <thead>
+ <% if params.has_key?(:categorybegins) %>
+    <% @text="Categories under "+params[:categorybegins].to_s %>
+<% else %>
+    <% @text = "All Categories" %>
+<% end %>
+ 
+<h1 style="text-align:center;margin-right:10%"> 
+   <%= @text %>
+</h1>
+<table class="table table-hover" style="width:95%">
     <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
+        <th class="col-md-2">Serial Number</th>
+        <th class="col-md-5">Category</th>
     </tr>
-  </thead>
 
-  <tbody>
+
     <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <% @counter=1 %>
+        <tr>
+            <td><h3><%= @counter %><% @counter += 1%></h3></td>
+            <td><h2><%= link_to category.name,category %></h2></td>
+        </tr>
     <% end %>
-  </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Category', new_category_path %>

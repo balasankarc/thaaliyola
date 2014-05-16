@@ -3,13 +3,13 @@ class BooksController < ApplicationController
 
     # GET /books
     # GET /books.json
-    def index
-        @notice=""
-        if params[:begins] == ""
-            @books=Book.all
-            @notice="No"
+    def index        
+        if params.has_key?(:begins)
+            @books = Book.where('name LIKE ?',"#{params[:begins]}%")
+        elsif params.has_key?(:contains)
+            @books = Book.find(:all,:conditions => ['name LIKE ?', "%#{params[:contains]}%"])
         else
-            @books = Book.find(:all, :conditions =>['name LIKE ?', "#{params[:begins]}%"])
+            @books=Book.all
         end
     end
 

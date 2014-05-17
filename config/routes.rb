@@ -14,12 +14,14 @@ ThaaliyolaRor::Application.routes.draw do
     resources :authors
 
     resources :books
+
     get "list/index"
     get "books/index"
     post "sign_in" => "users#sign_in"
     get "sign_in" => "users#login"
     get "success" => "users#success"
     get "sign_up" => "users#sign_up"
+    post "logout" => "users#sign_out"
     root :to => "books#index"
 
     #      root :to => "list#index", :as => "list"

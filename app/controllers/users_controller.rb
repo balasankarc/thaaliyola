@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    include ApplicationHelper
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -11,6 +12,16 @@ class UsersController < ApplicationController
       @users = User.all
   end
 
+  def sign_out
+      session.delete(:user)
+      notice="Logged Out Succesfully"
+      signinnotice(notice)
+      @currenturl=request.referrer
+      respond_to do |format|
+        format.html { redirect_to @currenturl,notice:notice}
+      end
+  end
+
   def success
   end
 
@@ -20,6 +31,7 @@ class UsersController < ApplicationController
       @username=params[:user][:username]
       @password=params[:user][:password]
       @sha_password = Digest::SHA1.hexdigest(@password)
+      @currenturl=request.referrer
       @user=User.where('username LIKE ?',@username)
       if @user.empty?
           notice="Incorrect Username"
@@ -32,8 +44,9 @@ class UsersController < ApplicationController
               notice="Incorrect password"
           end
       end
+      signinnotice(notice)
         respond_to do |format|
-      format.html { redirect_to success_path,notice:notice }
+      format.html { redirect_to @currenturl,notice:notice }
                 format.json { render action: 'show', status: :created, location: sign_in_path }
         end
   end

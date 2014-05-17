@@ -16,77 +16,56 @@
             <h1></h1>
             <% if not session.has_key?(:user) %>
                 <%= render 'users/formsignin' %>
-            <% end %>
-            <!--  <form class="form-signin" role="form" style="width:75%;text-align:center" method="POST" action="books">
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
--->
-
-
-                 </ul>
+        <% else %>                
+                <h1 style="color:white"><%= session[:user] %> </h1>
+            <%= button_to 'Logout',logout_path,{class:"btn"} %>
+        <% end %>
+        </ul>
     </div>
-
-
-
-
-
 
 
 
 
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-<li class="sidebar-brand"><b><%= link_to ' താളിയോല ', books_path %></b>
-</li>
-<li><%= link_to 'Books', books_path %></li>
-<li><%= link_to 'Authors', authors_path %></li>
-<li><%= link_to 'Categories', categories_path %></li>
-<!--           <li><%= link_to 'Contact', books_path %></li>
+            <li class="sidebar-brand"><b><%= link_to ' താളിയോല ', books_path %></b>
+            </li>
+            <li><%= link_to 'Books', books_path %></li>
+            <li><%= link_to 'Authors', authors_path %></li>
+            <li><%= link_to 'Categories', categories_path %></li>
+            <!--           <li><%= link_to 'Contact', books_path %></li>
 
-            <li><a href="#">Authors</a>
-            </li>
-            <li><a href="#">Categories</a>
-            </li>
-            <li><a href="#">Contact</a>
-            </li>
-            <li><a href="#">About Us</a></li>
-            <li>
 -->
-<li>
-<div class="form-group" style="">
+            <li>
+            <div class="form-group" style="">
 
-    <input type="text" class="form-control" placeholder="Search Query" id="searchquery"></input>
+                <input type="text" class="form-control" placeholder="Search Query" id="searchquery" style="margin-left:5%;width:90%"></input>
 
-</div>
+            </div>
 
-<div class="btn-group">
+            <div class="btn btn-group" style="width:100%">
 
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle form-control" data-toggle="dropdown" style="">
 
-        Search in <span class="caret"></span>
+                    Search in <span class="caret"></span>
 
-    </button>
+                </button>
 
-    <ul class="dropdown-menu" role="menu" style="padding:0;border-radious:2px">
-        <li style="margin:0 0 0 0"><a class="searchmenu" href="" onclick="searchbook()" id="search" >Books</a></li>
-        <li style="font-color:red"><a class= "searchmenu" href="" onclick="searchauthor()">Authors</a></li>
-        <li style="font-color:red"><a href="" class="searchmenu" onclick="searchcategory()">Category</a></li>
-
-
-    </ul>
-
-</div>
+                <ul class="dropdown-menu form-control" role="menu" style="padding:0;border-radious:2px;width:90%;margin-left:5%;text-align:center">
+                    <li style=""><a class="searchmenu" href="" onclick="searchbook()" id="search" >Books</a></li>
+                    <li style="font-color:red"><a class= "searchmenu" href="" onclick="searchauthor()">Authors</a></li>
+                    <li style="font-color:red"><a href="" class="searchmenu" onclick="searchcategory()">Category</a></li>
 
 
-</li>
-<% if params[:admin]=="b" %>
+                </ul>
 
-    <% @str='
+            </div>
+
+
+            </li>
+            <% if params[:admin]=="b" %>
+
+                <% @str='
 <li>
 <ul class="nav nav-list accordion" id="sidenav-accordian">
 
@@ -128,10 +107,19 @@ Admin
     </div>
     <div id="page-content-wrapper">
         <div class="content-header" style="padding:0 0 0 0;margin: 0 0 0 0"></div>
-                <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
-        <%= yield %>
-    </div>
-    <script>
+        <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+        <% if signinnotice(" ")!="" %>
+<% if notice=="Login Successful" or notice=="Logged Out Succesfully"%>
+<%='<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
+<% elsif notice=="Incorrect Username" or notice=="Incorrect password" %>
+        <%='<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
+        <% end %>
+            <%= notice %>
+            <%= '</strong></div>'.html_safe %>
+<% end %>
+    <%= yield %>
+</div>
+<script>
 function searchbook()
 {
     window.location.assign( "<%= books_path %>?contains="+document.getElementById('searchquery').value);
@@ -150,6 +138,6 @@ $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("active");
         });
-    </script>
-    </body>
-    </html>
+</script>
+</body>
+</html>

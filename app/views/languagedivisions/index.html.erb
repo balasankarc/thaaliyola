@@ -1,0 +1,29 @@
+<h1>Listing languagedivisions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Book</th>
+      <th>Language</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @languagedivisions.each do |languagedivision| %>
+      <tr>
+        <td><%= languagedivision.book_id %></td>
+        <td><%= languagedivision.language_id %></td>
+        <td><%= link_to 'Show', languagedivision %></td>
+        <td><%= link_to 'Edit', edit_languagedivision_path(languagedivision) %></td>
+        <td><%= link_to 'Destroy', languagedivision, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Languagedivision', new_languagedivision_path %>

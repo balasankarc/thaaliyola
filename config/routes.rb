@@ -20,7 +20,7 @@ ThaaliyolaRor::Application.routes.draw do
     post "sign_in" => "users#sign_in"
     get "sign_in" => "users#login"
     get "success" => "users#success"
-    get "sign_up" => "users#sign_up"
+    get "sign_up" => "users#new"
     post "logout" => "users#sign_out"
     root :to => "books#index"
 

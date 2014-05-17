@@ -1,33 +1,42 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
+    <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+    <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+    <% end %>
+    </ul>
+</div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :librarian %><br>
-    <%= f.check_box :librarian %>
-  </div>
-  <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs" style="">
+        <li><a style="background:grey;color:black;margin-right:1%;padding-right:1%" href="#logindetails" class="active" data-toggle="tab">Login Details</a></li>
+        <li><a href="#userdetails" style="background:grey;color:black" data-toggle="tab">User Details</a></li>
+    </ul>
+    <div id="my-tab-content" class="tab-content"> 
+        <div class="tab-pane active" id="logindetails" style="padding-left:2%;padding-right:2%">
+
+            <br />
+            <%= f.text_field :username,class:"form-control",placeholder:"Username" %>
+            <br />
+            <%= f.text_field :password,type:"password",class:"form-control",placeholder:"Password" %>
+            <br />
+
+
+        </div>
+        <div class="tab-pane" id="userdetails" style="padding-left:2%;padding-right:2%">
+            <br />
+            <%= f.text_field :admissionnumber,class:"form-control",placeholder:"Admission Number" %>
+            <br />
+            <%= f.text_area :address,class:"form-control",placeholder:"Address" %>
+            <br />
+            <%= f.text_field :email,type:"email",class:"form-control",placeholder:"EMail" %>
+            <br />
+            <%= f.text_field :phone,class:"form-control",placeholder:"Phone Number" %>
+            <br />
+            <%= button_tag 'Sign Up', class:"btn btn-normal", style:"width:100%;color:black" %>
+
+        </div>
 <% end %>

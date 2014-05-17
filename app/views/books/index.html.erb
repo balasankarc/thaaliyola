@@ -3,105 +3,16 @@ li{display:inline;
 }
 br{}
 </style>
-<!--
-<div style="text-align:center;border:1px solid;margin: 0 0 0 0">
-    <ul>
-        <li><%= link_to 'A',books_path(:begins => 'A')%></li>
-        <li><%= link_to 'B',books_path(:begins => 'B')%></li>
-        <li><%= link_to 'C',books_path(:begins => 'C')%></li>
-        <li><%= link_to 'D',books_path(:begins => 'D')%></li>
-        <li><%= link_to 'E',books_path(:begins => 'E')%></li>
-        <li><%= link_to 'F',books_path(:begins => 'F')%></li>
-        <li><%= link_to 'G',books_path(:begins => 'G')%></li>
-        <li><%= link_to 'H',books_path(:begins => 'H')%></li>
-        <li><%= link_to 'I',books_path(:begins => 'I')%></li>
-        <li><%= link_to 'J',books_path(:begins => 'J')%></li>
-        <li><%= link_to 'K',books_path(:begins => 'K')%></li>
-        <li><%= link_to 'L',books_path(:begins => 'L')%></li>
-        <li><%= link_to 'M',books_path(:begins => 'M')%></li>
-        <li><%= link_to 'N',books_path(:begins => 'N')%></li>
-        <li><%= link_to 'O',books_path(:begins => 'O')%></li>
-        <li><%= link_to 'P',books_path(:begins => 'P')%></li>
-        <li><%= link_to 'Q',books_path(:begins => 'Q')%></li>
-        <li><%= link_to 'R',books_path(:begins => 'R')%></li>
-        <li><%= link_to 'S',books_path(:begins => 'S')%></li>
-        <li><%= link_to 'T',books_path(:begins => 'T')%></li>
-        <li><%= link_to 'U',books_path(:begins => 'U')%></li>
-        <li><%= link_to 'V',books_path(:begins => 'V')%></li>
-        <li><%= link_to 'W',books_path(:begins => 'W')%></li>
-        <li><%= link_to 'X',books_path(:begins => 'X')%></li>
-        <li><%= link_to 'Y',books_path(:begins => 'Y')%></li>
-        <li><%= link_to 'Z',books_path(:begins => 'Z')%></li><br />
-        <li><%= link_to 'അ',books_path(:begins => 'അ')%></li>
-        <li><%= link_to 'ആ',books_path(:begins => 'ആ')%></li>
-        <li><%= link_to 'ഇ',books_path(:begins => 'ഇ')%></li>
-        <li><%= link_to 'ഈ',books_path(:begins => 'ഈ')%></li>
-        <li><%= link_to 'ഉ',books_path(:begins => 'ഉ')%></li>
-        <li><%= link_to 'ഊ',books_path(:begins => 'ഊ')%></li>
-        <li><%= link_to 'ഋ',books_path(:begins => 'ഋ')%></li>
-        <li><%= link_to 'ൠ',books_path(:begins => 'ൠ')%></li>
-        <li><%= link_to 'ഌ',books_path(:begins => 'ഌ')%></li>
-        <li><%= link_to 'ൡ',books_path(:begins => 'ൡ')%></li>
-        <li><%= link_to 'എ',books_path(:begins => 'എ')%></li>
-        <li><%= link_to 'ഏ',books_path(:begins => 'ഏ')%></li>
-        <li><%= link_to 'ഐ',books_path(:begins => 'ഐ')%></li>
-        <li><%= link_to 'ഒ',books_path(:begins => 'ഒ')%></li>
-        <li><%= link_to 'ഓ',books_path(:begins => 'ഓ')%></li>
-        <li><%= link_to 'ഔ',books_path(:begins => 'ഔ')%></li>
-        <li><%= link_to 'അം',books_path(:begins => 'അം')%></li>
-        <li><%= link_to 'അഃ',books_path(:begins => 'അഃ')%></li>
-        <li><%= link_to 'ക ',books_path(:begins => 'ക ')%></li>
-        <li><%= link_to 'ഖ ',books_path(:begins => 'ഖ ')%></li>
-        <li><%= link_to 'ഗ ',books_path(:begins => 'ഗ ')%></li>
-        <li><%= link_to 'ഘ ',books_path(:begins => 'ഘ ')%></li>
-        <li><%= link_to 'ങ',books_path(:begins => 'ങ')%></li>
-        <li><%= link_to 'ച ',books_path(:begins => 'ച ')%></li>
-        <li><%= link_to 'ഛ ',books_path(:begins => 'ഛ ')%></li>
-        <li><%= link_to 'ജ ',books_path(:begins => 'ജ ')%></li>
-        <li><%= link_to 'ഝ ',books_path(:begins => 'ഝ ')%></li>
-        <li><%= link_to 'ഞ ',books_path(:begins => 'ഞ ')%></li>
-        <li><%= link_to 'ട ',books_path(:begins => 'ട ')%></li>
-        <li><%= link_to 'ഠ ',books_path(:begins => 'ഠ ')%></li>
-        <li><%= link_to 'ഡ ',books_path(:begins => 'ഡ ')%></li>
-        <li><%= link_to 'ഢ ',books_path(:begins => 'ഢ ')%></li>
-        <li><%= link_to 'ണ',books_path(:begins => 'ണ')%></li>
-        <li><%= link_to 'ത ',books_path(:begins => 'ത ')%></li>
-        <li><%= link_to 'ഥ ',books_path(:begins => 'ഥ ')%></li>
-        <li><%= link_to 'ദ ',books_path(:begins => 'ദ ')%></li>
-        <li><%= link_to 'ധ ',books_path(:begins => 'ധ ')%></li>
-        <li><%= link_to 'ന ',books_path(:begins => 'ന ')%></li>
-        <li><%= link_to 'പ ',books_path(:begins => 'പ ')%></li>
-        <li><%= link_to 'ഫ ',books_path(:begins => 'ഫ ')%></li>
-        <li><%= link_to 'ബ ',books_path(:begins => 'ബ ')%></li>
-        <li><%= link_to 'ഭ ',books_path(:begins => 'ഭ ')%></li>
-        <li><%= link_to 'മ',books_path(:begins => 'മ')%></li>
-        <li><%= link_to 'യ',books_path(:begins => 'യ')%></li>
-        <li><%= link_to 'ര',books_path(:begins => 'ര')%></li>
-        <li><%= link_to 'ല',books_path(:begins => 'ല')%></li>
-        <li><%= link_to 'വ',books_path(:begins => 'വ')%></li>
-        <li><%= link_to 'ശ',books_path(:begins => 'ശ')%></li>
-        <li><%= link_to 'ഷ',books_path(:begins => 'ഷ')%></li>
-        <li><%= link_to 'സ',books_path(:begins => 'സ')%></li>
-        <li><%= link_to 'ഹ',books_path(:begins => 'ഹ')%></li>
-        <li><%= link_to 'ള',books_path(:begins => 'ള')%></li>
-        <li><%= link_to 'ഴ',books_path(:begins => 'ഴ')%></li>
-        <li><%= link_to 'റ',books_path(:begins => 'റ')%></li>
-        <li><%= link_to 'ക്ഷ',books_path(:begins => 'ക്ഷ')%></li>
-
-    </ul>
-
-</div>
--->
 <% if params.has_key?(:begins) %>
     <% @text="Books under "+params[:begins].to_s %>
 <% else %>
     <% @text = "All Books" %>
 <% end %>
  
-<h1 style="text-align:center;margin-right:10%"> 
+<h1 style="text-align:center;"> 
    <%= @text %>
 </h1>
-<table class="table table-hover" style="width:95%">
+<table class="table table-hover" style="width:100%">
     <tr>
         <th class="col-md-2">Serial Number</th>
         <th class="col-md-5">Book</th>

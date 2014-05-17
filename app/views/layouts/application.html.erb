@@ -16,6 +16,11 @@
             <h1></h1>
             <% if not session.has_key?(:user) %>
                 <%= render 'users/formsignin' %>
+                <br />
+                <div style="text-align:center">
+                    <p>Not a user?<br />Click
+                    <%= link_to ' Here',sign_up_path %> to sign up</p>
+            </div>
         <% else %>                
                 <h1 style="color:white"><%= session[:user] %> </h1>
             <%= button_to 'Logout',logout_path,{class:"btn"} %>
@@ -45,17 +50,17 @@
 
             <div class="btn btn-group" style="width:100%">
 
-                <button type="button" class="btn btn-primary dropdown-toggle form-control" data-toggle="dropdown" style="">
+                <button type="button" class="btn dropdown-toggle form-control" data-toggle="dropdown" style="">
 
                     Search in <span class="caret"></span>
 
                 </button>
 
-                <ul class="dropdown-menu form-control" role="menu" style="padding:0;border-radious:2px;width:90%;margin-left:5%;text-align:center">
+                <ul class="dropdown-menu form-control" role="menu" style="padding:0;border-radious:2px;width:90%;margin-left:5%;">
                     <li style=""><a class="searchmenu" href="" onclick="searchbook()" id="search" >Books</a></li>
                     <li style="font-color:red"><a class= "searchmenu" href="" onclick="searchauthor()">Authors</a></li>
                     <li style="font-color:red"><a href="" class="searchmenu" onclick="searchcategory()">Category</a></li>
-
+                    <li style="font-color:red"><a href="" class="searchmenu" onclick="searchuser()">User</a></li>
 
                 </ul>
 
@@ -133,6 +138,11 @@ function searchcategory()
 {
     window.location.assign( "<%= categories_path %>?contains="+document.getElementById('searchquery').value);
 }
+function searchuser()
+{
+    window.location.assign( "<%= users_path %>?contains="+document.getElementById('searchquery').value);
+}
+
 
 $("#menu-toggle").click(function(e) {
         e.preventDefault();

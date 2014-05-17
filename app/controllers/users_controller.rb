@@ -5,7 +5,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @current_user=session[:user]
+    if not @current_user.nil?
+        if User.where('username = ?',@current_user).first.admin==true
+            @users = User.all
+        end
+    end
   end
 
   def sign_up
@@ -76,6 +81,7 @@ class UsersController < ApplicationController
     @user = User.new(@parameters)
     respond_to do |format|
       if @user.save
+        session[:user]=@username
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -117,6 +123,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :librarian, :admin)
+      params.require(:user).permit(:username, :password, :librarian, :admin, :admissionnumber, :address, :email, :phone)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516142539) do
+ActiveRecord::Schema.define(version: 20140517104136) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 20140516142539) do
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "admissionnumber"
+    t.text     "address"
+    t.string   "email"
+    t.string   "phone"
+    t.date     "validfrom"
+    t.date     "validto"
+    t.integer  "book_id"
+    t.date     "dateissue"
+    t.date     "datereturn"
+    t.float    "totalfine"
+    t.string   "photourl"
   end
 
 end

@@ -3,13 +3,13 @@ class BooksController < ApplicationController
 
     # GET /books
     # GET /books.json
-    def index
-        @notice=""
-        if params[:begins] == ""
-            @books=Book.all
-            @notice="No"
+    def index        
+        if params.has_key?(:begins)
+            @books = Book.where('name LIKE ?',"#{params[:begins]}%")
+        elsif params.has_key?(:contains)
+            @books = Book.find(:all,:conditions => ['name LIKE ?', "%#{params[:contains]}%"])
         else
-            @books = Book.find(:all, :conditions =>['name LIKE ?', "#{params[:begins]}%"])
+            @books=Book.all
         end
     end
 
@@ -32,14 +32,22 @@ class BooksController < ApplicationController
     # POST /books
     # POST /books.json
     def create
+        @language = params[:book][:language][:name]
+        @language_exist = Language.where("name = ?",@language.to_s)
+        if @language_exist.empty?
+            @language_created=Language.new(:name=>@language.to_s)
+            @book=@language_created.books.build(book_params)
+            @language_created.save
+        else
+            @book=Book.new(book_params)
+            @book.language=@language_exist.first
+        end
 
-        @book = Book.new(book_params)
         @author = params[:book][:author][:name]
         @category = params[:book][:category][:name]
-        @category.inspect
         respond_to do |format|
             if @book.save
-                @author_exist=Author.find(:all, :conditions => ["name = ?",@author.to_s])
+                @author_exist=Author.where("name = ?",@author.to_s)
 
                 if @author_exist.empty?
                     @author_created=@book.authors.create(:name=>@author.to_s)
@@ -47,7 +55,7 @@ class BooksController < ApplicationController
                 else
                     @book.authors = @author_exist
                 end
-                @category_exist = Category.find(:all, :conditions => ["name = ?",@category.to_s])
+                @category_exist = Category.where("name = ?",@category.to_s)
                 if @category_exist.empty?
                     @category_created=@book.categories.create(:name=>@category.to_s)
                     @category_created.save
@@ -102,6 +110,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-        params.require(:book).permit(:serial, :name,:author,:category, :shelf, :row)
+        params.require(:book).permit(:serial, :name,:author,:category, :shelf, :row, :language)
     end
 end

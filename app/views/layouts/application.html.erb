@@ -5,56 +5,150 @@
 <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
+<%= favicon_link_tag %>
 </head>
 <body>
+<div id="wrapper">
 
-<!--Navbar-->
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="<%= books_path %>"><b>
-                    താളിയോല 
-            </b></a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-           <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search Query">
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        Search in <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Authors</a></li>
-                        <li><a href="#">Category</a></li>
-                    </ul>
-                </div>
-            </form>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><%= link_to 'Add Book',new_book_path %></li>
-                    <li><a href="#">About Thaaliyola</a></li>
+    <div id="sidebar-wrapper-right">
+        <ul class="sidebar-nav" style="margin-left:5%;width:90%">
+            <h1></h1>
+            <% if not session.has_key?(:user) %>
+                <%= render 'users/formsignin' %>
+                <br />
+                <div style="text-align:center">
+                    <p>Not a user?<br />Click
+                    <%= link_to ' Here',sign_up_path %> to sign up</p>
+            </div>
+        <% else %>                
+            <h2 style="color:white"><%= link_to session[:user],user_url(:id=>User.where("username = ?",session[:user]).first.id) %> </h2>
+            <%= button_to 'Logout',logout_path,{class:"btn"} %>
+        <% end %>
+        </ul>
+    </div>
+
+
+
+
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><b><%= link_to ' താളിയോല ', books_path %></b>
+            </li>
+            <li><%= link_to 'Books', books_path %></li>
+            <li><%= link_to 'Authors', authors_path %></li>
+            <li><%= link_to 'Categories', categories_path %></li>
+            <!--           <li><%= link_to 'Contact', books_path %></li>
+
+-->
+            <li>
+            <div class="form-group" style="">
+
+                <input type="text" class="form-control" placeholder="Search Query" id="searchquery" style="margin-left:5%;width:90%"></input>
+
+            </div>
+
+            <div class="btn btn-group" style="width:100%">
+
+                <button type="button" class="btn dropdown-toggle form-control" data-toggle="dropdown" style="">
+
+                    Search in <span class="caret"></span>
+
+                </button>
+
+                <ul class="dropdown-menu form-control" role="menu" style="padding:0;border-radious:2px;width:90%;margin-left:5%;">
+                    <li style=""><a class="searchmenu" href="" onclick="searchbook()" id="search" >Books</a></li>
+                    <li style="font-color:red"><a class= "searchmenu" href="" onclick="searchauthor()">Authors</a></li>
+                    <li style="font-color:red"><a href="" class="searchmenu" onclick="searchcategory()">Category</a></li>
+                    <li style="font-color:red"><a href="" class="searchmenu" onclick="searchuser()">User</a></li>
+
                 </ul>
-                </li>
-            </ul>
- 
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+
+            </div>
 
 
+            </li>
+            <% if params[:admin]=="b" %>
+
+                <% @str='
+<li>
+<ul class="nav nav-list accordion" id="sidenav-accordian">
+
+<li>
+
+<div class="accordion-heading"> <a data-toggle="collapse" data-target="#content-areas"> <span class="nav-header-primary">
+
+Admin
+
+</span></a>
 
 
+</div>
 
-<%= yield %>
+<ul class=" nav-list collapse" id="content-areas">
+    <li>'.html_safe %>
+<%= @str %>
+    <%= link_to "Add Book",new_book_path %>
+    <% @str='
 
+<li><a href="#" title="Title">Add Category</a>
+
+</li>
+
+<li><a href="#" title="Title">Delete Book</a>
+
+</li>
+
+</ul>
+
+</li>
+
+</ul> </li>'.html_safe %>
+
+<%= @str %>
+
+<% end %>
+       </ul>
+    </div>
+    <div id="page-content-wrapper">
+        <div class="content-header" style="padding:0 0 0 0;margin: 0 0 0 0"></div>
+        <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+        <% if signinnotice(" ")!="" %>
+<% if notice=="Login Successful" or notice=="Logged Out Succesfully"%>
+<%='<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
+<% elsif notice=="Incorrect Username" or notice=="Incorrect password" %>
+        <%='<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
+        <% end %>
+            <%= notice %>
+            <%= '</strong></div>'.html_safe %>
+<% end %>
+    <%= yield %>
+</div>
+<script>
+function searchbook()
+{
+    window.location.assign( "<%= books_path %>?contains="+document.getElementById('searchquery').value);
+}
+function searchauthor()
+{
+    window.location.assign( "<%= authors_path %>?contains="+document.getElementById('searchquery').value);
+}
+
+function searchcategory()
+{
+    window.location.assign( "<%= categories_path %>?contains="+document.getElementById('searchquery').value);
+}
+function searchuser()
+{
+    window.location.assign( "<%= users_path %>?contains="+document.getElementById('searchquery').value);
+}
+
+
+$("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+        });
+</script>
 </body>
 </html>

@@ -20,9 +20,10 @@ development:
   #pool: 5
   #timeout: 5000
   #username: root
-#production:
-  #adapter: mysql2
-  #database: production
-  #pool: 5
-  #timeout: 5000
-  #username: root 
+production:
+  adapter: postgresql
+  database: pgdb
+  pool: 5
+  timeout: 5000
+  username: mypguser
+  password: mypguser 

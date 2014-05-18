@@ -4,7 +4,14 @@ class AuthorsController < ApplicationController
   # GET /authors
   # GET /authors.json
   def index
-    @authors = Author.all
+        if params.has_key?(:begins)
+            @authors = Author.find(:all, :conditions =>['name LIKE ?', "#{params[:begins]}%"])
+        elsif params.has_key?(:contains)
+            @authors = Author.find(:all,:conditions => ['name LIKE ?', "%#{params[:contains]}%"])
+        else
+            @authors=Author.all
+        end
+ 
   end
 
   # GET /authors/1

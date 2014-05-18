@@ -80,9 +80,11 @@ class UsersController < ApplicationController
     @parameters[:password]=@sha_password
     @user = User.new(@parameters)
     respond_to do |format|
+    notice="User Was Succesfully Created"
+      signinnotice(notice)
       if @user.save
         session[:user]=@username
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice:notice }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -123,6 +125,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :librarian, :admin, :admissionnumber, :address, :email, :phone)
+      params.require(:user).permit(:username, :password, :librarian, :admin, :admissionnumber, :address, :email, :phone, :name)
     end
 end

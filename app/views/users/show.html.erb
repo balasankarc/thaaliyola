@@ -1,24 +1,24 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Librarian:</strong>
-  <%= @user.librarian %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+    <% if session.has_key?(:user) and @user.username==session[:user] or session.has_key?(:user) and User.where(:username=>session[:user]).first.admin=true%>
+    <div class="jumbotron" style="margin-top:10%;padding-top:1px">
+    <div class="row">
+        <div style="width:75%;float:left">
+            <h1><%= @user.name %></h1>
+            <% @add = simple_format @user.address %>
+            <% @add = @add.gsub! '<br />','<br /><br />' %>
+            <% @add = @add.gsub! '<p>', '<p style="margin-left:1%">'%>
+            <p style="margin-left:1%"><%= @add.html_safe%></p><br />
+            <p style="margin-left:1%">Admission Number : <%= @user.admissionnumber %></p>
+            <p style="margin-left:1%">EMail : <%= @user.email %></p>
+            <p style="margin-left:1%">Phone : <%= @user.phone %></p>
+        </div>
+        <div style="float:left;margin-top:5%">
+            <%= image_tag "passport_sample.png"%>
+        </div>
+    </div>
+</div>
+<% else %>
+    <div class="alert alert-dismissable alert-danger" style="margin-top:2%">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        You cannot access this page</div>
+<% end %>

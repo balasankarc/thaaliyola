@@ -23,7 +23,7 @@
                     <%= link_to ' Here',sign_up_path %> to sign up</p>
             </div>
         <% else %>                
-                <h1 style="color:white"><%= session[:user] %> </h1>
+            <h2 style="color:white"><%= link_to session[:user],user_url(:id=>User.where("username = ?",session[:user]).first.id) %> </h2>
             <%= button_to 'Logout',logout_path,{class:"btn"} %>
         <% end %>
         </ul>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517195918) do
+ActiveRecord::Schema.define(version: 20140518174948) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20140517195918) do
     t.date     "datereturn"
     t.float    "totalfine"
     t.string   "photourl"
+    t.string   "name"
   end
 
 end

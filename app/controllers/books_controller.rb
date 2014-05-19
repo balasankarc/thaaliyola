@@ -7,9 +7,9 @@ class BooksController < ApplicationController
         if params.has_key?(:begins)
             @books = Book.where('name LIKE ?',"#{params[:begins]}%")
         elsif params.has_key?(:contains)
-            @books = Book.find(:all,:conditions => ['name LIKE ?', "%#{params[:contains]}%"])
+            @books = Book.where("name LIKE ?", "%#{params[:contains]}%").paginate(page: params[:page], per_page: 5)
         else
-            @books=Book.all
+            @books=Book.paginate(page: params[:page], per_page: 20)
         end
     end
 

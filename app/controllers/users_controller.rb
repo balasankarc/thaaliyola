@@ -12,6 +12,7 @@ class UsersController < ApplicationController
         end
     end
   end
+  
 
   def sign_up
       @users = User.all
@@ -75,10 +76,10 @@ class UsersController < ApplicationController
   def create
     @username=params[:user][:username]
     @password=params[:user][:password]
-    @sha_password = Digest::SHA1.hexdigest(@password)
-    @parameters=user_params
-    @parameters[:password]=@sha_password
-    @user = User.new(@parameters)
+  #  @sha_password = Digest::SHA1.hexdigest(@password)
+    #@parameters=user_params
+    #@parameters[:password]=@sha_password
+    @user = User.new(user_params)
     respond_to do |format|
     notice="User Succesfully Created"
       signinnotice(notice)
@@ -127,6 +128,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :librarian, :admin, :admissionnumber, :address, :email, :phone, :name)
+      params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :admissionnumber, :address, :email, :phone, :name)
     end
 end

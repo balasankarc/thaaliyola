@@ -61,7 +61,6 @@
                     <li style=""><a class="searchmenu" href="" onclick="searchbook()" id="search" >Books</a></li>
                     <li style="font-color:red"><a class= "searchmenu" href="" onclick="searchauthor()">Authors</a></li>
                     <li style="font-color:red"><a href="" class="searchmenu" onclick="searchcategory()">Category</a></li>
-                    <li style="font-color:red"><a href="" class="searchmenu" onclick="searchuser()">User</a></li>
 
                 </ul>
 
@@ -69,7 +68,7 @@
 
 
             </li>
-            <% if params[:admin]=="b" %>
+            <% if session[:user] and User.where("username = ?",session[:user]).first.admin? %>
 
                 <% @str='
 <li>
@@ -138,10 +137,6 @@ function searchauthor()
 function searchcategory()
 {
     window.location.assign( "<%= categories_path %>?contains="+document.getElementById('searchquery').value);
-}
-function searchuser()
-{
-    window.location.assign( "<%= users_path %>?contains="+document.getElementById('searchquery').value);
 }
 
 

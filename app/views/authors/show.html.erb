@@ -1,12 +1,28 @@
 <p id="notice"><%= notice %></p>
+    <div class="jumbotron" style="margin-top:3%;padding-top:1px">
+    <div class="row">
+        <div style="width:75%;float:left">
+            <h1><%= @author.name %></h1>
+        </div>
+               <div style="float:left;margin-top:5%">
+            <%= image_tag "passport_sample.png"%>
+        </div>
+    </div>
+</div>
+<table class="table table-hover" style="width:100%">
+    <tr>
+        <th class="col-md-6">Book</th>
+        <th class="col-md-6">Category</th>
+    </tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @author.name %>
-  </p>
-  <% @author.books.each do |b| %>
-      <%= b.name %>
-      <% end %>
 
-<%= link_to 'Edit', edit_author_path(@author) %> |
-<%= link_to 'Back', authors_path %>
+    <% @author.books.each do |book| %>
+        <tr>
+            <td><h2><%= link_to book.name,book %></h2></td>
+            <% book.categories.each do |a|%>
+                <td><h2><%= link_to a.name,a %></h2></td>
+            <% end %>
+        </tr>
+    <% end %>
+</table>
+

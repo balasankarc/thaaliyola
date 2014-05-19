@@ -53,13 +53,6 @@
   display: block;
   text-decoration: none;
 }
-.sidebar-nav ul li a {
-    font-size:1.5em;
-  display: block;
-  background:black;
-  text-decoration: none;
-}
-
 .sidebar-nav ul li a.searchmenu
 {
 background: none repeat scroll 0% 0% white; 
@@ -79,11 +72,6 @@ color: white;
 }
 
 
-.sidebar-nav ul li a:hover,
-.sidebar-nav ul li a:active{
-  background: black;
-  text-decoration: none;
-}
 .active {
 color: yellow;
 background: rgba(255,255,200,0.2);

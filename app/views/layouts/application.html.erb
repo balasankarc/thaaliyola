@@ -115,7 +115,7 @@ Admin
         <div class="content-header" style="padding:0 0 0 0;margin: 0 0 0 0"></div>
         <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
         <% if signinnotice(" ")!="" %>
-<% if notice=="Login Successful" or notice=="Logged Out Succesfully"%>
+<% if notice=="Login Successful" or notice=="Logged Out Succesfully" or notice=="Details Saved" or notice=="User Succesfully Created"%>
 <%='<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
 <% elsif notice=="Incorrect Username" or notice=="Incorrect password" %>
         <%='<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             

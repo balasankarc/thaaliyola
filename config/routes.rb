@@ -26,6 +26,8 @@ ThaaliyolaRor::Application.routes.draw do
     get "success" => "users#success"
     get "sign_up" => "users#new"
     post "logout" => "users#sign_out"
+    get "edit_user_password" => "users#changepassword"
+    get "edit_user_photo" => "users#changephoto"
     root :to => "books#index"
 
     #      root :to => "list#index", :as => "list"

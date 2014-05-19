@@ -1,6 +1,27 @@
-<h1>Editing user</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+    <% if session.has_key?(:user) and @user.username==session[:user] or session.has_key?(:user) and User.where(:username=>session[:user]).first.admin=true%>
+<%= form_for(@user) do |f| %>
+    <div class="jumbotron" style="margin-top:10%;padding-top:1px">
+        <h2>Edit Details</h2>
+<div class="tab-pane" id="userdetails" style="padding-left:2%;padding-right:2%">
+    <br />
+            <%= f.text_field :admissionnumber,class:"form-control",placeholder:"Admission Number",:required => true %>
+            <br />
+            <%= f.text_field :name,class:"form-control",placeholder:"Name", :required=>true %>
+           <br />
+           <%= f.text_area :address,class:"form-control",placeholder:"Address", :required => true %>
+            <br />
+            <%= f.text_field :email,type:"email",class:"form-control",placeholder:"EMail" %>
+            <br />
+            <%= f.text_field :phone,class:"form-control",placeholder:"Phone Number" %>
+            <br />
+            <%= button_tag 'Update', class:"btn btn-primary", style:"width:100%;color:black" %>
+            <%= link_to 'Back',user_path,{method:"get", type:"none", class:"btn btn-link", style:"width:100%;margin-top:2%"} %>
+        </div>
+        </div>
+    <% end %>
+<% else %>
+    <div class="alert alert-dismissable alert-danger" style="margin-top:2%">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        You cannot access this page</div>
+<% end %>

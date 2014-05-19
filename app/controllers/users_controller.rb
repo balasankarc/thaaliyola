@@ -80,7 +80,7 @@ class UsersController < ApplicationController
     @parameters[:password]=@sha_password
     @user = User.new(@parameters)
     respond_to do |format|
-    notice="User Was Succesfully Created"
+    notice="User Succesfully Created"
       signinnotice(notice)
       if @user.save
         session[:user]=@username
@@ -96,9 +96,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+      notice="Details Saved"
+      signinnotice(notice)
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice:notice }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

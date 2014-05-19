@@ -11,6 +11,10 @@
             <p style="margin-left:1%">Admission Number : <%= @user.admissionnumber %></p>
             <p style="margin-left:1%">EMail : <%= @user.email %></p>
             <p style="margin-left:1%">Phone : <%= @user.phone %></p>
+
+            <%= button_to 'Edit Details',edit_user_path,{method:"get", class:"btn btn-lg btn-primary", style:"float:left;margin-right:5%;margin-top:5%"} %>
+            <%= button_to 'Change Password',edit_user_password_path,{method:"get", class:"btn btn-lg btn-primary", style:"float:left;margin-right:5%;margin-top:5%"} %>
+            <%= button_to 'Update Photo',edit_user_photo_path,{method:"get", class:"btn btn-lg btn-primary", style:"float:left;margin-right:5%;margin-top:5%"} %>
         </div>
         <div style="float:left;margin-top:5%">
             <%= image_tag "passport_sample.png"%>

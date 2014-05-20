@@ -26,8 +26,10 @@ ThaaliyolaRor::Application.routes.draw do
     get "success" => "users#success"
     get "sign_up" => "users#new"
     post "logout" => "users#sign_out"
-    get "edit_user_password" => "users#changepassword"
+    post "users/:id/reset_password" => "users#reset_password"
+    get "users/:id/reset_password" => "users#password_reset", as:"password_reset"
     get "edit_user_photo" => "users#changephoto"
+    patch "users/:id/reset_password" => "users#reset_password"
     root :to => "books#index"
 
     #      root :to => "list#index", :as => "list"

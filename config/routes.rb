@@ -1,4 +1,6 @@
 ThaaliyolaRor::Application.routes.draw do
+  resources :issuings
+
   resources :languages
 
   resources :languagedivisions

@@ -7,6 +7,9 @@ class Book < ActiveRecord::Base
     has_many :categories, through: :categorizations
     accepts_nested_attributes_for :categories
 
+    has_many :issuings
+    has_many :users, through: :issuings
+
     belongs_to :language, :dependent => :destroy
 
 end

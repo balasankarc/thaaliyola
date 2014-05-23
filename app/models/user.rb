@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-    has_many :books
+    has_many :issuings
+    has_many :books, through: :issuings
     validates :admissionnumber, uniqueness: true
     validates :username, uniqueness: true
     validates_confirmation_of :password, :message => "Passwords must match"

@@ -1,0 +1,10 @@
+<%= form_for(@user, :url=>issue_path(@user)) do |f| %>
+<div class="input-group">
+         <%= f.fields_for :book do |book_form| %>
+            <%= book_form.text_field :id ,class:"form-control", placeholder: "Book Serial Number" %>
+    <% end %>
+        <br />
+        <%= button_tag 'Issue Book', class:"btn" %>
+        <br />
+</div> 
+<% end %>

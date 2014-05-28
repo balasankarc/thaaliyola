@@ -9,7 +9,7 @@ class Book < ActiveRecord::Base
 
     has_many :issuings
     has_many :users, through: :issuings
-
+    accepts_nested_attributes_for :users
     belongs_to :language, :dependent => :destroy
 
 end

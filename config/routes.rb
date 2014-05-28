@@ -31,6 +31,8 @@ ThaaliyolaRor::Application.routes.draw do
     post "users/:id/reset_password" => "users#reset_password"
     get "users/:id/reset_password" => "users#password_reset", as:"password_reset"
     get "edit_user_photo" => "users#changephoto"
+    patch "users/:id/issue" => "users#issue", as:"issue"
+
     patch "users/:id/reset_password" => "users#reset_password"
     root :to => "books#index"
 

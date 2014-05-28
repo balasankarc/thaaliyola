@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     include ApplicationHelper
-    before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password]
+    before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue]
 
     # GET /users
     # GET /users.json
@@ -53,6 +53,21 @@ class UsersController < ApplicationController
     def success
     end
 
+    def issue
+        @book = Book.find(params[:user][:book][:id])
+        if @book
+            @user.books<<@book
+            @user.save
+            respond_to do |format|
+                notice="Book Issued"
+                signinnotice(notice)
+            format.html { redirect_to @user,notice:notice}
+            end
+        else
+            notice="Book Not Found"
+            redirect_to @user, notice:notice
+        end
+    end
     def login
     end
     def sign_in
@@ -87,6 +102,7 @@ class UsersController < ApplicationController
     # GET /users/new
     def new
         @user = User.new
+        @book = Book.new
     end
 
     # GET /users/1/edit
@@ -150,6 +166,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :admissionnumber, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation)
+        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :admissionnumber, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book)
     end
 end

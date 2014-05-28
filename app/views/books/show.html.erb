@@ -33,7 +33,9 @@
   <strong>Row:</strong>
   <%= @book.row %>
 </p>
-
+<% @book.users.each do |u| %>
+    <%= u.name %>
+    <% end %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
 <a data-confirm="Are you sure?" data-method="delete" href="<%= book_path %>" rel="nofollow"><button class="btn btn-primary">Destroy</button></a>

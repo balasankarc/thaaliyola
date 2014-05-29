@@ -33,6 +33,7 @@ ThaaliyolaRor::Application.routes.draw do
     get "edit_user_photo" => "users#changephoto"
     patch "users/:id/issue" => "users#issue", as:"issue"
 
+    patch "users/:id/return" => "users#return", as:"return"
     patch "users/:id/reset_password" => "users#reset_password"
     root :to => "books#index"
 

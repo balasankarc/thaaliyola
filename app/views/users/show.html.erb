@@ -1,5 +1,5 @@
 <% if session.has_key?(:user) && @user.username==session[:user] or session.has_key?(:user) && User.where(:username=>session[:user]).first.admin==true%>
-    <div class="jumbotron" style="margin-top:10%;padding-top:1px">
+    <div class="jumbotron" style="margin-top:5%;padding-top:1px">
     <div class="row">
         <div style="width:75%;float:left">
             <h1><%= @user.name %></h1>
@@ -24,12 +24,35 @@
             <%= render 'formissue' %>
         </div>
 
+        <div style="float:right;margin-top:5%">
+            <%= render 'formreturn' %>
+        </div>
+
 <% end %>
 </div>
-<% @user.books.each do |b| %>
-    <p><%= b.name %></p>
-    <% end %>
 </div>
+
+<table class="table table-bordered">
+    <tr>
+        <th style="text-align:center">Book Serial Number</th>
+        <th style="text-align:center">Book Name</th>
+        <th style="text-align:center">Date of Issue</th>
+        <th style="text-align:center">Date of Return</th>
+    </tr>
+    <% @user.books.each do |b| %>
+        <% @class="" %>
+        <% @dateofreturn= Date.parse(Issuing.where(:book_id=>b.id,:user_id=>@user.id).first.dateofreturn.to_s) %>
+        <% if @dateofreturn<Date.today %>
+            <% @class="danger" %>
+            <% end %>
+            <tr class="<%=@class%>">
+            <td><%= b.id %></td>
+            <td><%= b.name %></td>
+            <td><%= Issuing.where(:book_id=>b.id,:user_id=>@user.id).first.dateofissue.to_s %></td>
+            <td><%= Issuing.where(:book_id=>b.id,:user_id=>@user.id).first.dateofreturn.to_s %></td>
+        </tr>
+    <% end %>
+</table>
 <% else %>
     <div class="alert alert-dismissable alert-danger" style="margin-top:2%">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

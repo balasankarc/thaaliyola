@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     include ApplicationHelper
-    before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue]
+    before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue, :return]
 
     # GET /users
     # GET /users.json
@@ -71,6 +71,23 @@ class UsersController < ApplicationController
             redirect_to @user, notice:notice
         end
     end
+
+    def return
+         @book = Book.find(params[:user][:book][:id])
+         @issuing = Issuing.where(:book_id=>@book.id, :user_id=>@user.id).first
+        if @issuing
+            @issuing.delete
+            respond_to do |format|
+                notice="Book Returned"
+            format.html { redirect_to @user,notice:notice}
+            end
+        else
+            notice="Book Not Found"
+            redirect_to @user, notice:notice
+        end
+    end
+
+
     def login
     end
     def sign_in

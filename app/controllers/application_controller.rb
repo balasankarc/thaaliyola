@@ -3,5 +3,5 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   $successmessage =  ["Login Successful", "Logged Out Succesfully", "Details Saved", "User Succesfully Created", "Password Updated","Book Issued"]
-  $failuremessage = ["Incorrect Username", "Incorrect password", "Current Password Incorrect", "Passwords donot match", "Book Not Found"]
+  $failuremessage = ["Incorrect Username", "Incorrect password", "Current Password Incorrect", "Passwords donot match", "Book Not Found", "Book already issued"]
 end

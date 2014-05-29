@@ -1,41 +1,24 @@
-<p id="notice"><%= notice %></p>
+    <div class="jumbotron" style="margin-top:10%;padding-top:1px">
+    <div class="row">
+        <div style="width:75%;float:left">
+            <h1><%= @book.name %></h1>
+            <% @book.authors.each do |author| %>
+                <p style="margin-left:1%"><%= link_to author.name,author %></p><br />
+            <% end %>
+            <% @book.categories.each do |category| %>
+                <p style="margin-left:1%"><%= link_to category.name,category %></p><br />
+                <% end %>
+            <p style="margin-left:1%">Serial Number : <%= @book.serial %></p>
+            <p style="margin-left:1%">Row : <%= @book.row %></p>
+            <p style="margin-left:1%">Shelf : <%= @book.shelf %></p>
 
-<p>
-  <strong>Serial:</strong>
-  <%= @book.serial %>
-</p>
+        </div>
+        <div style="float:left;margin-top:5%">
+            <%= image_tag "passport_sample.png"%>
+        </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @book.name %>
-</p>
 
-<p>
-<strong>Author:</strong>
-<% @book.authors.each do |a| %>
-    <%= link_to a.name,a %>
-    <% end %>
-</p>
-
-<p>
-<strong>Category:</strong>
-<% @book.categories.each do |c| %>
-    <%= link_to c.name,c %>
-    <% end %>
-</p>
-
-<p>
-  <strong>Shelf:</strong>
-  <%= @book.shelf %>
-</p>
-
-<p>
-  <strong>Row:</strong>
-  <%= @book.row %>
-</p>
-<% @book.users.each do |u| %>
-    <%= u.name %>
-    <% end %>
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
-<a data-confirm="Are you sure?" data-method="delete" href="<%= book_path %>" rel="nofollow"><button class="btn btn-primary">Destroy</button></a>
+    </div>
+    <% @book.users.each do |u| %>
+        <%= u.name %>
+        <%end %>

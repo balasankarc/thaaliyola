@@ -56,12 +56,15 @@ class UsersController < ApplicationController
     def issue
         @book = Book.find(params[:user][:book][:id])
         if @book
-            @user.books<<@book
-            @user.save
+            if not @user.books.where(:id=>@book.id).empty?
+                notice="Book already issued"
+                redirect_to @user, notice:notice
+            else
+           Issuing.create(:book=>@book, :user=>@user, :dateofissue=>DateTime.now(), :dateofreturn=>14.days.from_now) 
             respond_to do |format|
                 notice="Book Issued"
-                signinnotice(notice)
             format.html { redirect_to @user,notice:notice}
+            end
             end
         else
             notice="Book Not Found"
@@ -103,6 +106,8 @@ class UsersController < ApplicationController
     def new
         @user = User.new
         @book = Book.new
+        @book.dateofissue.build
+        @book.dateofreturn.build        
     end
 
     # GET /users/1/edit

@@ -22,7 +22,11 @@
  
         </div>
         <div style="float:left;margin-top:5%">
-            <%= image_tag "passport_sample.png"%>
+                   <% if @book.cover.file? %>
+                          <%= image_tag @book.cover.url,{style:"width:125px;height:160px"} %>
+                      <% else %>
+                          <%= image_tag "passport_sample.png"%>
+                          <% end %>
         </div>
 
 

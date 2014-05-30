@@ -1,19 +1,24 @@
 <% if session.has_key?(:user) && @user.username==session[:user] or session.has_key?(:user) && User.where(:username=>session[:user]).first.admin==true%>
     <div class="jumbotron" style="margin-top:5%;padding-top:1px">
     <div class="row">
-        <div style="width:75%;float:left">
+        <div style="width:65%;float:left">
             <h1><%= @user.name %></h1>
+            <% puts "address="+@user.address %>
             <% @add = simple_format @user.address %>
-            <% @add = @add.gsub! '<br />','<br /><br />' %>
-            <% @add = @add.gsub! '<p>', '<p style="margin-left:1%">'%>
+            <% @add = @add.gsub '<br />','<br /><br />' %>
+            <% @add = @add.gsub '<p>', '<p style="margin-left:1%">'%>
             <p style="margin-left:1%"><%= @add.html_safe%></p><br />
             <p style="margin-left:1%">Admission Number : <%= @user.admissionnumber %></p>
             <p style="margin-left:1%">EMail : <%= @user.email %></p>
             <p style="margin-left:1%">Phone : <%= @user.phone %></p>
 
                   </div>
-        <div style="float:left;margin-top:5%">
-            <%= image_tag "passport_sample.png"%>
+                  <div style="float:left;margin-top:5%">
+                      <% if @user.profpic.file? %>
+                          <%= image_tag @user.profpic.url,{style:"width:125px;height:160px"} %>
+                      <% else %>
+                          <%= image_tag "passport_sample.png"%>
+                          <% end %>
         </div>
     <% if User.where(:username=>session[:user]).first.admin==true %>
 
@@ -31,11 +36,10 @@
   <%= button_to 'Edit Details',edit_user_path,{method:"get", class:"btn btn-lg btn-primary", style:"float:left;margin-right:5%;margin-top:5%"} %>
             <%= button_to 'Delete User',@user,{method:"delete", class:"btn btn-lg btn-danger", style:"float:left;margin-right:5%;margin-top:5%",confirm:"Are you sure to delete this user?"} %>
             <%= button_to 'Change Password',password_reset_path, {method:"get", class:"btn btn-lg btn-primary", style:"float:left;margin-right:5%;margin-top:5%"} %>
-            <%= button_to 'Update Photo',edit_user_photo_path,{method:"get", class:"btn btn-lg btn-primary", style:"float:left;margin-right:5%;margin-top:5%"} %>
-
-
+            <br />
+ </div>
 </div>
-</div>
+
 
 <% if not @user.books.empty? %>
 <table class="table table-bordered">

@@ -27,7 +27,7 @@ class UsersController < ApplicationController
                 notice="Passwords donot match"
                 signinnotice(notice)
             else            
-                if @user.update_attribute(:password, params[:user][:newpassword])
+                if @user.update_attribute(:password, Digest::SHA1.hexdigest(params[:user][:newpassword]))
                     notice="Password Updated"
                     signinnotice(notice)
                     redirect_to @user
@@ -133,10 +133,13 @@ class UsersController < ApplicationController
     def create
         username=params[:user][:username]
         password=params[:user][:password]
-        #  @sha_password = Digest::SHA1.hexdigest(@password)
-        #@parameters=user_params
-        #@parameters[:password]=@sha_password
-        @user = User.new(user_params)
+        password_confirmation=params[:user][:password_confirmation]
+        @sha_password = Digest::SHA1.hexdigest(password)
+        @sha_password_confirmation = Digest::SHA1.hexdigest(password_confirmation)
+        @parameters=user_params
+        @parameters[:password]=@sha_password
+        @parameters[:password_confirmation]=@sha_password_confirmation
+        @user = User.new(@parameters)
             notice="User Succesfully Created"
             signinnotice(notice)
             if @user.save
@@ -146,19 +149,21 @@ puts @user.errors.full_messages
                 puts "Session" + session[:user]
                 redirect_to @user
             else
-                render action: 'new'
-                render json: @user.errors, status: :unprocessable_entity 
+                respond_to do |format|
+                format.html{render action: 'new'}
+                format.html{render json: @user.errors, status: :unprocessable_entity }
+                end
             end
     end
 
     # PATCH/PUT /users/1
     # PATCH/PUT /users/1.json
     def update
-        notice="Details Saved"
-        signinnotice(notice)
-        respond_to do |format|
+                respond_to do |format|
             if @user.update(user_params)
-                format.html { redirect_to @user, notice:notice }
+         notice="Details Saved"
+        signinnotice(notice)
+       format.html { redirect_to @user, notice:notice }
                 format.json { head :no_content }
             else
                 format.html { render action: 'edit' }
@@ -186,6 +191,6 @@ puts @user.errors.full_messages
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :admissionnumber, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book)
+        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :admissionnumber, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic)
     end
 end

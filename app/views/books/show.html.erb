@@ -1,10 +1,15 @@
-    <div class="jumbotron" style="margin-top:10%;padding-top:1px">
+<div class="jumbotron" style="margin-top:10%;padding-top:1px">
     <div class="row">
         <div style="width:75%;float:left">
             <h1><%= @book.name %></h1>
+            <p style="margin-left:1%">
             <% @book.authors.each do |author| %>
-                <p style="margin-left:1%"><%= link_to author.name,author %></p><br />
+                <%= link_to author.name,author %>
+                <% if not author.equal? @book.authors.last %>
+                    |
+                <% end %>
             <% end %>
+            </p>
             <% @book.categories.each do |category| %>
                 <p style="margin-left:1%"><%= link_to category.name,category %></p><br />
                 <% end %>

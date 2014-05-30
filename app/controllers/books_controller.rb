@@ -44,17 +44,19 @@ class BooksController < ApplicationController
             @book.language=@language_exist.first
         end
 
-        @author = params[:book][:author][:name]
+        @authors = params[:book][:author][:name].to_s.split(";")
         @category = params[:book][:category][:name]
         respond_to do |format|
             if @book.save
-                @author_exist=Author.where("name = ?",@author.to_s)
+                @authors.each do |author|
+                @author_exist=Author.where("name = ?",author.to_s)
 
                 if @author_exist.empty?
-                    @author_created=@book.authors.create(:name=>@author.to_s)
+                    @author_created=@book.authors.create(:name=>author.to_s)
                     @author_created.save
                 else
                     @book.authors<<@author_exist
+                end
                 end
                 @category_exist = Category.where("name = ?",@category.to_s)
                 if @category_exist.empty?
@@ -64,7 +66,7 @@ class BooksController < ApplicationController
                     @book.categories<<@category_exist
                 end
 
-                format.html { redirect_to @book,notice:"Book Succesfully Created"}
+                format.html { redirect_to @book,notice:"Book Succesfully Created",debugnotice:@debugnotice}
                 format.json { render action: 'show', status: :created, location: @book }
             else
                 format.html { render action: 'new' }

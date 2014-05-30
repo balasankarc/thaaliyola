@@ -122,9 +122,6 @@ class UsersController < ApplicationController
     # GET /users/new
     def new
         @user = User.new
-        @book = Book.new
-        @book.dateofissue.build
-        @book.dateofreturn.build        
     end
 
     # GET /users/1/edit
@@ -134,24 +131,24 @@ class UsersController < ApplicationController
     # POST /users
     # POST /users.json
     def create
-        @username=params[:user][:username]
-        @password=params[:user][:password]
+        username=params[:user][:username]
+        password=params[:user][:password]
         #  @sha_password = Digest::SHA1.hexdigest(@password)
         #@parameters=user_params
         #@parameters[:password]=@sha_password
         @user = User.new(user_params)
-        respond_to do |format|
             notice="User Succesfully Created"
             signinnotice(notice)
             if @user.save
-                session[:user]=@username
-                format.html { redirect_to @user, notice:notice }
-                format.json { render action: 'show', status: :created, location: @user }
+puts "Errors = "
+puts @user.errors.full_messages
+                session[:user]=username
+                puts "Session" + session[:user]
+                redirect_to @user
             else
-                format.html { render action: 'new' }
-                format.json { render json: @user.errors, status: :unprocessable_entity }
+                render action: 'new'
+                render json: @user.errors, status: :unprocessable_entity 
             end
-        end
     end
 
     # PATCH/PUT /users/1
@@ -174,8 +171,9 @@ class UsersController < ApplicationController
     # DELETE /users/1.json
     def destroy
         @user.destroy
+        session.delete(:user)
         respond_to do |format|
-            format.html { redirect_to users_url }
+            format.html { redirect_to root_path }
             format.json { head :no_content }
         end
     end

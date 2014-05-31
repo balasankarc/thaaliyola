@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-    include ApplicationHelper
+    rescue_from ActiveRecord::RecordNotFound, :with => :not_found
+    def not_found
+        render :template=>"/error/404_user.html.erb", :status=>404
+    end
+
+   include ApplicationHelper
     before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue, :return]
 
     # GET /users
@@ -145,7 +150,10 @@ class UsersController < ApplicationController
             if @user.save
 puts "Errors = "
 puts @user.errors.full_messages
+
+                if not session[:user] or not User.where("username = ?",session[:user]).first.admin?
                 session[:user]=username
+                end
                 puts "Session" + session[:user]
                 redirect_to @user
             else
@@ -191,6 +199,6 @@ puts @user.errors.full_messages
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :admissionnumber, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic)
+        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic)
     end
 end

@@ -1,4 +1,4 @@
 class Authorship < ActiveRecord::Base
-    belongs_to :book, :dependent => :destroy
-    belongs_to :author , :dependent => :destroy
+    belongs_to :book
+    belongs_to :author
 end

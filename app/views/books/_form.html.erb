@@ -25,7 +25,20 @@ $(document).ready(function(){
     </div>
     <div class="col-md-4 col-md-offset-4" style="padding-bottom:1%" >
         <%= f.fields_for :author do |author_form| %>
+    <div style="float:left;width:50%" >
             <%= author_form.text_field :name ,class:"form-control", placeholder: "Authors (Use ';' to split)" %>
+        </div>              <div style="float:left;width:50%" >
+<select class="multiselect" multiple="multiple">
+<option value="cheese">Cheese</option>
+<option value="tomatoes">Tomatoes</option>
+<option value="mozarella">Mozzarella</option>
+<option value="mushrooms">Mushrooms</option>
+<option value="pepperoni">Pepperoni</option>
+<option value="onions">Onions</option>
+</select>
+
+
+        </div>
     <% end %>
     </div>
     <div class="col-md-4 col-md-offset-4" style="padding-bottom:1%" >
@@ -63,3 +76,10 @@ $(document).ready(function(){
 
 </div>
 <% end %></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+$('.multiselect').multiselect();
+});
+</script>
+

@@ -204,7 +204,7 @@
             dropRight: false,
             selectedClass: 'active',
             buttonWidth: 'auto',
-            buttonContainer: '<div class="btn-group" />',
+            buttonContainer: '<div style="width:100%" class="btn btn-group" />',
             // Maximum height of the dropdown menu.
             // If maximum height is exceeded a scrollbar will be displayed.
             maxHeight: false,
@@ -219,9 +219,9 @@
             // possible options: 'text', 'value', 'both'
             filterBehavior: 'text',
             preventInputChangeEvent: false,
-            nonSelectedText: 'None selected',
+            nonSelectedText: 'Select Category',
             nSelectedText: 'selected',
-            numberDisplayed: 1,
+            numberDisplayed: 3,
             templates: {
                 button: '<button type="button" class="multiselect dropdown-toggle" data-toggle="dropdown"></button>',
                 ul: '<ul class="multiselect-container dropdown-menu"></ul>',
@@ -262,6 +262,7 @@
                 this.$button.css({
                     'width' : this.options.buttonWidth
                 });
+                
             }
 
             // Keep the tab index from the select.

@@ -1,9 +1,4 @@
-<script type="text/javascript">
-$(document).ready(function(){
-        $('.combobox').combobox();
-        });
-</script>
-<div style="position:relative;text-align:center">
+<div style="position:relative;">
 <%= form_for(@book) do |f| %>
     <% if @book.errors.any? %>
     <div id="error_explanation">
@@ -25,22 +20,9 @@ $(document).ready(function(){
     </div>
     <div class="col-md-4 col-md-offset-4" style="padding-bottom:1%" >
         <%= f.fields_for :author do |author_form| %>
-    <div style="float:left;width:50%" >
             <%= author_form.text_field :name ,class:"form-control", placeholder: "Authors (Use ';' to split)" %>
-        </div>              <div style="float:left;width:50%" >
-<select class="multiselect" multiple="multiple">
-<option value="cheese">Cheese</option>
-<option value="tomatoes">Tomatoes</option>
-<option value="mozarella">Mozzarella</option>
-<option value="mushrooms">Mushrooms</option>
-<option value="pepperoni">Pepperoni</option>
-<option value="onions">Onions</option>
-</select>
-
-
         </div>
     <% end %>
-    </div>
     <div class="col-md-4 col-md-offset-4" style="padding-bottom:1%" >
 
 
@@ -50,10 +32,18 @@ $(document).ready(function(){
             <% @catlist=Array.new %>
 <% @cat.each do |c| %>
                 <% @catlist << c.name  %>
-    <% end %>
+            <% end %>
         <%= f.fields_for :category do |category_form| %>
-
-            <%= category_form.select :name,@catlist,{:prompt => "Category"},{:class => "form-control combobox"} %>
+                <%= category_form.text_field :name,{:class => "form-control",:style=>"display:none"} %>
+            
+<select class="multiselect" multiple="multiple">
+  <option value="cheese">Cheese</option>
+  <option value="tomatoes">Tomatoes</option>
+  <option value="mozarella">Mozzarella</option>
+  <option value="mushrooms">Mushrooms</option>
+  <option value="pepperoni">Pepperoni</option>
+  <option value="onions">Onions</option>
+</select>
     <% end %>
     </div>
     <div class="col-md-4 col-md-offset-4" style="padding-bottom:1%" >
@@ -76,10 +66,17 @@ $(document).ready(function(){
 
 </div>
 <% end %></div>
-
 <script type="text/javascript">
 $(document).ready(function() {
-$('.multiselect').multiselect();
+        $('.multiselect').multiselect({
+            });
 });
 </script>
 
+<style>
+.btn2
+{
+    border:1px solid #CCC;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+</style>

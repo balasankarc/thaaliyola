@@ -49,7 +49,7 @@ class AuthorsController < ApplicationController
   def update
     respond_to do |format|
       if @author.update(author_params)
-        format.html { redirect_to @author, notice: 'Author was successfully updated.' }
+        format.html { redirect_to @author, notice: 'Author was successfully updated' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

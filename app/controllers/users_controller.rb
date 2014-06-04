@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-    include ApplicationHelper
+    rescue_from ActiveRecord::RecordNotFound, :with => :not_found
+    def not_found
+        render :template=>"/error/404_user.html.erb", :status=>404
+    end
+
+   include ApplicationHelper
     before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue, :return]
 
     # GET /users
@@ -27,7 +32,7 @@ class UsersController < ApplicationController
                 notice="Passwords donot match"
                 signinnotice(notice)
             else            
-                if @user.update_attribute(:password, params[:user][:newpassword])
+                if @user.update_attribute(:password, Digest::SHA1.hexdigest(params[:user][:newpassword]))
                     notice="Password Updated"
                     signinnotice(notice)
                     redirect_to @user
@@ -122,9 +127,6 @@ class UsersController < ApplicationController
     # GET /users/new
     def new
         @user = User.new
-        @book = Book.new
-        @book.dateofissue.build
-        @book.dateofreturn.build        
     end
 
     # GET /users/1/edit
@@ -134,34 +136,42 @@ class UsersController < ApplicationController
     # POST /users
     # POST /users.json
     def create
-        @username=params[:user][:username]
-        @password=params[:user][:password]
-        #  @sha_password = Digest::SHA1.hexdigest(@password)
-        #@parameters=user_params
-        #@parameters[:password]=@sha_password
-        @user = User.new(user_params)
-        respond_to do |format|
+        username=params[:user][:username]
+        password=params[:user][:password]
+        password_confirmation=params[:user][:password_confirmation]
+        @sha_password = Digest::SHA1.hexdigest(password)
+        @sha_password_confirmation = Digest::SHA1.hexdigest(password_confirmation)
+        @parameters=user_params
+        @parameters[:password]=@sha_password
+        @parameters[:password_confirmation]=@sha_password_confirmation
+        @user = User.new(@parameters)
             notice="User Succesfully Created"
             signinnotice(notice)
             if @user.save
-                session[:user]=@username
-                format.html { redirect_to @user, notice:notice }
-                format.json { render action: 'show', status: :created, location: @user }
+puts "Errors = "
+puts @user.errors.full_messages
+
+                if not session[:user] or not User.where("username = ?",session[:user]).first.admin?
+                session[:user]=username
+                end
+                puts "Session" + session[:user]
+                redirect_to @user
             else
-                format.html { render action: 'new' }
-                format.json { render json: @user.errors, status: :unprocessable_entity }
+                respond_to do |format|
+                format.html{render action: 'new'}
+                format.html{render json: @user.errors, status: :unprocessable_entity }
+                end
             end
-        end
     end
 
     # PATCH/PUT /users/1
     # PATCH/PUT /users/1.json
     def update
-        notice="Details Saved"
-        signinnotice(notice)
-        respond_to do |format|
+                respond_to do |format|
             if @user.update(user_params)
-                format.html { redirect_to @user, notice:notice }
+         notice="Details Saved"
+        signinnotice(notice)
+       format.html { redirect_to @user, notice:notice }
                 format.json { head :no_content }
             else
                 format.html { render action: 'edit' }
@@ -174,8 +184,9 @@ class UsersController < ApplicationController
     # DELETE /users/1.json
     def destroy
         @user.destroy
+        session.delete(:user)
         respond_to do |format|
-            format.html { redirect_to users_url }
+            format.html { redirect_to root_path }
             format.json { head :no_content }
         end
     end
@@ -188,6 +199,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :admissionnumber, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book)
+        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic)
     end
 end

@@ -12,10 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4" style="padding-bottom:1%" >
+ 
+      <%= f.text_field :name,class:"form-control",placeholder:"Username" %> <br />
+                <%= f.file_field :photo,{class:"btn",title:"Choose Profile Pic"} %>
+        <%= button_tag 'Update', class:"btn btn-primary", style:"width:100%" %>
+            <%= link_to 'Back',author_path,{method:"get", type:"none", class:"btn btn-link", style:"width:100%;margin-top:2%"} %>
+    <% end %>
+</div>
+</div>

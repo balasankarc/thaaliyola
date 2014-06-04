@@ -16,5 +16,7 @@ class Book < ActiveRecord::Base
     has_many :dateofreturn
     accepts_nested_attributes_for :dateofissue
     accepts_nested_attributes_for :dateofreturn
+    has_attached_file :cover
+    validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
 end

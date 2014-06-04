@@ -33,8 +33,6 @@
     </div>
     <div class="tab-pane" id="userdetails" style="padding-left:2%;padding-right:2%">
         <br />
-        <%= f.text_field :admissionnumber,class:"form-control",placeholder:"Admission Number",:required => true %>
-        <br />
         <%= f.text_field :name,class:"form-control",placeholder:"Name", :required=>true %>
         <br />
         <%= f.text_area :address,class:"form-control",placeholder:"Address", :required => true %>
@@ -43,6 +41,7 @@
         <br />
         <%= f.text_field :phone,class:"form-control",placeholder:"Phone Number" %>
         <br />
+                <%= f.file_field :profpic,{class:"btn",title:"Choose Profile Pic"} %>
         <%= button_tag 'Sign Up', class:"btn btn-normal", style:"width:100%;color:black" %>
 
     </div>

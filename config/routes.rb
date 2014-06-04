@@ -1,9 +1,9 @@
 ThaaliyolaRor::Application.routes.draw do
-  resources :issuings
+    resources :issuings
 
-  resources :languages
+    resources :languages
 
-  resources :languagedivisions
+    resources :languagedivisions
 
     resources :users
 

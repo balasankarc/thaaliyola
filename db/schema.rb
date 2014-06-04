@@ -11,12 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529162733) do
+ActiveRecord::Schema.define(version: 20140531182639) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "authorships", force: true do |t|
@@ -37,6 +41,10 @@ ActiveRecord::Schema.define(version: 20140529162733) do
     t.integer  "noofcopies"
     t.date     "dateofissue"
     t.date     "dateofreturn"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "categories", force: true do |t|
@@ -87,14 +95,13 @@ ActiveRecord::Schema.define(version: 20140529162733) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", primary_key: "admissionnumber", force: true do |t|
     t.string   "username"
     t.string   "password"
     t.boolean  "librarian"
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "admissionnumber"
     t.text     "address"
     t.string   "email"
     t.string   "phone"
@@ -106,6 +113,10 @@ ActiveRecord::Schema.define(version: 20140529162733) do
     t.float    "totalfine"
     t.string   "photourl"
     t.string   "name"
+    t.string   "profpic_file_name"
+    t.string   "profpic_content_type"
+    t.integer  "profpic_file_size"
+    t.datetime "profpic_updated_at"
   end
 
 end

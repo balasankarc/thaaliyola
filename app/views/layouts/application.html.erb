@@ -17,14 +17,30 @@
             <h1></h1>
             <% if not session.has_key?(:user) %>
                 <%= render 'users/formsignin' %>
-                <br />
-                <div style="text-align:center">
-                    <p>Not a user?<br />Click
-                    <%= link_to ' Here',sign_up_path %> to sign up</p>
+            <br />
+            <div style="text-align:center">
+                <p>Not a user?<br />Click
+                <%= link_to ' Here',sign_up_path %> to sign up</p>
             </div>
         <% else %>                
+                <% puts "Session in " + session[:user] %>
             <h2 style="color:white"><%= link_to session[:user],user_url(:id=>User.where("username = ?",session[:user]).first.id) %> </h2>
             <%= button_to 'Logout',logout_path,{class:"btn"} %>
+        <% end %>
+            <% if session[:user] and User.where("username = ?",session[:user]).first.admin? %>
+                <br />
+            <div class="input-group" style="">
+
+                <input type="text" class="form-control" placeholder="Admission Number" id="userid" ></input>
+
+                <span class="input-group-btn">
+                    <button class="btn" onclick="gotouser()">Go</button>
+                </span>
+        </div>
+        <br />
+            <li> <%= link_to "Add Book",new_book_path %></li>
+
+            <li> <%= link_to "Add User",new_user_path %></li>
         <% end %>
         </ul>
     </div>
@@ -68,63 +84,23 @@
 
 
             </li>
-            <% if session[:user] and User.where("username = ?",session[:user]).first.admin? %>
-
-                <% @str='
-<li>
-<ul class="nav nav-list accordion" id="sidenav-accordian">
-
-<li>
-
-<div class="accordion-heading"> <a data-toggle="collapse" data-target="#content-areas"> <span class="nav-header-primary">
-
-Admin
-
-</span></a>
-
-
-</div>
-
-<ul class=" nav-list collapse" id="content-areas">
-    <li>'.html_safe %>
-<%= @str %>
-    <%= link_to "Add Book",new_book_path %>
-    <% @str='
-
-<li><a href="#" title="Title">Add Category</a>
-
-</li>
-
-<li><a href="#" title="Title">Delete Book</a>
-
-</li>
-
-</ul>
-
-</li>
-
-</ul> </li>'.html_safe %>
-
-<%= @str %>
-
-<% end %>
-       </ul>
+        </ul>
     </div>
     <div id="page-content-wrapper">
         <div class="content-header" style="padding:0 0 0 0;margin: 0 0 0 0"></div>
         <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
         <% if signinnotice(" ")!="" %>
-<% if $successmessage.include?(notice)%>
-<%='<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
-<% elsif $failuremessage.include?(notice)%>
-        <%='<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
-        <% end %>
-            <%= notice %>
-            <%= '</strong></div>'.html_safe %>
-<% end %>
-    <%= yield %>
-</div>
-<script>
+            <% if $successmessage.include?(notice)%>
+            <%='<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
+            <% elsif $failuremessage.include?(notice)%>
+                    <%='<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
+                    <% end %>
+                        <%= notice %>
+                        <%= '</strong></div>'.html_safe %>
+            <% end %>
+                <%= yield %>
+            </div>
+            <script>
 function searchbook()
 {
     window.location.assign( "<%= books_path %>?contains="+document.getElementById('searchquery').value);
@@ -139,11 +115,16 @@ function searchcategory()
     window.location.assign( "<%= categories_path %>?contains="+document.getElementById('searchquery').value);
 }
 
+function gotouser()
+{
+    window.location.assign( "<%= users_path %>/"+document.getElementById('userid').value);
+}
+
 
 $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("active");
         });
-</script>
-</body>
-</html>
+            </script>
+            </body>
+            </html>

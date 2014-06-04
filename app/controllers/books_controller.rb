@@ -1,6 +1,11 @@
 class BooksController < ApplicationController
-    before_action :set_book, only: [:show, :edit, :update, :destroy]
+    rescue_from ActiveRecord::RecordNotFound, :with => :not_found
+    def not_found
+        render :template=>"/error/404_book.html.erb", :status=>404
+    end
 
+    before_action :set_book, only: [:show, :edit, :update, :destroy]
+   
     # GET /books
     # GET /books.json
     def index        
@@ -44,27 +49,30 @@ class BooksController < ApplicationController
             @book.language=@language_exist.first
         end
 
-        @author = params[:book][:author][:name]
-        @category = params[:book][:category][:name]
+        @authors = params[:book][:author][:name].to_s.split(";")
+        @categories = params[:book][:category][:name].to_s.split(";")
         respond_to do |format|
             if @book.save
-                @author_exist=Author.where("name = ?",@author.to_s)
+                @authors.each do |author|
+                @author_exist=Author.where("name = ?",author.to_s)
 
                 if @author_exist.empty?
-                    @author_created=@book.authors.create(:name=>@author.to_s)
+                    @author_created=@book.authors.create(:name=>author.to_s)
                     @author_created.save
                 else
                     @book.authors<<@author_exist
                 end
-                @category_exist = Category.where("name = ?",@category.to_s)
+                end
+                @categories.each do |category|
+                @category_exist = Category.where("name = ?",category.to_s)
                 if @category_exist.empty?
-                    @category_created=@book.categories.create(:name=>@category.to_s)
+                    @category_created=@book.categories.create(:name=>category.to_s)
                     @category_created.save
                 else
                     @book.categories<<@category_exist
                 end
-
-                format.html { redirect_to @book,notice:"Book Succesfully Created"}
+                end
+                format.html { redirect_to @book,notice:"Book Succesfully Created",debugnotice:@debugnotice}
                 format.json { render action: 'show', status: :created, location: @book }
             else
                 format.html { render action: 'new' }
@@ -76,6 +84,42 @@ class BooksController < ApplicationController
     # PATCH/PUT /books/1
     # PATCH/PUT /books/1.json
     def update
+        @authors = params[:book][:author][:name].to_s.split(";")
+        if params[:book][:author][:name]!=""
+        Authorship.where(:book_id=>@book.id).each do |auth|
+            auth.delete
+        end
+        else
+            params[:book].delete(:author)
+        end
+        @authors.each do |author|
+                @author_exist=Author.where("name = ?",author.to_s)
+
+                if @author_exist.empty?
+                    @author_created=@book.authors.create(:name=>author.to_s)
+                    @author_created.save
+                else
+                    @book.authors<<@author_exist
+                end
+                end
+        @categories = params[:book][:category][:name].to_s.split(";")
+         if params[:book][:category][:name]!=""
+        Categorization.where(:book_id=>@book.id).each do |cat|
+            cat.delete
+        end
+        else
+            params[:book].delete(:category)
+        end
+        @categories.each do |category|
+                @category_exist = Category.where("name = ?",category.to_s)
+                if @category_exist.empty?
+                    @category_created=@book.categories.create(:name=>category.to_s)
+                    @category_created.save
+                else
+                    @book.categories<<@category_exist
+                end
+                end
+         
         respond_to do |format|
             if @book.update(book_params)
                 format.html { redirect_to @book, notice: 'Book was successfully updated.' }
@@ -111,6 +155,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-        params.require(:book).permit(:serial, :name,:author,:category, :shelf, :row, :language, :id)
+        params.require(:book).permit(:serial, :name,:author,:category, :shelf, :row, :language, :id, :cover)
     end
 end

@@ -4,6 +4,8 @@
   <strong>Name:</strong>
   <%= @category.name %>
 </p>
-
+<% @category.books.each do |b| %>
+    <%= b.name %>
+    <% end %>
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

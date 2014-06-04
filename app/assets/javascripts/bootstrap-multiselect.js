@@ -160,7 +160,7 @@
                 else {
                     var selected = '';
                     options.each(function () {
-                        selected += $(this).text() + ', ';
+                        selected += $(this).text() + ';';
                     });
                     return selected.substr(0, selected.length - 2);
                 }
@@ -204,7 +204,7 @@
             dropRight: false,
             selectedClass: 'active',
             buttonWidth: 'auto',
-            buttonContainer: '<div style="width:100%" class="btn btn-group" />',
+            buttonContainer: '<div style="width:100%;padding:6px 0px" class="btn btn-group" />',
             // Maximum height of the dropdown menu.
             // If maximum height is exceeded a scrollbar will be displayed.
             maxHeight: false,
@@ -960,7 +960,7 @@
             // First update the displayed button text.
             $('button', this.$container).html(this.options.buttonText(options, this.$select));
             
-                    $("#book_author_name").val(this.options.buttonTitle(options,this.$select)); 
+                    $("#book_category_name").val(this.options.buttonTitle(options,this.$select)); 
             // Now update the title attribute of the button.
             $('button', this.$container).attr('title', this.options.buttonTitle(options, this.$select));
 

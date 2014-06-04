@@ -50,7 +50,7 @@ class BooksController < ApplicationController
         end
 
         @authors = params[:book][:author][:name].to_s.split(";")
-        @category = params[:book][:category][:name]
+        @categories = params[:book][:category][:name].to_s.split(";")
         respond_to do |format|
             if @book.save
                 @authors.each do |author|
@@ -63,14 +63,15 @@ class BooksController < ApplicationController
                     @book.authors<<@author_exist
                 end
                 end
-                @category_exist = Category.where("name = ?",@category.to_s)
+                @categories.each do |category|
+                @category_exist = Category.where("name = ?",category.to_s)
                 if @category_exist.empty?
-                    @category_created=@book.categories.create(:name=>@category.to_s)
+                    @category_created=@book.categories.create(:name=>category.to_s)
                     @category_created.save
                 else
                     @book.categories<<@category_exist
                 end
-
+                end
                 format.html { redirect_to @book,notice:"Book Succesfully Created",debugnotice:@debugnotice}
                 format.json { render action: 'show', status: :created, location: @book }
             else
@@ -101,7 +102,24 @@ class BooksController < ApplicationController
                     @book.authors<<@author_exist
                 end
                 end
-
+        @categories = params[:book][:category][:name].to_s.split(";")
+         if params[:book][:category][:name]!=""
+        Categorization.where(:book_id=>@book.id).each do |cat|
+            cat.delete
+        end
+        else
+            params[:book].delete(:category)
+        end
+        @categories.each do |category|
+                @category_exist = Category.where("name = ?",category.to_s)
+                if @category_exist.empty?
+                    @category_created=@book.categories.create(:name=>category.to_s)
+                    @category_created.save
+                else
+                    @book.categories<<@category_exist
+                end
+                end
+         
         respond_to do |format|
             if @book.update(book_params)
                 format.html { redirect_to @book, notice: 'Book was successfully updated.' }

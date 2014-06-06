@@ -23,6 +23,7 @@ ThaaliyolaRor::Application.routes.draw do
 
     get "list/index"
     get "books/index"
+    get "report" => "books#report"
     post "sign_in" => "users#sign_in"
     get "sign_in" => "users#login"
     get "success" => "users#success"

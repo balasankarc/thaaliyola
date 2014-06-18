@@ -1,5 +1,9 @@
 module ApplicationHelper
-     def signinnotice(str)
+        def lesc(text)
+            LatexToPdf.escape_latex(text)
+        end    
+        
+        def signinnotice(str)
         if str="" 
             if notice!=""
                 return notice

@@ -10,6 +10,7 @@ gem 'pg'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'paperclip'
+gem 'rails-latex'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'digest'

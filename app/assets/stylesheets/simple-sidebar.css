@@ -66,14 +66,12 @@ color: white;
 
 .sidebar-nav li a:hover,
 .sidebar-nav li a:active{
-  color: yellow;
   background: rgba(255,255,255,0.2);
   text-decoration: none;
 }
 
 
 .active {
-color: yellow;
 background: rgba(255,255,200,0.2);
 border:solid 1px grey;
 }

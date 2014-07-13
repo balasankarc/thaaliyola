@@ -7,6 +7,8 @@ class BooksController < ApplicationController
 
     before_action :set_book, only: [:show, :edit, :update, :destroy]
    
+    helper_method :current_user
+    helper_method :isadmin
     # GET /books
     # GET /books.json
     def index        

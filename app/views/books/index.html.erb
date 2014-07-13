@@ -1,3 +1,9 @@
+   <% @user = current_user() %>
+    <% if @user != nil %>
+        <% I18n.locale = @user.locale %>
+        <% end %>
+
+
 <style>
 li{display:inline;
 }
@@ -6,7 +12,7 @@ br{}
 <% if params.has_key?(:begins) %>
     <% @text="Books under "+params[:begins].to_s %>
 <% else %>
-    <% @text = "All Books" %>
+    <% @text = t('All_Books') %>
 <% end %>
 <h1 style="text-align:center;"> 
     <%= @text %><br />

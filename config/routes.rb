@@ -1,4 +1,5 @@
 ThaaliyolaRor::Application.routes.draw do
+  get "reports/index"
     resources :issuings
 
     resources :languages
@@ -21,9 +22,12 @@ ThaaliyolaRor::Application.routes.draw do
 
     resources :books
 
+
     get "list/index"
     get "books/index"
-    get "report" => "books#report"
+    get "reports/index"
+    get "reports" => "reports#index"
+    post "reports/showreport" => "reports#showreport"
     post "sign_in" => "users#sign_in"
     get "sign_in" => "users#login"
     get "success" => "users#success"

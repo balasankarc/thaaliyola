@@ -146,6 +146,7 @@ class UsersController < ApplicationController
         @parameters[:password_confirmation]=@sha_password_confirmation
         @user = User.new(@parameters)
             notice="User Succesfully Created"
+            I18n.locale = params[:user][:locale]
             signinnotice(notice)
             if @user.save
 puts "Errors = "
@@ -169,6 +170,7 @@ puts @user.errors.full_messages
     def update
                 respond_to do |format|
             if @user.update(user_params)
+                I18n.locale = params[:user][:locale]
          notice="Details Saved"
         signinnotice(notice)
        format.html { redirect_to @user, notice:notice }
@@ -184,7 +186,9 @@ puts @user.errors.full_messages
     # DELETE /users/1.json
     def destroy
         @user.destroy
-        session.delete(:user)
+        if not isadmin()
+            session.delete(:user)
+        end
         respond_to do |format|
             format.html { redirect_to root_path }
             format.json { head :no_content }
@@ -199,6 +203,6 @@ puts @user.errors.full_messages
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic)
+        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic, :locale)
     end
 end

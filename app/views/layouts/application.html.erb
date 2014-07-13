@@ -10,9 +10,7 @@
 <body>
 <div id="wrapper">
 
-
-
-    <div id="sidebar-wrapper-right">
+     <div id="sidebar-wrapper-right">
         <ul class="sidebar-nav" style="margin-left:5%;width:90%">
             <h1></h1>
             <% if not session.has_key?(:user) %>
@@ -42,7 +40,6 @@
 
             <li> <%= link_to "Add User",new_user_path %></li>
 
-            <li> <%= link_to "PDF Report",report_path %></li>
         <% end %>
         </ul>
     </div>
@@ -52,7 +49,7 @@
 
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li class="sidebar-brand"><b><%= link_to ' താളിയോല ', books_path %></b>
+            <li class="sidebar-brand"><b><%= link_to t('thaaliyola'), books_path %></b>
             </li>
             <li><%= link_to 'Books', books_path %></li>
             <li><%= link_to 'Authors', authors_path %></li>
@@ -86,6 +83,10 @@
 
 
             </li>
+                </ul>
+
+
+
         </ul>
     </div>
     <div id="page-content-wrapper">
@@ -107,6 +108,7 @@ function searchbook()
 {
     window.location.assign( "<%= books_path %>?contains="+document.getElementById('searchquery').value);
 }
+
 function searchauthor()
 {
     window.location.assign( "<%= authors_path %>?contains="+document.getElementById('searchquery').value);
@@ -121,7 +123,6 @@ function gotouser()
 {
     window.location.assign( "<%= users_path %>/"+document.getElementById('userid').value);
 }
-
 
 $("#menu-toggle").click(function(e) {
         e.preventDefault();

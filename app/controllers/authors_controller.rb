@@ -61,6 +61,9 @@ class AuthorsController < ApplicationController
   # DELETE /authors/1
   # DELETE /authors/1.json
   def destroy
+    @author.books.each do |b|
+        b.destroy
+    end
     @author.destroy
     respond_to do |format|
       format.html { redirect_to authors_url }

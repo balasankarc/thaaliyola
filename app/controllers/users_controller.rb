@@ -171,7 +171,7 @@ puts @user.errors.full_messages
                 respond_to do |format|
             if @user.update(user_params)
                 I18n.locale = params[:user][:locale]
-         notice="Details Saved"
+         notice="Details Updated"
         signinnotice(notice)
        format.html { redirect_to @user, notice:notice }
                 format.json { head :no_content }

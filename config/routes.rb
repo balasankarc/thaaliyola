@@ -1,4 +1,6 @@
 ThaaliyolaRor::Application.routes.draw do
+  resources :reservations
+
   get "reports/index"
     resources :issuings
 

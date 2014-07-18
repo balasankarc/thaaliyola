@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715153819) do
+ActiveRecord::Schema.define(version: 20140718165836) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140715153819) do
     t.datetime "updated_at"
     t.date     "dateofissue"
     t.date     "dateofreturn"
+    t.boolean  "renewed"
   end
 
   create_table "languagedivisions", force: true do |t|

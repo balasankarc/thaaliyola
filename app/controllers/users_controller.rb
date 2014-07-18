@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     end
 
    include ApplicationHelper
-    before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue, :return]
+    before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue, :return, :renew]
 
     # GET /users
     # GET /users.json
@@ -58,35 +58,63 @@ class UsersController < ApplicationController
     def success
     end
 
-    def issue
-        @book = Book.find(params[:user][:book][:id])
-        if @book
-            if not @user.books.where(:id=>@book.id).empty?
-                notice="Book already issued"
+    def renew
+        begin
+            @book = Book.find(params[:user][:book][:id])
+            if @user.books.where(:id=>@book.id).empty?
+                notice="Book not issued to user"
                 redirect_to @user, notice:notice
             else
-           Issuing.create(:book=>@book, :user=>@user, :dateofissue=>DateTime.now(), :dateofreturn=>14.days.from_now) 
-            respond_to do |format|
-                notice="Book Issued"
-            format.html { redirect_to @user,notice:notice}
+                @returndate = Issuing.where(:book=>@book).first.dateofreturn
+                @newreturndate = @returndate+14;
+                if not Issuing.where(:book=>@book).first.renewed == true
+                    Issuing.where(:book=>@book).first.update(:dateofreturn=>@newreturndate,:renewed=>true)
+                    notice="Book Renewed"
+                else
+                    notice="Book already renewed"
+                end
+                redirect_to @user, notice:notice
             end
-            end
-        else
+        rescue 
             notice="Book Not Found"
             redirect_to @user, notice:notice
         end
     end
 
-    def return
-         @book = Book.find(params[:user][:book][:id])
-         @issuing = Issuing.where(:book_id=>@book.id, :user_id=>@user.id).first
-        if @issuing
-            @issuing.delete
-            respond_to do |format|
-                notice="Book Returned"
-            format.html { redirect_to @user,notice:notice}
+    def issue
+        begin
+        @book = Book.find(params[:user][:book][:id])
+        if not @user.books.where(:id=>@book.id).empty?
+            notice="Book already issued"
+                redirect_to @user, notice:notice
+            else
+                Issuing.create(:book=>@book, :user=>@user, :dateofissue=>DateTime.now(), :dateofreturn=>14.days.from_now) 
+                respond_to do |format|
+                    notice="Book Issued"
+                    format.html { redirect_to @user,notice:notice}
+                end
             end
-        else
+        rescue 
+            notice="Book Not Found"
+            redirect_to @user, notice:notice
+        end
+           end
+
+    def return
+        begin
+            @book = Book.find(params[:user][:book][:id])
+            if @user.books.where(:id=>@book.id).empty?
+                notice="Book not issued to user"
+                redirect_to @user, notice:notice
+            else
+               @issuing = Issuing.where(:book_id=>@book.id, :user_id=>@user.id).first
+                @issuing.delete
+                respond_to do |format|
+                    notice="Book Returned"
+                    format.html { redirect_to @user,notice:notice}
+                end
+            end
+       rescue
             notice="Book Not Found"
             redirect_to @user, notice:notice
         end
@@ -146,7 +174,6 @@ class UsersController < ApplicationController
         @parameters[:password_confirmation]=@sha_password_confirmation
         @user = User.new(@parameters)
             notice="User Succesfully Created"
-            I18n.locale = params[:user][:locale]
             signinnotice(notice)
             if @user.save
 puts "Errors = "
@@ -170,8 +197,7 @@ puts @user.errors.full_messages
     def update
                 respond_to do |format|
             if @user.update(user_params)
-                I18n.locale = params[:user][:locale]
-         notice="Details Updated"
+         notice="Details Saved"
         signinnotice(notice)
        format.html { redirect_to @user, notice:notice }
                 format.json { head :no_content }
@@ -186,9 +212,7 @@ puts @user.errors.full_messages
     # DELETE /users/1.json
     def destroy
         @user.destroy
-        if not isadmin()
-            session.delete(:user)
-        end
+        session.delete(:user)
         respond_to do |format|
             format.html { redirect_to root_path }
             format.json { head :no_content }
@@ -203,6 +227,6 @@ puts @user.errors.full_messages
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic, :locale)
+        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic)
     end
 end

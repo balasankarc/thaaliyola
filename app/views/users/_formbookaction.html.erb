@@ -1,0 +1,36 @@
+<%= form_for(@user) do |f| %>
+<div class="input-group">
+         <%= f.fields_for :book do |book_form| %>
+            <%= book_form.text_field :id ,class:"form-control", placeholder: "Book Serial Number" %>
+    <% end %>
+    <div class="input-group-btn">
+<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="" onclick="issue_book()">Issue</a></li>
+          <li><a href="" onclick="return_book()">Return</a></li>
+          <li><a href="" onclick="renew_book()">Renew</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+function return_book()
+{
+    $('#edit_user_<%=@user.id%>').attr('action',"<%=return_path(@user)%>");
+    $('.edit_user').submit();
+}
+
+function renew_book()
+{
+    $('#edit_user_<%=@user.id%>').attr('action',"<%=renew_path(@user)%>");
+    $('.edit_user').submit();
+
+}
+
+function issue_book()
+{
+    $('#edit_user_<%=@user.id%>').attr('action',"<%=issue_path(@user)%>");
+    $('.edit_user').submit();
+
+}
+</script>
+<% end %>

@@ -31,8 +31,12 @@ br{}
     <% @books.each do |book| %>
         <tr>
             <td><h2><%= link_to book.name,book %></h2></td>
+            <% if book.authors.empty? %>
+                <td></td>
+                <% else %>
             <% book.authors.each do |a|%>
                 <td><h2><%= link_to a.name,a %></h2></td>
+            <% end %>
             <% end %>
         </tr>
     <% end %>

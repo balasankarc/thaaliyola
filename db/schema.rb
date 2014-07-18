@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718165836) do
+ActiveRecord::Schema.define(version: 20140718182629) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 20140718165836) do
     t.datetime "updated_at"
     t.integer  "language_id"
     t.integer  "noofcopies"
-    t.date     "dateofissue"
-    t.date     "dateofreturn"
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"

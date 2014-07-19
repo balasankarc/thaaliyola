@@ -22,13 +22,14 @@
         </div>
     <% if User.where(:username=>session[:user]).first.admin==true %>
 
+
         <div style="float:left;margin-top:5%">
-            <%= render 'formissue' %>
+            <%= render 'formbookaction' %>
         </div>
 
-        <div style="float:right;margin-top:5%">
-            <%= render 'formreturn' %>
-        </div>
+
+
+
 
 <% end %>
 </div>

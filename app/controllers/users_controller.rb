@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     end
 
    include ApplicationHelper
-    before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue, :return]
+    before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue, :return, :renew]
 
     # GET /users
     # GET /users.json
@@ -58,35 +58,63 @@ class UsersController < ApplicationController
     def success
     end
 
-    def issue
-        @book = Book.find(params[:user][:book][:id])
-        if @book
-            if not @user.books.where(:id=>@book.id).empty?
-                notice="Book already issued"
+    def renew
+        begin
+            @book = Book.find(params[:user][:book][:id])
+            if @user.books.where(:id=>@book.id).empty?
+                notice="Book not issued to user"
                 redirect_to @user, notice:notice
             else
-           Issuing.create(:book=>@book, :user=>@user, :dateofissue=>DateTime.now(), :dateofreturn=>14.days.from_now) 
-            respond_to do |format|
-                notice="Book Issued"
-            format.html { redirect_to @user,notice:notice}
+                @returndate = Issuing.where(:book=>@book).first.dateofreturn
+                @newreturndate = @returndate+14;
+                if not Issuing.where(:book=>@book).first.renewed == true
+                    Issuing.where(:book=>@book).first.update(:dateofreturn=>@newreturndate,:renewed=>true)
+                    notice="Book Renewed"
+                else
+                    notice="Book already renewed"
+                end
+                redirect_to @user, notice:notice
             end
-            end
-        else
+        rescue 
             notice="Book Not Found"
             redirect_to @user, notice:notice
         end
     end
 
-    def return
-         @book = Book.find(params[:user][:book][:id])
-         @issuing = Issuing.where(:book_id=>@book.id, :user_id=>@user.id).first
-        if @issuing
-            @issuing.delete
-            respond_to do |format|
-                notice="Book Returned"
-            format.html { redirect_to @user,notice:notice}
+    def issue
+        begin
+        @book = Book.find(params[:user][:book][:id])
+        if not @user.books.where(:id=>@book.id).empty?
+            notice="Book already issued"
+                redirect_to @user, notice:notice
+            else
+                Issuing.create(:book=>@book, :user=>@user, :dateofissue=>DateTime.now(), :dateofreturn=>14.days.from_now) 
+                respond_to do |format|
+                    notice="Book Issued"
+                    format.html { redirect_to @user,notice:notice}
+                end
             end
-        else
+        rescue 
+            notice="Book Not Found"
+            redirect_to @user, notice:notice
+        end
+           end
+
+    def return
+        begin
+            @book = Book.find(params[:user][:book][:id])
+            if @user.books.where(:id=>@book.id).empty?
+                notice="Book not issued to user"
+                redirect_to @user, notice:notice
+            else
+               @issuing = Issuing.where(:book_id=>@book.id, :user_id=>@user.id).first
+                @issuing.delete
+                respond_to do |format|
+                    notice="Book Returned"
+                    format.html { redirect_to @user,notice:notice}
+                end
+            end
+       rescue
             notice="Book Not Found"
             redirect_to @user, notice:notice
         end

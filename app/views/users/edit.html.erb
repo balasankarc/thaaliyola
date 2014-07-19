@@ -13,11 +13,16 @@
             <br />
             <%= f.text_field :phone,class:"form-control",placeholder:"Phone Number" %>
             <br />
+            <%= f.select :locale, options_for_select(LANGUAGES,I18n.locale.to_s),{},:style => "width:100%;" %>
                 <%= f.file_field :profpic,{class:"btn",title:"Choose Profile Pic"} %>
             <%= button_tag 'Update', class:"btn btn-primary", style:"width:100%;color:black" %>
             <%= link_to 'Back',user_path,{method:"get", type:"none", class:"btn btn-link", style:"width:100%;margin-top:2%"} %>
         </div>
-        </div>
+    </div>
+<script>
+$(document).ready(function() { $("#user_locale").select2({
+ placeholder: "Language",                                                    allowClear: true}); });</script>
+ 
     <% end %>
 <% else %>
     <div class="alert alert-dismissable alert-danger" style="margin-top:2%">

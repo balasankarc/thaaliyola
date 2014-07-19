@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531182639) do
+ActiveRecord::Schema.define(version: 20140718182629) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 20140531182639) do
     t.datetime "updated_at"
     t.integer  "language_id"
     t.integer  "noofcopies"
-    t.date     "dateofissue"
-    t.date     "dateofreturn"
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
@@ -67,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140531182639) do
     t.datetime "updated_at"
     t.date     "dateofissue"
     t.date     "dateofreturn"
+    t.boolean  "renewed"
   end
 
   create_table "languagedivisions", force: true do |t|
@@ -78,6 +77,13 @@ ActiveRecord::Schema.define(version: 20140531182639) do
 
   create_table "languages", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reservations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -117,6 +123,7 @@ ActiveRecord::Schema.define(version: 20140531182639) do
     t.string   "profpic_content_type"
     t.integer  "profpic_file_size"
     t.datetime "profpic_updated_at"
+    t.string   "locale"
   end
 
 end

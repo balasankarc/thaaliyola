@@ -1,4 +1,7 @@
 ThaaliyolaRor::Application.routes.draw do
+  resources :reservations
+
+  get "reports/index"
     resources :issuings
 
     resources :languages
@@ -21,9 +24,12 @@ ThaaliyolaRor::Application.routes.draw do
 
     resources :books
 
+
     get "list/index"
     get "books/index"
-    get "report" => "books#report"
+    get "reports/index"
+    get "reports" => "reports#index"
+    post "reports/showreport" => "reports#showreport"
     post "sign_in" => "users#sign_in"
     get "sign_in" => "users#login"
     get "success" => "users#success"
@@ -33,7 +39,7 @@ ThaaliyolaRor::Application.routes.draw do
     get "users/:id/reset_password" => "users#password_reset", as:"password_reset"
     get "edit_user_photo" => "users#changephoto"
     patch "users/:id/issue" => "users#issue", as:"issue"
-
+    patch "users/:id/renew" => "users#renew", as:"renew"
     patch "users/:id/return" => "users#return", as:"return"
     patch "users/:id/reset_password" => "users#reset_password"
     root :to => "books#index"

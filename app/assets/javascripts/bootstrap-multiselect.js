@@ -162,7 +162,7 @@
                     options.each(function () {
                         selected += $(this).text() + ';';
                     });
-                    return selected.substr(0, selected.length - 2);
+                    return selected.substr(0, selected.length - 1);
                 }
             },
             /**

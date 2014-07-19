@@ -14,8 +14,8 @@
     </tr>
 
 
-    <% @authors.each do |author| %>
         <% @counter=1 %>
+    <% @authors.each do |author| %>
         <tr>
             <td><h3><%= @counter %><% @counter += 1%></h3></td>
             <td><h2><%= link_to author.name,author %></h2></td>

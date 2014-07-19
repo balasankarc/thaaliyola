@@ -5,7 +5,7 @@ Thaaliyola is a Library Management System that is written in Ruby on Rails. Its 
 - [x] User Creation
 - [x] Book Issuing
 - [x] Book Return
-- [ ] Book Renewal
+- [x] Book Renewal
 - [x] Statistical Report Generation (Done concept)
 - [x] Internationalization (Done concept)
 

@@ -1,12 +1,13 @@
 *Automate Serial Numbers
 *Book - Multiple Copies - Put Serial Number accordingly
-*Provision for multiple categories
-*Renew Book
 *Reserve Book - Show user his reservations and availability
 *Prettify Category Details
 *Author Photo Upload
 *User Book History
 *Book issue history
+*Message Administrator
+*Import books from Grandham and similar projects
+*Book details page - physical details and description, issue history for admins- tabs
+*User page - tab - history
 *Error Pages
-*Report Generation
-*Internationalization
+*QR Code for books and authors

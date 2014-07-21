@@ -1,0 +1,11 @@
+#encoding: utf-8
+ml:
+  all_books: "എല്ലാ പുസ്തകങ്ങളും"
+  thaaliyola: "താളിയോല"
+  sidebar:
+      books: "പുസ്തകങ്ങൾ"
+      authors: "രചയിതാക്കൾ"
+      categories: "വർഗ്ഗങ്ങൾ"
+      search_query: "തിരയേണ്ട പദം"
+      search_in: "ഇവിടെ തിരയുക"
+      logout: "പുറത്തിറങ്ങുക"

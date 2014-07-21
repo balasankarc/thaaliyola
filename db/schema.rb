@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718182629) do
+ActiveRecord::Schema.define(version: 20140719191017) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140718182629) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.string   "bookunique"
   end
 
   create_table "categories", force: true do |t|

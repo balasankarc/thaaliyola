@@ -227,6 +227,6 @@ puts @user.errors.full_messages
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic)
+        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic, :locale)
     end
 end

@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class BooksController < ApplicationController
+    require 'will_paginate/array'
     rescue_from ActiveRecord::RecordNotFound, :with => :not_found
     def not_found
         render :template=>"/error/404_book.html.erb", :status=>404
@@ -17,7 +18,7 @@ class BooksController < ApplicationController
         elsif params.has_key?(:contains)
             @books = Book.where("name LIKE ?", "%#{params[:contains]}%").paginate(page: params[:page], per_page: 5)
         else
-            @books=Book.paginate(page: params[:page], per_page: 20)
+            @books=Book.all.uniq_by(&:bookunique).paginate(page: params[:page], per_page: 20)
         end
     end
 
@@ -110,6 +111,23 @@ class BooksController < ApplicationController
                     @book.categories<<@category_exist.first
                 end
                 end
+                unique = params[:book][:name].to_s + params[:book][:author][:name].to_s + params[:book][:category][:name].to_s
+                @book.bookunique = unique
+                @book.save
+                noofcopies = params[:book][:noofcopies]
+                puts "Unique is "
+                puts unique
+                puts "Number of copies is"
+                puts noofcopies
+                counter=0
+                while counter < noofcopies.to_i - 1
+                    @newbook = @book.dup
+                    @newbook.authors=@book.authors
+                    @newbook.categories=@book.categories
+                    @newbook.save
+                    counter = counter + 1
+                end
+
                 format.html { redirect_to @book,notice:"Book Succesfully Created",debugnotice:@debugnotice}
                 format.json { render action: 'show', status: :created, location: @book }
             else
@@ -193,6 +211,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-        params.require(:book).permit(:serial, :name,:author,:category, :shelf, :row, :language, :id, :cover)
+        params.require(:book).permit(:serial, :name,:author,:category, :shelf, :row, :language, :id, :cover,:noofcopies)
     end
 end

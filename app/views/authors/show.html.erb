@@ -38,7 +38,7 @@
     </tr>
 
 
-    <% @author.books.each do |book| %>
+    <% @author.books.uniq_by(&:bookunique).each do |book| %>
         <tr>
             <td><h2><%= link_to book.name,book %></h2></td>
             <td>

@@ -1,0 +1,32 @@
+= form_for(@book, class:"form-signin") do |f|
+  - if @book.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@book.errors.count,"error") 
+        prohibited this book from being saved.
+      %ul
+        - @book.errors.full_messages.each do |msg|
+          %li= msg
+  = f.text_field :serial, class: "form-control", placeholder: "Serial"
+  = f.text_field :name, class: "form-control", placeholder: "Name"
+  = f.fields_for :author do |author_form|
+    =author_form.text_field :name, class: "form-control", placeholder: "Authors (Use ';' to split)"
+  - @cat = Category.all
+  - @catlist = Array.new
+  - @cat.each do |c|
+    - @catlist << c.name
+  = f.fields_for :category do |category_form|
+    = category_form.text_field :name, class: "form-control", style: "display:none"
+  %select.multiselect{:multiple=> true}
+    %option{value: 'aana'} Aana
+    %option{value: 'tomatoes'} Tomatoes
+  = f.text_field :shelf, class: "form-control", placeholder: "Shelf"
+  = f.text_field :row, class: "form-control", placeholder: "Row"
+  = f.text_field :noofcopies, class: "form-control", placeholder: "Number of Copies"
+  = f.fields_for :language do |language_form|
+    = language_form.text_field :name, class: "form-control", placeholder: "Language"
+  = f.file_field :cover,class: "btn", title:"Choose Profile Pic"
+  = button_tag 'Submit', src:books_path, class:"btn btn-primary", style:"width:100%"
+:javascript
+  $(document).ready(function() {
+  $('.multiselect').multiselect({});});

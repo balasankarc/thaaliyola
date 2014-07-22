@@ -7,6 +7,8 @@ class UsersController < ApplicationController
    include ApplicationHelper
     before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue, :return, :renew]
 
+    helper_method :isadmin
+
     # GET /users
     # GET /users.json
     def index

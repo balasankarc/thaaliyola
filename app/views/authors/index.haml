@@ -1,0 +1,19 @@
+.paginationdiv
+  - if params.has_key?(:contains)
+    %h1= t('author_under',:query => params[:contains].to_s)
+  - else
+    %h1= t('all_authors')
+  = will_paginate @authors, renderer: BootstrapPagination::Rails
+%table.table.table-hover{"width" => "100%"}
+  %tr
+    %th.col-md-6 Serial Number
+    %th.col-md-6 Author Name
+  - if params.has_key?(:page)  
+    - @counter = (params[:page].to_i-1) * 10 + 1
+  - else
+    - @counter = 1
+  - @authors.each do |author|
+    %tr
+      %td= @counter
+      - @counter += 1
+      %td= link_to author.name,author

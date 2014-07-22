@@ -1,0 +1,16 @@
+- if isadmin()
+  %h1 Listing Users
+  %table.table.table-hover{"width" => "100%"}
+    %tr
+      %th.col-md-4 Admission Number
+      %th.col-md-4 Username
+      %th.col-md-4 Name
+    - @users.each do |user|
+      %tr
+        %td= link_to user.id, user
+        %td= link_to user.username, user
+        %td= link_to user.name, user
+- else
+  .alert.alert-dismissable.alert-danger(style='margin-top:2%')
+    %button.close{"type" =>"button","data-dismiss" => "alert","aria-hidden" => "true"} &times;
+    You cannot access this page

@@ -1,5 +1,8 @@
 # encoding: UTF-8
 class ReportsController < ApplicationController
+
+  helper_method :isadmin
+  helper_method :current_user
   def index
   end
   def showreport

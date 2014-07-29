@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title= t('thaaliyola')
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    = favicon_link_tag
+  %body
+    #wrapper
+      = render ('layouts/rightsidebar')
+      = render ('layouts/leftsidebar')
+      #page-content-wrapper
+        .content-header{style:"padding:0 0 0 0;margin:0 0 0 0"}
+        %a#menu-toggle.btn.btn-default{href:"#"}
+          %i.icon-reorder
+        - if signinnotice(" ") != ""
+          - if $successmessage.include?(notice)
+            .alert.alert-success.alert-dismissable
+              %button.close{"type" => "button","data-dismiss" => "alert","aria-hidden" => "true"} &times;
+              = notice
+          - elsif $failuremessage.include?(notice)
+            .alert-danger.alert-dismissable
+              %button.close{"type" => "button","data-dismiss" => "alert","aria-hidden" => "true"} &times;
+              = notice
+        = yield  
+
+:javascript
+  $("#menu-toggle").click(function(e){
+  e.preventDefault();
+  $("#wrapper").toggleClass("active");
+  });

@@ -1,0 +1,24 @@
+- currentuser = current_user()
+#sidebar-wrapper-right
+  %ul.sidebar-nav{style:"margin-left:5%;width:90%"}
+    - if currentuser.nil?
+      #centered{style:"text-align:center"}
+        %p 
+          = render 'users/formsignin'
+          %br
+          Not a member?
+          %br
+          Register
+          = link_to "Here", sign_up_path
+    - else
+      %h2{style:"color:white"}
+        = link_to currentuser.username,currentuser
+        = button_to t('sidebar.logout'),logout_path,class:"btn"
+    - if isadmin()
+      .input-group
+        %input.form-control#userid{type:"text",placeholder:"Admission Number"}
+        %span.input-group-btn
+          %button.btn{onclick:"gotouser()"}
+            Go
+      %li= link_to "Add Book", new_book_path
+      %li= link_to "Add User", new_user_path

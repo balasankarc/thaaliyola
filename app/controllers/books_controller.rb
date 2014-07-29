@@ -13,10 +13,8 @@ class BooksController < ApplicationController
     # GET /books
     # GET /books.json
     def index        
-        if params.has_key?(:begins)
-            @books = Book.where('name LIKE ?',"#{params[:begins]}%")
-        elsif params.has_key?(:contains)
-            @books = Book.where("name LIKE ?", "%#{params[:contains]}%").paginate(page: params[:page], per_page: 5)
+        if params.has_key?(:contains)
+            @books = Book.where("name LIKE ?", "%#{params[:contains]}%").uniq_by(&:bookunique).paginate(page: params[:page], per_page: 5)
         else
             @books=Book.all.uniq_by(&:bookunique).paginate(page: params[:page], per_page: 20)
         end
@@ -27,40 +25,6 @@ class BooksController < ApplicationController
     def show
     end
 
-    def report
-        code='\documentclass[12pt,a4paper]{article}
-\usepackage{fullpage}
-\usepackage{fontspec}
-\usepackage{polyglossia}
-\setdefaultlanguage{malayalam}
-\setmainfont[Script=Malayalam, HyphenChar="0000]{Rachana}
-\usepackage{titling}
-\usepackage{datetime}
-\setlength{\droptitle}{-10em} 
-\title{\textbf{ താളിയോല \vspace{-2ex}}}
-\author{Statistical Report Generated On}
-\date{\today \ - \currenttime}
-\newcommand{\tab}{\hspace*{8em}}
-\begin{document}
-\maketitle
-\begin{flushleft}
-    \begin{tabbing}
-        \hspace{1.5in} \= \hspace{1in}\= \kill
-        Total Number of Books \>\> : '+Book.all.count.to_s+'\\\\
-        Total Number of Categories \>\> : '+Category.all.count.to_s+'\\\\
-        Total Number of Authors \>\> : '+Author.all.count.to_s+'\\\\
-    \end{tabbing}
-\end{flushleft}
-\end{document}'
-        @latex_config={:command => 'xelatex',:parse_twice => true} 
-        result = LatexToPdf.generate_pdf(code, @latex_config, parse_twice = true) # raise result.inspect 
-        path="Reports/"+Time.now.strftime("%Y_%m_%d_%H_%M_%S")+".pdf"
-        File.open(Rails.root.join("public","Reports",Time.now.strftime("%Y_%m_%d_%H_%M_%S")+".pdf"), "w") do |f| 
-            f.puts result 
-        end 
-        redirect_to root_path+path
-    end
- 
 
     # GET /books/new
     def new

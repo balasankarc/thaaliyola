@@ -1,0 +1,55 @@
+- currentuser = current_user()
+- if @user == currentuser or isadmin() == true
+  .jumbotron{style:"margin-top:2%"}
+    .row
+      #left{style:"width:75%;float:left"}
+        %h1= @user.name
+        %br
+        - @add = simple_format @user.address
+        - @add = @add.gsub '<br />', '<br /><br />'
+        - @add = @add.gsub '<p>', '<p style= "margin-left:1%"'
+        = @user.address
+        %br
+        Admission Number :
+        = @user.admissionnumber
+        %br
+        Email
+        = @user.email
+        %br
+        Phone
+        = @user.phone
+      #right{style:"float:left;margin-top:5%"}
+        - if @user.profpic.file?
+          = image_tag @user.profpic.url, style:"width:125px;height:160px"
+        - else
+          = image_tag "passport_sample.png"
+      - if isadmin() == true
+        #left{style:"float:left;margin-top:5%"}
+          = render 'formbookaction'
+    .row
+      = button_to "Edit Details", edit_user_path, method: "get", class: "btn btn-lg btn-primary", style: "float:left;margin-right:5%;margin-top:5%"
+      = button_to "Delete User", @user, method: "delete", class: "btn btn-lg btn-danger", style: "float:left;margin-right:5%;margin-top:5%", confirm: "Are you sure to delete this account?"
+      = button_to "Change Password", password_reset_path, method: "get", class: "btn btn-lg btn-primary", style: "float:left;margin-right:5%;margin-top:5%"
+         
+  - if not @user.books.empty?
+    %table.table.table-bordered
+      %tr
+        %th{style:"text-align:center"}Book Serial Number
+        %th{style:"text-align:center"}Book Name
+        %th{style:"text-align:center"}Date of Issue
+        %th{style:"text-align:center"}Date of Return
+      - @user.books.each do |b|
+        - @class = ""
+        - @dateofissue = Date.parse(Issuing.where(book_id:b.id, user_id:@user.id).first.dateofissue.to_s)
+        - @dateofreturn = Date.parse(Issuing.where(book_id:b.id, user_id:@user.id).first.dateofreturn.to_s)
+        - if @dateofreturn < Date.today
+          - @class = "danger"
+        %tr{class: "#{@class}"}
+          %td= b.id
+          %td= b.name
+          %td= @dateofissue.strftime("%d/%m/%Y")
+          %td= @dateofreturn.strftime("%d/%m/%Y")
+- else
+  .alert.alert-dismissable.alert-danger{style:"margin-top:2%"}
+    %button.close{type:"button",data:{dismiss:"alert"},aria:{hidden:"true"}} &times;
+    You Cannot Access This Page

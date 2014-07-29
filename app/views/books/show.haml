@@ -1,0 +1,29 @@
+.jumbotron{style:"margin-top:5%;padding-top:1px"}
+  .row
+
+
+    #left{style:"width:75%;float:left"}
+      %h1= @book.name
+      %p
+        - @book.authors.each do |author|
+          = link_to author.name,author
+          - if not author.equal? @book.authors.last
+            ;
+      - @book.categories.each do |category|
+        %p= link_to category.name, category
+      %p
+        Row :
+        = @book.row
+      %p
+        Shelf :
+        = @book.shelf
+      - if isadmin()
+        = button_to 'Edit Details', edit_book_path,{method:"get",class:"btn btn-lg btn-primary", style:"float:left;margin-right:5%;margin-top:f%"}
+        = button_to 'Delete Book', @book,{method:"delete",class:"btn btn-lg btn-danger", style:"float:left;margin-right:5%;margin-top:f%", confirm:"Are you sure?"}
+
+
+    #right{style:"float:left;margin-top:5%"}
+      - if @book.cover.file?
+        = image_tag @book.cover.url,{style:"width:125px;height:160px"}
+      - else
+        = image_tag "passport_sample.png"

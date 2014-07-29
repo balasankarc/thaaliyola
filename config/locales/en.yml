@@ -31,3 +31,6 @@ en:
       search_query: "Search Query"
       search_in: "Search In"
       logout: "Logout"
+  report:
+      from_date : "From Date"
+      to_date: "To Date"

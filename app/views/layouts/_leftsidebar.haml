@@ -1,0 +1,22 @@
+#sidebar-wrapper
+  %ul.sidebar-nav
+    %li.sidebar-brand
+      %b= link_to t('thaaliyola'), books_path
+    %li= link_to t('sidebar.books'), books_path
+    %li= link_to t('sidebar.authors'), authors_path
+    %li= link_to t('sidebar.categories'), categories_path
+    %li= link_to t('sidebar.languages'), languages_path
+    %li
+      .form-group
+        %input.form-control#searchquery{type:"text",placeholder:"#{t('sidebar.search_query')}",style:"margin-left:5%;width:90%"}
+      .btn.btn-group{style:"width:100%"}
+        %button.btn.dropdown-toggle.form-control{"type" => "button","data-toggle" => "dropdown"}
+          = t('sidebar.search_in')
+          %span.caret
+        %ul.dropdown-menu.formcontrol{role:"menu",style:"padding:0;border-radius:2px;width:90%;margin-left:5%"}
+          %li
+            %a.searchmenu#search{href:"",onclick:"searchbook()"}= t('sidebar.books')
+          %li
+            %a.searchmenu#search{href:"",onclick:"searchauthor()"}= t('sidebar.authors')
+          %li
+            %a.searchmenu#search{href:"",onclick:"searchcategory()"}= t('sidebar.categories')

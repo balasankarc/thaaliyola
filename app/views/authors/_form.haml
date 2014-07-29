@@ -1,0 +1,13 @@
+= form_for(@author, class:"form-signin") do |f|
+  - if @author.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@author.errors.count,"error")
+        prohibited this author from being saved
+      %ul
+        - @author.errors.full_messages.each do |msg|
+          %li= msg
+  = f.text_field :name, class:"form-control", placeholder: "Name"
+  = f.file_field :photo, class:"btn", title:"Choose Author Picture"
+  = button_tag "Update", class:"btn btn-primary", style:"width:10%"
+

@@ -1,0 +1,18 @@
+= form_for(@user, class:"form-signin") do |f|
+  = f.text_field :name, class: "form-control", placeholder: "Name", required: "true"
+  = f.text_area :address, class: "form-control", placeholder: "Address", required: "true"
+  = f.email_field :email, class: "form-control", placeholder: "EMail"
+  = f.text_field :phone, class: "form-control", placeholder: "Phone"
+  = f.select :locale, options_for_select(LANGUAGES, I18n.locale.to_s),{}, style: "width:100%"
+  = f.file_field :profpic, class: "btn", title: "Choose Profile Pic"
+  = button_tag 'Update', class: "btn btn-normal", style: "width: 100%;color:black"
+
+:javascript
+  $(document).ready(function() { $("#user_locale").select2({placeholder: "Language", allowClear: true});});
+
+:css
+  .form-control
+  {
+    margin-top: 1%;
+    margin-bottom:1%;
+  }

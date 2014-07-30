@@ -1,15 +1,16 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
+  helper_method :isadmin
+  helper_method :current_user
+
   # GET /categories
   # GET /categories.json
   def index
-         if params.has_key?(:begins)
-            @categories = Category.find(:all, :conditions =>['name LIKE ?', "#{params[:begins]}%"])
-        elsif params.has_key?(:contains)
-            @categories = Category.find(:all,:conditions => ['name LIKE ?', "%#{params[:contains]}%"])
+        if params.has_key?(:contains)
+            @categories = Category.where('name LIKE ?', "%#{params[:contains]}%").paginate(page: params[:page],per_page: 10)
         else
-            @categories=Category.all
+            @categories=Category.all.paginate(page: params[:page], per_page: 10)
         end
   end
 

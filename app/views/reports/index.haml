@@ -1,0 +1,14 @@
+.jumbotron{style:"margin-top:5%;padding-top:1px"}
+  %h2.centeredtext Statistical Report Generation
+  .centeredtext{style:"margin-top:5%"}
+    = form_tag(action:"showreport", controller: "reports", method: "post") do
+      = text_field_tag :fromdate, nil, placeholder: t('report.from_date')
+      = text_field_tag :todate, nil, placeholder: t('report.to_date')
+      %br
+      = button_tag 'Generate', class:"btn btn-success", style: "width:50%;margin-top:3%"
+
+:javascript
+  $(document).ready(function(){
+    $('#fromdate').datepicker({format: 'yyyy-mm-dd'});
+    $('#todate').datepicker({format: 'yyyy-mm-dd'});
+  })

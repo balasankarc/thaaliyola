@@ -1,0 +1,39 @@
+= form_for(@user, class:"form-signin") do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@user.errors.count,"error")
+        prohibited this user from being saved
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  %ul.nav.nav-tabs#tabs{data:{tabs:"tabs"}}
+    %li
+      %a.active{href:"#logindetails",data:{toggle:"tab"},style:"background:grey;color:black;margin-right:1%;padding-right:1%"} Login Details
+    %li
+      %a{href:"#userdetails",style:"background:grey;color:black",data:{toggle:"tab"}} User Details
+
+  #my-tab-content.tab-content
+    .tab-pane.active#logindetails{style:"padding-left:2%;padding-right:2%"}
+      = f.text_field :username, class: "form-control", placeholder: "Username"
+      = f.password_field :password, class: "form-control", placeholder: "Password"
+      = f.password_field :password_confirmation, class: "form-control", placeholder: "Repeat Password"
+
+    .tab-pane#userdetails{style: "padding-left:2%;padding-right:2%"}
+      = f.text_field :name, class: "form-control", placeholder: "Name", required: "true"
+      = f.text_area :address, class: "form-control", placeholder: "Address", required: "true"
+      = f.email_field :email, class: "form-control", placeholder: "EMail"
+      = f.text_field :phone, class: "form-control", placeholder: "Phone"
+      = f.select :locale, options_for_select(LANGUAGES, I18n.locale.to_s),{}, style: "width:100%"
+      = f.file_field :profpic, class: "btn", title: "Choose Profile Pic"
+      = button_tag 'Sign Up', class: "btn btn-normal", style: "width: 100%;color:black"
+
+:javascript
+  $(document).ready(function() { $("#user_locale").select2({placeholder: "Language", allowClear: true});});
+
+:css
+  .form-control
+  {
+    margin-top: 1%;
+    margin-bottom:1%;
+  }

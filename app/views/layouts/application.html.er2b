@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> താളിയോല  </title>
+<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<%= favicon_link_tag %>
+</head>
+<body>
+<div id="wrapper">
+
+    <div id="sidebar-wrapper-right">
+        <ul class="sidebar-nav" style="margin-left:5%;width:90%">
+            <% if not session.has_key?(:user) %>
+                <%= render 'users/formsignin' %>
+            <br />
+            <div style="text-align:center">
+                <p>Not a user?<br />Click
+                <%= link_to ' Here',sign_up_path %> to sign up</p>
+            </div>
+        <% else %>                
+                <% puts "Session in " + session[:user] %>
+            <h2 style="color:white"><%= link_to session[:user],user_url(:id=>User.where("username = ?",session[:user]).first.id) %> </h2>
+            <%= button_to t('sidebar.logout'),logout_path,{class:"btn"} %>
+        <% end %>
+            <% if session[:user] and User.where("username = ?",session[:user]).first.admin? %>
+                <br />
+            <div class="input-group" style="">
+
+                <input type="text" class="form-control" placeholder="Admission Number" id="userid" ></input>
+
+                <span class="input-group-btn">
+                    <button class="btn" onclick="gotouser()">Go</button>
+                </span>
+            </div>
+            <br />
+            <li> <%= link_to "Add Book",new_book_path %></li>
+
+            <li> <%= link_to "Add User",new_user_path %></li>
+
+        <% end %>
+        </ul>
+    </div>
+
+
+
+
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><b><%= link_to t('thaaliyola'), books_path %></b>
+            </li>
+            <li><%= link_to t('sidebar.books'), books_path %></li>
+            <li><%= link_to t('sidebar.authors'), authors_path %></li>
+            <li><%= link_to t('sidebar.categories'), categories_path %></li>
+            <!--           <li><%= link_to 'Contact', books_path %></li>
+
+-->
+            <li>
+            <div class="form-group" style="">
+
+                <input type="text" class="form-control" placeholder= "<%= t('sidebar.search_query') %>" id="searchquery" style="margin-left:5%;width:90%"></input>
+
+            </div>
+
+            <div class="btn btn-group" style="width:100%">
+
+                <button type="button" class="btn dropdown-toggle form-control" data-toggle="dropdown" style="">
+
+                    <%= t('sidebar.search_in') %> <span class="caret"></span>
+
+                </button>
+
+                <ul class="dropdown-menu form-control" role="menu" style="padding:0;border-radious:2px;width:90%;margin-left:5%;">
+                    <li style=""><a class="searchmenu" href="" onclick="searchbook()" id="search" ><%= t('sidebar.books') %></a></li>
+                    <li style="font-color:red"><a class= "searchmenu" href="" onclick="searchauthor()"><%= t('sidebar.authors') %></a></li>
+                    <li style="font-color:red"><a href="" class="searchmenu" onclick="searchcategory()"><%= t('sidebar.categories') %></a></li>
+
+                </ul>
+
+            </div>
+
+
+            </li>
+        </ul>
+
+
+
+    </ul>
+</div>
+
+<div id="page-content-wrapper">
+    <div class="content-header" style="padding:0 0 0 0;margin: 0 0 0 0"></div>
+    <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+    <% if signinnotice(" ")!="" %>
+        <% if $successmessage.include?(notice)%>
+        <%='<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
+        <% elsif $failuremessage.include?(notice)%>
+                <%='<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'.html_safe %>             
+                <% end %>
+                    <%= notice %>
+                    <%= '</strong></div>'.html_safe %>
+        <% end %>
+            <%= yield %>
+        </div>
+        <script>
+function searchbook()
+{
+    window.location.assign( "<%= books_path %>?contains="+document.getElementById('searchquery').value);
+}
+
+function searchauthor()
+{
+    window.location.assign( "<%= authors_path %>?contains="+document.getElementById('searchquery').value);
+}
+
+function searchcategory()
+{
+    window.location.assign( "<%= categories_path %>?contains="+document.getElementById('searchquery').value);
+}
+
+function gotouser()
+{
+    window.location.assign( "<%= users_path %>/"+document.getElementById('userid').value);
+}
+
+$("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+        });
+        </script>
+
+        </body>
+        </html>

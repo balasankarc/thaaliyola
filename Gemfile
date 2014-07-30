@@ -11,6 +11,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'paperclip'
 gem 'rails-latex'
+gem 'haml-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'digest'
@@ -48,3 +49,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'localeapp'

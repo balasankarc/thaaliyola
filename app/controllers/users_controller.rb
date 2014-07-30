@@ -7,6 +7,8 @@ class UsersController < ApplicationController
    include ApplicationHelper
     before_action :set_user, only: [:show, :edit, :update, :destroy,:password_reset, :reset_password, :issue, :return, :renew]
 
+    helper_method :isadmin
+    helper_method :current_user
     # GET /users
     # GET /users.json
     def index
@@ -22,20 +24,20 @@ class UsersController < ApplicationController
         @oldpassword=params[:user][:currentpassword]
         @old_sha = Digest::SHA1.hexdigest(@oldpassword)
         if @old_sha!=@user.password
-            @user.errors.add(:Error, " : Current Password Incorrect" )
+            @user.errors[:base] << "Current Password Incorrect"
             render "password_reset"
 
       else
             @newpassword = params[:user][:newpassword]
             @newpassword_confirmation = params[:user][:newpassword_confirmation]
             if @newpassword!=@newpassword_confirmation
-                notice="Passwords donot match"
-                signinnotice(notice)
+                @user.errors[:base] << "Passwords Donot Match"
+                render 'password_reset'
             else            
                 if @user.update_attribute(:password, Digest::SHA1.hexdigest(params[:user][:newpassword]))
                     notice="Password Updated"
                     signinnotice(notice)
-                    redirect_to @user
+                    redirect_to @user, notice:notice
                 end
             end
         end
@@ -227,6 +229,6 @@ puts @user.errors.full_messages
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic)
+        params.require(:user).permit(:username, :password, :password_confirmation, :librarian, :admin, :address, :email, :phone, :name, :currentpassword, :newpassword, :newpassword_confirmation, :book, :profpic, :locale)
     end
 end

@@ -1,0 +1,34 @@
+= form_for(@user) do |f|
+  .input-group
+    = f.fields_for :book do |book_form|
+      = book_form.text_field :id, class:"form-control", placeholder:"Book Serial Number"
+    .input-group-btn
+      %button.btn.btn-danger.dropdown-toggle{type:"button",data:{toggle:"dropdown"}}
+        Action
+        %span.caret
+      %ul.dropdown-menu.dropdown-menu-right{role:"menu"}
+        %li
+          %a{href:"",onclick:"issue_book()"}
+            Issue
+        %li
+          %a{href:"",onclick:"return_book()"}
+            Return
+        %li
+          %a{href:"",onclick:"renew_book()"}
+            Renew
+:javascript
+  function return_book()
+  {
+    $('#edit_user_#{@user.id}').attr('action',"#{return_path(@user)}");
+    $('.edit_user').submit();
+  }
+  function renew_book()
+  {
+    $('#edit_user_#{@user.id}').attr('action',"#{renew_path(@user)}");
+    $('.edit_user').submit();
+  }
+  function issue_book()
+  {
+    $('#edit_user_#{@user.id}').attr('action',"#{issue_path(@user)}");
+    $('.edit_user').submit();
+  }

@@ -1,0 +1,12 @@
+= form_for(@category, class:"form-signin") do |f|
+  - if @category.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@cateory.errors.count,"error")
+        prohibited this category from being saved
+      %ul
+        - @category.errors.full_messages.each do |msg|
+          %li= msg
+  = f.text_field :name, class:"form-control", placeholder: "Name"
+  = button_tag "Update", class:"btn btn-primary", style:"width:10%"
+

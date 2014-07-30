@@ -22,6 +22,7 @@
 
 en:
   all_books: "All Books"
+  books_under: "Books having %{query}"
   thaaliyola: "Thaaliyola"
   sidebar:
       books: "Books"
@@ -30,14 +31,6 @@ en:
       search_query: "Search Query"
       search_in: "Search In"
       logout: "Logout"
-ml:
-  all_books: "എല്ലാ പുസ്തകങ്ങളും"
-  thaaliyola: "താളിയോല"
-  sidebar:
-      books: "പുസ്തകങ്ങൾ"
-      authors: "രചയിതാക്കൾ"
-      categories: "വർഗ്ഗങ്ങൾ"
-      search_query: "തിരയേണ്ട പദം"
-      search_in: "ഇവിടെ തിരയുക"
-      logout: "പുറത്തിറങ്ങുക"
-
+  report:
+      from_date : "From Date"
+      to_date: "To Date"

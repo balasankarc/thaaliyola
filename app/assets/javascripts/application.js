@@ -15,3 +15,21 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-datepicker
+
+  function searchbook()
+  {
+    window.location.assign("/books?contains="+document.getElementById('searchquery').value);
+  }
+  function searchauthor()
+  {
+    window.location.assign("/authors?contains="+document.getElementById('searchquery').value);
+  }
+  function searchcategory()
+  {
+    window.location.assign("/categories?contains="+document.getElementById('searchquery').value);
+  }
+  function gotouser()
+  {
+    window.location.assign("/users/"+document.getElementById('userid').value);
+  }
+

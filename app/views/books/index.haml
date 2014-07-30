@@ -1,0 +1,22 @@
+.centeredtext
+  - if params.has_key?(:contains)
+    %h1= t('books_under',:query => params[:contains].to_s)
+  - else
+    %h1= t('all_books')
+  = will_paginate @books, renderer: BootstrapPagination::Rails
+%table.table.table-hover{"width" => "100%"}
+  %tr
+    %th.col-md-6 Book
+    %th.col-md-6 Author
+  - @counter = 1
+  - @books.each do |book|
+    %tr
+      %td
+        = link_to book.name, book
+      - if book.authors.empty?
+        %td
+      - else
+        %td
+          - book.authors.each do |author|
+            = link_to author.name,author
+            %br

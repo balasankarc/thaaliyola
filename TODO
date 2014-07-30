@@ -1,6 +1,7 @@
 *Automate Serial Numbers
 *Book - Multiple Copies - Put Serial Number accordingly
 *Reserve Book - Show user his reservations and availability
+*Email Reminder for returning and availability of reserved books
 *Prettify Category Details
 *Author Photo Upload
 *User Book History
@@ -10,5 +11,4 @@
 *Book details page - physical details and description, issue history for admins- tabs
 *User page - tab - history
 *Error Pages
-*Move to HAML from ERB
 *QR Codes for books and authors

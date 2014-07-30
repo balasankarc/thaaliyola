@@ -6,7 +6,7 @@ class BooksController < ApplicationController
         render :template=>"/error/404_book.html.erb", :status=>404
     end
 
-    before_action :set_book, only: [:show, :edit, :update, :destroy]
+    before_action :set_book, only: [:show, :edit, :update, :destroy, :reserve_book]
    
     helper_method :current_user
     helper_method :isadmin
@@ -23,6 +23,15 @@ class BooksController < ApplicationController
     # GET /books/1
     # GET /books/1.json
     def show
+        @copies = Book.where("bookunique = ?",@book.bookunique)
+        @uniquecopies = 0
+        @copies.each do |b|
+            if b.users.empty?
+                @uniquecopies += 1
+            end
+        end
+        @user = current_user()
+
     end
 
 
@@ -100,6 +109,17 @@ class BooksController < ApplicationController
             end
         end
     end
+
+    def reserve_book
+        @user = current_user()
+        Reservation.create(:book => @book, :user => @user)
+        respond_to do |format|
+            notice="Book Requested. You'll be notified when it becomes available"
+            format.html { redirect_to @book,notice:notice}
+        end
+
+    end
+    
 
     # PATCH/PUT /books/1
     # PATCH/PUT /books/1.json

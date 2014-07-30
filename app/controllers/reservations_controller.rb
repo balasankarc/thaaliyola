@@ -1,6 +1,27 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
 
+  def reserve_book
+      @book = Book.find(params[:book])
+      @user = User.find(params[:user])
+      @noofavailable = 0
+      Book.where("bookunique = ?",@book.bookunique.to_s).each do |b|
+          if Issuing.where("book_id = ?",b.id).empty?
+              @noofavailable += 1
+          end
+      end
+      if @noofavailable > 0
+          Reservation.create(:book => @book, :user => @user, :available => true)
+          notice = "Book available and reserved. You have 2 weeks to collect it before reservation expires"
+      else
+          notice = "Book not available but reserved. You will be notified via mail when it becomes available"
+          Reservation.create(:book => @book, :user => @user, :available => false)
+      end
+      respond_to do |format|
+        format.html { redirect_to @book,notice:notice}
+      end
+  end
+
   # GET /reservations
   # GET /reservations.json
   def index
@@ -24,6 +45,9 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
+    @book = Book.find(params[:book])
+    puts "here:"
+    puts @book.id
     @reservation = Reservation.new(reservation_params)
 
     respond_to do |format|

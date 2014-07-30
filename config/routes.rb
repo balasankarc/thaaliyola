@@ -35,6 +35,7 @@ ThaaliyolaRor::Application.routes.draw do
     get "success" => "users#success"
     get "sign_up" => "users#new"
     post "logout" => "users#sign_out"
+    post "books/:id/reserve_book" => "reservations#reserve_book", as: "reserve_book"
     post "users/:id/reset_password" => "users#reset_password"
     get "users/:id/reset_password" => "users#password_reset", as:"password_reset"
     get "edit_user_photo" => "users#changephoto"

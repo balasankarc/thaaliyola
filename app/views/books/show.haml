@@ -17,21 +17,17 @@
       %p
         Shelf :
         = @book.shelf
-      - @copies = Book.where("bookunique = ?",@book.bookunique)
       %p
         Total Number of Copies : 
         = @copies.count
       %p
         Number of Copies Available : 
-        - @uniquecopies = 0
-        - @copies.each do |b|
-          - if b.users.empty?
-            - @uniquecopies += 1
         = @uniquecopies
-
       - if isadmin()
-        = button_to 'Edit Details', edit_book_path,{method:"get",class:"btn btn-lg btn-primary", style:"float:left;margin-right:5%;margin-top:f%"}
-        = button_to 'Delete Book', @book,{method:"delete",class:"btn btn-lg btn-danger", style:"float:left;margin-right:5%;margin-top:f%", confirm:"Are you sure?"}
+        = button_to 'Edit Details', edit_book_path,{method:"get",class:"btn btn-lg btn-primary", style:"float:left;margin-right:5%;margin-top:5%"}
+        = button_to 'Delete Book', @book,{method:"delete",class:"btn btn-lg btn-danger", style:"float:left;margin-right:5%;margin-top:5%", confirm:"Are you sure?"}
+      - if @user != nil and isadmin()==false
+        = button_to 'Reserve Books', reserve_book_path(:book=>@book,:user=>@user), method:"post", class:"btn btn-lg btn-primary"
 
 
     #right{style:"float:left;margin-top:5%"}

@@ -12,10 +12,7 @@ class Book < ActiveRecord::Base
     accepts_nested_attributes_for :users
     belongs_to :language, :dependent => :destroy
 
-    has_many :dateofissue
-    has_many :dateofreturn
-    accepts_nested_attributes_for :dateofissue
-    accepts_nested_attributes_for :dateofreturn
+    has_many :reservations
     has_attached_file :cover
     validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 

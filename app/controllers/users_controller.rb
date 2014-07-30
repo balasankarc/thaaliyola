@@ -106,7 +106,10 @@ class UsersController < ApplicationController
             notice="Book (Or another copy of book) already issued"
             redirect_to @user, notice:notice
             else
-                Issuing.create(:book=>@book, :user=>@user, :dateofissue=>DateTime.now(), :dateofreturn=>14.days.from_now) 
+                Issuing.create(:book=>@book, :user=>@user, :dateofissue=>DateTime.now(), :dateofreturn=>14.days.from_now)
+                Reservation.where("book_id =? AND user_id = ?",@book.id,@user.id).each do |r|
+                    r.delete
+                end
                 respond_to do |format|
                     notice="Book Issued"
                     format.html { redirect_to @user,notice:notice}
@@ -129,7 +132,16 @@ class UsersController < ApplicationController
                 redirect_to @user, notice:notice
             else
                @issuing = Issuing.where(:book_id=>@book.id, :user_id=>@user.id).first
-                @issuing.delete
+               @issuing.delete
+               Reservation.where(:book_id =>@book.id).each do |r|
+                   if r.available==false
+                       r.available = true
+                       r.save
+                       puts "Mail"
+                       puts "TODO"
+                       break;
+                   end
+               end
                 respond_to do |format|
                     notice="Book Returned"
                     format.html { redirect_to @user,notice:notice}

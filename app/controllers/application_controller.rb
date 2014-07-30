@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
     before_filter :set_locale_of_user
     $successmessage =  ["Login Successful", "Logged Out Succesfully", "Details Saved", "User Succesfully Created", "Password Updated","Book Issued","Book Returned","Author was successfully updated","Category was successfully updated","Book Renewed","Book was successfully updated","Book Succesfully Created"]
-    $failuremessage = ["Incorrect Username", "Incorrect password", "Current Password Incorrect", "Passwords donot match", "Book Not Found", "Book already issued","Book not issued to user","Book already renewed"]
+    $failuremessage = ["Incorrect Username", "Incorrect password", "Current Password Incorrect", "Passwords donot match", "Book Not Found", "Book (Or another copy of book) already issued","Book not issued to user","Book already renewed", "Book already issued to another user"]
     def set_locale_of_user()
         if session[:user]
             I18n.locale = User.where("username = ?",session[:user].to_s).first.locale

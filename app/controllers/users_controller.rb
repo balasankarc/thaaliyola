@@ -85,10 +85,26 @@ class UsersController < ApplicationController
 
     def issue
         begin
+        @issued = 0;
         @book = Book.find(params[:user][:book][:id])
-        if not @user.books.where(:id=>@book.id).empty?
-            notice="Book already issued"
-                redirect_to @user, notice:notice
+        if not @book.users.empty?
+            notice="Book already issued to another user"
+            redirect_to @user,notice:notice
+        else
+            Book.where("bookunique = ? ",@book.bookunique).each do |b|
+                puts "Book Id : "
+                puts b.id
+                @userbooks = Issuing.where("book_id = ? AND user_id = ?",b.id,@user.id)
+                if not @userbooks.empty?
+                    puts "Here"
+                    @issued = 1
+                    break
+                end
+            end
+            if @issued == 1
+            puts "Here Also"
+            notice="Book (Or another copy of book) already issued"
+            redirect_to @user, notice:notice
             else
                 Issuing.create(:book=>@book, :user=>@user, :dateofissue=>DateTime.now(), :dateofreturn=>14.days.from_now) 
                 respond_to do |format|
@@ -96,11 +112,14 @@ class UsersController < ApplicationController
                     format.html { redirect_to @user,notice:notice}
                 end
             end
-        rescue 
+        end
+        rescue Exception => ex
+            puts "Exception!!"
+            puts ex.message
             notice="Book Not Found"
             redirect_to @user, notice:notice
         end
-           end
+    end
 
     def return
         begin

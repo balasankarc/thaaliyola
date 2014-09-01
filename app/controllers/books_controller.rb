@@ -7,7 +7,7 @@ class BooksController < ApplicationController
     end
 
     before_action :set_book, only: [:show, :edit, :update, :destroy, :reserve_book]
-   
+
     helper_method :current_user
     helper_method :isadmin
     # GET /books
@@ -66,23 +66,23 @@ class BooksController < ApplicationController
         respond_to do |format|
             if @book.save
                 @authors.each do |author|
-                @author_exist=Author.where("name = ?",author.to_s)
+                    @author_exist=Author.where("name = ?",author.to_s)
 
-                if @author_exist.empty?
-                    @author_created=@book.authors.create(:name=>author.to_s)
-                    @author_created.save
-                else
-                    @book.authors<<@author_exist
-                end
+                    if @author_exist.empty?
+                        @author_created=@book.authors.create(:name=>author.to_s)
+                        @author_created.save
+                    else
+                        @book.authors<<@author_exist
+                    end
                 end
                 @categories.each do |category|
-                @category_exist = Category.where("name = ?",category.to_s)
-                if @category_exist.empty?
-                    @category_created=@book.categories.create(:name=>category.to_s)
-                    @category_created.save
-                else
-                    @book.categories<<@category_exist.first
-                end
+                    @category_exist = Category.where("name = ?",category.to_s)
+                    if @category_exist.empty?
+                        @category_created=@book.categories.create(:name=>category.to_s)
+                        @category_created.save
+                    else
+                        @book.categories<<@category_exist.first
+                    end
                 end
                 unique = params[:book][:name].to_s + params[:book][:author][:name].to_s + params[:book][:category][:name].to_s
                 @book.bookunique = unique
@@ -119,47 +119,47 @@ class BooksController < ApplicationController
         end
 
     end
-    
+
 
     # PATCH/PUT /books/1
     # PATCH/PUT /books/1.json
     def update
         @authors = params[:book][:author][:name].to_s.split(";")
         if params[:book][:author][:name]!=""
-        Authorship.where(:book_id=>@book.id).each do |auth|
-            auth.delete
-        end
+            Authorship.where(:book_id=>@book.id).each do |auth|
+                auth.delete
+            end
         else
             params[:book].delete(:author)
         end
         @authors.each do |author|
-                @author_exist=Author.where("name = ?",author.to_s)
+            @author_exist=Author.where("name = ?",author.to_s)
 
-                if @author_exist.empty?
-                    @author_created=@book.authors.create(:name=>author.to_s)
-                    @author_created.save
-                else
-                    @book.authors<<@author_exist
-                end
-                end
-        @categories = params[:book][:category][:name].to_s.split(";")
-         if params[:book][:category][:name]!=""
-        Categorization.where(:book_id=>@book.id).each do |cat|
-            cat.delete
+            if @author_exist.empty?
+                @author_created=@book.authors.create(:name=>author.to_s)
+                @author_created.save
+            else
+                @book.authors<<@author_exist
+            end
         end
+        @categories = params[:book][:category][:name].to_s.split(";")
+        if params[:book][:category][:name]!=""
+            Categorization.where(:book_id=>@book.id).each do |cat|
+                cat.delete
+            end
         else
             params[:book].delete(:category)
         end
         @categories.each do |category|
-                @category_exist = Category.where("name = ?",category.to_s)
-                if @category_exist.empty?
-                    @category_created=@book.categories.create(:name=>category.to_s)
-                    @category_created.save
-                else
-                    @book.categories<<@category_exist.first
-                end
-                end
-         
+            @category_exist = Category.where("name = ?",category.to_s)
+            if @category_exist.empty?
+                @category_created=@book.categories.create(:name=>category.to_s)
+                @category_created.save
+            else
+                @book.categories<<@category_exist.first
+            end
+        end
+
         respond_to do |format|
             if @book.update(book_params)
                 format.html { redirect_to @book, notice: 'Book was successfully updated' }
